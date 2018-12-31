@@ -1,0 +1,30 @@
+{
+  "name": "cah-server",
+  "version": "1.0.0",
+  "description": "CAH Node.js Server",
+  "main": "out/server.js",
+  "scripts": {
+    "ts:compile": "tsc -p ./",
+    "ts:watch": "tsc -p ./ --watch",
+    "dev": "node devserver"
+  },
+  "keywords": [
+    "cah",
+    "game",
+    "nodejs"
+  ],
+  "author": "olback",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.12.18",
+    "@types/socket.io": "^2.1.2",
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0",
+    "typescript": "^3.2.2"
+  }
+}
