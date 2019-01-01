@@ -13,6 +13,9 @@ import { SocketService } from './_services/socket.service';
 // Other imports
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
+import { MainComponent } from './main/main.component';
+import { CreateGameComponent } from './create-game/create-game.component';
+import { GameComponent } from './game/game.component';
 
 const sioc: SocketIoConfig = {
   url: env.siou,
@@ -21,7 +24,10 @@ const sioc: SocketIoConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    CreateGameComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
