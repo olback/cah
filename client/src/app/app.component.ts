@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { SocketService } from './_services/socket.service';
+import { UsernameService } from './_services/username.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'cah';
+export class AppComponent implements OnInit, DoCheck {
 
-  constructor(private socketService: SocketService) {
+  username = '';
+
+  constructor(private socketService: SocketService, private usernameService: UsernameService) {
   }
 
   ngOnInit() {
+    this.username = this.usernameService.get();
+  }
+
+  ngDoCheck() {
+    this.username = this.usernameService.get();
   }
 
 }

@@ -1,3 +1,18 @@
-<p>
-  create-game works!
-</p>
+<main>
+
+  <p>Game ID: {{ gameId }} <small>Click to copy url</small></p>
+
+  <input (keyup)="filter()" [(ngModel)]="query" type="text" class="search" placeholder="Filter..." />
+  <ul>
+    <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngFor="let pack of packs">{{ pack.name }} <div class="black">{{ pack.black }}</div> <div class="white">{{ pack.white }}</div></li>
+  </ul>
+
+  <button (click)="toggleAll(true)">All</button><button (click)="toggleAll(false)">None</button><span class="cards white">{{ white }}</span><span class="cards">{{ black }}</span>
+
+  <label for="max-players">Max Players</label>
+  <input id="max-players" type="number" min="2" max="10" value="5" />
+
+  <label for="password">Game password (optional)</label>
+  <input id="password" type="text" minlength="3" maxlength="100" />
+
+</main>

@@ -1,0 +1,135 @@
+main {
+  max-width: 600px;
+  padding: 10px;
+  margin: auto;
+
+  input.search {
+    display: block;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #000;
+    border-bottom: none;
+    outline: none;
+    padding: 1em;
+    font-size: 16pt;
+    width: calc(100% - 2em - 2px);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    width: calc(100% - 2px);
+    margin: auto;
+    border: 1px solid #000;
+    max-height: 20vh;
+    overflow-y: auto;
+
+    li {
+      display: block;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      color: #333;
+
+      div {
+        display: inline;
+        color: #000;
+        font-weight: normal;
+
+        &::before {
+          display: inline-block;
+          margin-left: 1em;
+          margin-right: 0.3em;
+          content: '';
+          background-color: #000;
+          border: 1px solid #000;
+          border-radius: 0.1em;
+          height: 12pt;
+          width: 8pt;
+          transform: rotate(20deg);
+        }
+
+        &.white {
+
+          &::before {
+            background-color: #fff;
+          }
+
+        }
+
+      }
+
+      &:nth-of-type(2n) {
+        background-color: #eee;
+      }
+
+      &.selected {
+        font-weight: 600;
+        background-color: #ddd;
+        color: #000;
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+    }
+
+  }
+
+  span.cards {
+    display: block;
+    color: #000;
+    font-weight: normal;
+    float: right;
+    font-size: 1rem;
+    padding: 1rem 0;
+    margin-top: 1em;
+
+    &::before {
+      display: inline-block;
+      margin-left: 1em;
+      margin-right: 0.3em;
+      content: '';
+      background-color: #000;
+      border: 1px solid #000;
+      border-radius: 0.1em;
+      height: 12pt;
+      width: 8pt;
+      transform: rotate(20deg);
+    }
+
+    &.white {
+
+      &::before {
+        background-color: #fff;
+      }
+
+    }
+
+    &:first-of-type {
+        margin-right: 1em;
+    }
+
+  }
+
+  button {
+    border: none;
+    background: none;
+    padding: 1rem;
+    outline: none;
+    font-size: 1rem;
+    display: block;
+    margin: 1em 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: .125rem;
+    float: right;
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+  }
+
+}

@@ -1,4 +1,83 @@
 main {
+  display: block;
+  margin: auto;
+  margin-top: 35vh;
+  text-align: center;
+  width: fit-content;
+
+  div.username {
+
     display: block;
     margin: auto;
+    width: 100%;
+
+    input {
+      width: calc(100% - 4em);
+    }
+
+  }
+
+  div {
+    display: inline-block;
+    text-align: center;
+    width: min-content;
+
+    input {
+      border: none;
+      border-bottom: 3px solid #000;
+      padding: 1em;
+      font-size: 12pt;
+      display: inline-block;
+      margin: 1em;
+      outline: none;
+    }
+
+    button {
+
+      border: none;
+      background: none;
+      padding: 1rem;
+      outline: none;
+      font-size: 1rem;
+      display: inline-block;
+      margin: 0 1em;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: .125rem;
+
+      &:hover {
+        background-color: #eee;
+        cursor: pointer;
+      }
+
+      &.join {
+        color: #4caf50;
+      }
+
+      &.create {
+        font-weight: normal;
+        color: #444;
+      }
+
+    }
+
+    &.left {
+
+      a,
+      button,
+      input {
+        float: right;
+      }
+    }
+
+    &.right {
+
+      button,
+      input {
+        float: left;
+      }
+    }
+
+  }
+
 }

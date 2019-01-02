@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +10,7 @@ import { AppComponent } from './app.component';
 
 // Services
 import { SocketService } from './_services/socket.service';
+import { UsernameService } from './_services/username.service';
 
 // Other imports
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -32,10 +34,12 @@ const sioc: SocketIoConfig = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     SocketIoModule.forRoot(sioc)
   ],
   providers: [
-    SocketService
+    SocketService,
+    UsernameService
   ],
   bootstrap: [AppComponent]
 })
