@@ -1,18 +1,32 @@
 <main>
 
-  <p>Game ID: {{ gameId }} <small>Click to copy url</small></p>
-
   <input (keyup)="filter()" [(ngModel)]="query" type="text" class="search" placeholder="Filter..." />
   <ul>
     <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngFor="let pack of packs">{{ pack.name }} <div class="black">{{ pack.black }}</div> <div class="white">{{ pack.white }}</div></li>
   </ul>
 
-  <button (click)="toggleAll(true)">All</button><button (click)="toggleAll(false)">None</button><span class="cards white">{{ white }}</span><span class="cards">{{ black }}</span>
+  <div class="cards-info">
+    <span class="cards white">{{ white }}</span><span class="cards">{{ black }}</span><button (click)="toggleAll(false)">None</button><button (click)="toggleAll(true)">All</button>
+  </div>
 
-  <label for="max-players">Max Players</label>
-  <input id="max-players" type="number" min="2" max="10" value="5" />
+  <div class="input-group">
+    <label for="max-players">Max Players:</label>
+    <input id="max-players" type="number" min="2" max="10" value="5" />
+  </div>
 
-  <label for="password">Game password (optional)</label>
-  <input id="password" type="text" minlength="3" maxlength="100" />
+  <div class="input-group">
+    <label for="password">Game password (optional):</label>
+    <input id="password" type="text" minlength="3" maxlength="100" />
+  </div>
+
+  <div class="input-group">
+    <label for="gameId">Game ID:</label>
+    <input id="gameId" type="text" readonly value="{{ gameId }}" />
+    <button ngxClipboard [cbContent]="baseUrl + '/join/' + gameId" >Copy join URL</button>
+  </div>
+
+  <div class="input-group">
+    <button class="start-game">Start Game</button>
+  </div>
 
 </main>

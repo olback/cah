@@ -19,6 +19,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
 
   // Temp variable FIXME:TODO:
   gameId: string = (Math.random() * 1E17).toString(36);
+  baseUrl: string =  location.origin;
 
   query: string;
   black = 0;
@@ -65,6 +66,14 @@ export class CreateGameComponent implements OnInit, DoCheck {
       selected: false,
       hidden: false
     },
+    {
+      name: 'Word Wide Web Pack',
+      tag: 'WWW',
+      black: 24,
+      white: 45,
+      selected: false,
+      hidden: false
+    }
   ];
 
   constructor() { }
