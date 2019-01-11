@@ -15,7 +15,6 @@ io.on('connection', socket => {
 
     console.log(socket.id);
 
-
     socket.on('hello', data => {
         console.log(data);
         socket.emit('m', 'aaaaaaaa');
