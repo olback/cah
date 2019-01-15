@@ -14,6 +14,7 @@ import { GameComponent } from './game/game.component';
 // Services
 import { SocketService } from './_services/socket.service';
 import { UsernameService } from './_services/username.service';
+import { TokenService } from './_services/token.service';
 
 // Other imports
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -41,7 +42,8 @@ const sioc: SocketIoConfig = {
   ],
   providers: [
     SocketService,
-    UsernameService
+    UsernameService,
+    TokenService
   ],
   bootstrap: [AppComponent]
 })

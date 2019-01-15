@@ -1,7 +1,7 @@
 <main>
 
   <div class="username">
-    <input (keyup)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="15" placeholder="Username*" />
+    <input (change)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="15" placeholder="Username*" />
   </div>
 
   <div class="left">
