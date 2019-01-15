@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+
+  node:
+    image: node:10-stretch
+    restart: ${DOCKER_RESTART}
+    command: ${NODE_COMMAND}
+    tty: true
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}" # host:container
+    links:
+      - mongo
+    working_dir: /cah/server
+    environment:
+      NODE_PORT: ${NODE_PORT}
+      NODE_ENV: ${NODE_ENV}
+      NODE_LOG_REQUESTS: ${NODE_LOG_REQUESTS}
+      NODE_JWT_SECRET: ${NODE_JWT_SECRET}
+      MONGO_USER: ${MONGO_USER}
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_PORT: ${MONGO_PORT}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - ${CAH_DIR}:/cah/
+
+  mongo:
+    image: mongo
+    restart: ${DOCKER_RESTART}
+    # ports:
+    #   - "${MONGO_PORT}:${MONGO_PORT}"
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_USER}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - ${DATA_STORE}/mongo:/data/db
+      - ${CAH_DIR}/scripts/mongo:/scripts/
+      - ${DUMP_DIR}/mongo:/export/
