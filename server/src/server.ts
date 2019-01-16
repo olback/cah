@@ -3,6 +3,7 @@ import socketio from 'socket.io';
 import { env } from 'process';
 import { Game, Games } from './game';
 import { Player, Players } from './player';
+// import './data.d.ts';
 
 const port = env.PORT ? Number(env.PORT) : 5000;
 const app = express();
@@ -20,19 +21,25 @@ io.on('connection', socket => {
 
     console.log(`New socket: ${socket.id}`);
 
-    socket.on('login', data => {
+    socket.on('login', (id: string) => {
 
-        players[String(data)] = new Player(socket);
+        players[String(id)] = new Player(id, socket);
         for (const p in players) {
             console.log(`ID: ${p}`);
         }
 
     });
 
-    socket.on('username', data => {
+    socket.on('username', (data: UsernameUpdate) => {
 
         const { id, username } = data;
         players[id].username = username;
+
+    });
+
+    socket.on('new-game', (data: NewGame) => {
+
+        // games[data.gameId] = new Game(data.gameId,)
 
     });
 
