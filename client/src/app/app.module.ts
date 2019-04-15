@@ -20,6 +20,7 @@ import { TokenService } from './_services/token.service';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
 import { ClipboardModule } from 'ngx-clipboard';
+import { InGameSettingsComponent } from './in-game-settings/in-game-settings.component';
 
 const sioc: SocketIoConfig = {
   url: env.siou,
@@ -31,7 +32,8 @@ const sioc: SocketIoConfig = {
     AppComponent,
     MainComponent,
     CreateGameComponent,
-    GameComponent
+    GameComponent,
+    InGameSettingsComponent
   ],
   imports: [
     BrowserModule,

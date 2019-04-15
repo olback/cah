@@ -1,3 +1,68 @@
-<p>
-  game works!
-</p>
+<main>
+
+  <div class="card-row">
+
+    <div class="card black">
+      You say tomato, I say _____.
+    </div>
+
+  </div>
+
+  <div class="card-row my-cards">
+
+    <div class="card">
+      Land mines.
+    </div>
+
+    <div class="card">
+      Harnesing the power of the atom to slaughter 200,000 Japanese people.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+    <div class="card">
+      YEEET.
+    </div>
+
+  </div>
+
+  <button>Select</button>
+  <button (click)="open=!open">Open settings</button>
+
+  <app-in-game-settings *ngIf="open" [settings]="settings" (close)="closeSettings()"></app-in-game-settings>
+
+</main>

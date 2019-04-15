@@ -1,0 +1,23 @@
+div {
+
+    &.background {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .container {
+        position: relative;
+        background-color: white;
+        margin-top: 5vh;
+        margin-left: 5vw;
+        width: calc(90vw - 60px);
+        height: calc(90vh - 60px);
+        padding: 30px;
+
+    }
+
+}
