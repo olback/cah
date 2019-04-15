@@ -9,3 +9,8 @@ interface NewGame {
     packs: string[];
 }
 
+interface LogResponse {
+    players: string[];
+    games: string[];
+}
+

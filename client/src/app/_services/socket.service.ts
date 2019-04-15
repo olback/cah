@@ -7,7 +7,7 @@ import { TokenService } from './token.service';
 })
 export class SocketService {
 
-  constructor(public socket: Socket, private _tokenService: TokenService) {
+  constructor(private socket: Socket, private _tokenService: TokenService) {
 
     this.socket.on('err', console.log);
 

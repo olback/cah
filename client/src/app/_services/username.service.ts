@@ -12,14 +12,14 @@ export class UsernameService {
 
   set(username: string) {
 
-    localStorage.setItem('username', username);
+    sessionStorage.setItem('username', username);
     this._socketService.setUsername(username);
 
   }
 
   get() {
 
-    return localStorage.getItem('username');
+    return sessionStorage.getItem('username') || '';
 
   }
 

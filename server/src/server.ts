@@ -23,9 +23,12 @@ io.on('connection', socket => {
 
     socket.on('login', (id: string) => {
 
-        players[String(id)] = new Player(id, socket);
-        for (const p in players) {
-            console.log(`ID: ${p}`);
+        if (players[id]) {
+            players[id].socket = socket;
+            console.log(`Updating socket for player ${id}.`);
+        } else {
+            players[String(id)] = new Player(id, socket);
+            console.log(`Player ${id} joined the game.`);
         }
 
     });
@@ -34,6 +37,8 @@ io.on('connection', socket => {
 
         const { id, username } = data;
         players[id].username = username;
+
+        console.log(`Player ${id} changed username to ${username ? username : '<none>'}.`);
 
     });
 
@@ -47,9 +52,35 @@ io.on('connection', socket => {
         console.error(e);
     });
 
+    socket.on('disconnect', () => {
+
+        for(const p in players) {
+
+            if (players[p].socket.id === socket.id) {
+
+                console.log(`Player ${players[p].id} has left the game.`);
+                delete players[p];
+
+            }
+
+        }
+
+    });
+
 
 });
 
 app.get('**', (_req, res) => {
-    res.send('ok');
+
+    const r: LogResponse = {
+        players: [],
+        games: []
+    }
+
+    for (const p in players) {
+        r.players.push(p);
+    }
+
+    res.json(r);
+
 });

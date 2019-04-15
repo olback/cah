@@ -19,14 +19,19 @@ var players = {};
 io.on('connection', function (socket) {
     console.log("New socket: " + socket.id);
     socket.on('login', function (id) {
-        players[String(id)] = new player_1.Player(id, socket);
-        for (var p in players) {
-            console.log("ID: " + p);
+        if (players[id]) {
+            players[id].socket = socket;
+            console.log("Updating socket for player " + id + ".");
+        }
+        else {
+            players[String(id)] = new player_1.Player(id, socket);
+            console.log("Player " + id + " joined the game.");
         }
     });
     socket.on('username', function (data) {
         var id = data.id, username = data.username;
         players[id].username = username;
+        console.log("Player " + id + " changed username to " + (username ? username : '<none>') + ".");
     });
     socket.on('new-game', function (data) {
         // games[data.gameId] = new Game(data.gameId,)
@@ -34,7 +39,22 @@ io.on('connection', function (socket) {
     socket.on('error', function (e) {
         console.error(e);
     });
+    socket.on('disconnect', function () {
+        for (var p in players) {
+            if (players[p].socket.id === socket.id) {
+                console.log("Player " + players[p].id + " has left the game.");
+                delete players[p];
+            }
+        }
+    });
 });
 app.get('**', function (_req, res) {
-    res.send('ok');
+    var r = {
+        players: [],
+        games: []
+    };
+    for (var p in players) {
+        r.players.push(p);
+    }
+    res.json(r);
 });

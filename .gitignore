@@ -61,5 +61,5 @@ typings/
 .next
 
 #
-data/
-export/
+/data/
+/export/
