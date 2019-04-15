@@ -70,7 +70,7 @@ io.on('connection', socket => {
 
 });
 
-app.get('**', (_req, res) => {
+app.get('**', async (_req, res) => {
 
     const r: LogResponse = {
         players: [],
