@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS white;
+
+CREATE TABLE white (
+    id SERIAL NOT NULL,
+    text VARCHAR(255) NOT NULL,
+    pack VARCHAR(255) NOT NULL
+);
+
+CREATE INDEX idx_white on white (pack);

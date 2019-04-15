@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS black;
+
+CREATE TABLE black (
+    id SERIAL NOT NULL,
+    text VARCHAR(255) NOT NULL,
+    pack VARCHAR(255) NOT NULL,
+    pick smallint NOT NULL,
+    draw smallint NOT NULL
+);
+
+CREATE INDEX idx_black on black (pack);
