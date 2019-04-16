@@ -1,9 +1,11 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
+import { SocketService } from '../_services/socket.service';
 
 // TODO:FIXME: Temp interface
 interface Pack {
   name: string;
-  tag: string;
+  // tag: string;
   black: number;
   white: number;
   selected: boolean;
@@ -24,61 +26,27 @@ export class CreateGameComponent implements OnInit, DoCheck {
   query: string;
   black = 0;
   white = 0;
+  packs: Pack[] = [];
 
-  packs: Pack[] = [
-    {
-      name: 'US Pack',
-      tag: 'US',
-      black: 27,
-      white: 64,
-      selected: false,
-      hidden: false
-    },
-    {
-      name: 'Base Game',
-      tag: 'BASE',
-      black: 57,
-      white: 144,
-      selected: false,
-      hidden: false
-    },
-    {
-      name: 'Canadian Pack',
-      tag: 'CA',
-      black: 25,
-      white: 47,
-      selected: false,
-      hidden: false
-    },
-    {
-      name: 'Jew Pack',
-      tag: 'JEW',
-      black: 19,
-      white: 32,
-      selected: false,
-      hidden: false
-    },
-    {
-      name: 'Weed Pack',
-      tag: 'WEED',
-      black: 420,
-      white: 1337,
-      selected: false,
-      hidden: false
-    },
-    {
-      name: 'Word Wide Web Pack',
-      tag: 'WWW',
-      black: 24,
-      white: 45,
-      selected: false,
-      hidden: false
-    }
-  ];
+  constructor(private _socket: Socket, private _socketService: SocketService) {
 
-  constructor() { }
+    this._socket.on('get-packs-list', data => {
+      console.log(data);
+      for (const d of data) {
+        this.packs.push({
+          name: d.pack,
+          black: d.black,
+          white: d.white,
+          selected: false,
+          hidden: false
+        });
+      }
+    });
+
+  }
 
   ngOnInit() {
+    this._socket.emit('get-packs-list');
   }
 
   ngDoCheck() {
@@ -129,7 +97,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
 
     for (const p of this.packs) {
 
-      if (p.tag === pack.tag) {
+      if (p.name === pack.name) {
         p.selected = !p.selected;
         break;
       }

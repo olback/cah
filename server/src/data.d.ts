@@ -9,8 +9,15 @@ interface NewGame {
     packs: string[];
 }
 
+interface Pack {
+    pack: string;
+    black: number;
+    white: number;
+}
+
 interface LogResponse {
     players: string[];
     games: string[];
+    any: any;
 }
 

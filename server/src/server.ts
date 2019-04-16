@@ -3,6 +3,8 @@ import socketio from 'socket.io';
 import { env } from 'process';
 import { Game, Games } from './game';
 import { Player, Players } from './player';
+import { Client } from 'pg';
+import { dbConf } from './config';
 // import './data.d.ts';
 
 const port = env.PORT ? Number(env.PORT) : 5000;
@@ -42,6 +44,34 @@ io.on('connection', socket => {
 
     });
 
+    socket.on('get-packs-list', async () => {
+
+        const db = new Client(dbConf);
+
+        await db.connect();
+        const dbres = await db.query('select distinct pack from white union select pack from black');
+
+        const packs: Pack[] = [];
+
+        for (const p of dbres.rows) {
+
+            const b = await db.query('select count(*) from black where pack=$1', [p.pack]);
+            const c = await db.query('select count(*) from white where pack=$1', [p.pack]);
+
+            packs.push({
+                pack: p.pack,
+                black: Number(b.rows[0].count),
+                white: Number(c.rows[0].count)
+            });
+
+        }
+
+        await db.end();
+
+        socket.emit('get-packs-list', packs.sort((a,b) => (a.pack > b.pack) ? 1 : ((b.pack > a.pack) ? -1 : 0)));
+
+    });
+
     socket.on('new-game', (data: NewGame) => {
 
         // games[data.gameId] = new Game(data.gameId,)
@@ -74,7 +104,8 @@ app.get('**', async (_req, res) => {
 
     const r: LogResponse = {
         players: [],
-        games: []
+        games: [],
+        any: []
     }
 
     for (const p in players) {
