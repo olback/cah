@@ -9,8 +9,10 @@ class Game {
 
     private _started: boolean = false;
     private _players: Players = {};
+    private _password = '';
+    public created = new Date().getTime();
 
-    constructor() { }
+    constructor(public host: Player, public creatorIP: string) { }
 
     start () {
         this._started = true;
@@ -41,9 +43,11 @@ class Game {
     }
 
     setPassword(password: string) {
+        this._password = password;
     }
 
     checkPassword(password: string) {
+        return this._password === password;
     }
 
 

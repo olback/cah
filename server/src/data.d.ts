@@ -9,6 +9,11 @@ interface NewGame {
     packs: string[];
 }
 
+interface WhiteCard {
+    id: number;
+    text: string;
+}
+
 interface Pack {
     pack: string;
     black: number;

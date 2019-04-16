@@ -115,3 +115,16 @@ app.get('**', async (_req, res) => {
     res.json(r);
 
 });
+
+// Remove games older than 4 hours.
+setInterval(() => {
+
+    for (const game in games) {
+
+        if(new Date().getTime() - games[game].created > 4 * 3600 * 1000) {
+            delete games[game];
+        }
+
+    }
+
+}, 1000 * 1800);
