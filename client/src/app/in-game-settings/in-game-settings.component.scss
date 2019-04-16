@@ -18,6 +18,43 @@ div {
         height: calc(90vh - 60px);
         padding: 30px;
 
+
+        .row {
+            font-size: 14pt;
+            padding: 1em 0;
+            border-bottom: 1px solid #666;
+
+            .property {
+                font-weight: bold;
+                margin-right: 1em;
+            }
+
+            &:last-of-type {
+                margin-bottom: 1em;
+                border-bottom: none;
+            }
+
+
+        }
+
+        button {
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 2px;
+            background-color: white;
+            margin-right: 10px;
+            outline: none;
+            cursor: pointer;
+            font-size: 12pt;
+            transition: background-color 0.1s ease-in-out;
+
+            &:hover {
+                background-color: #ebebeb;
+            }
+
+        }
+
+
     }
 
 }

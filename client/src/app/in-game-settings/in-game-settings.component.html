@@ -2,8 +2,29 @@
 
   <div class="container">
 
-    <h1>Hello</h1>
-    <button (click)="closeSettings()">close?</button>
+    <h1>Game Settings</h1>
+
+    <div class="row">
+      <span class="property">Game ID:</span>
+      <span class="value">{{ settings.gameId }}</span>
+    </div>
+
+    <div class="row">
+      <span class="property">Packs:</span>
+      <span class="value">{{ settings.packs.join(', ') }}</span>
+    </div>
+
+    <div class="row">
+      <span class="property">Timeout:</span>
+      <span class="value">{{ formatTime() }}</span>
+    </div>
+
+    <div class="row">
+      <span class="property">Max players:</span>
+      <span class="value">{{ settings.maxPlayers }}</span>
+    </div>
+
+    <button (click)="closeSettings()">Close</button>
 
   </div>
 

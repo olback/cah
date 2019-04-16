@@ -60,8 +60,20 @@
 
   </div>
 
-  <button>Select</button>
-  <button (click)="open=!open">Open settings</button>
+  <div class="players">
+    <span class="header">Players:</span>
+    <span class="done">chrome</span>
+    <span class="done">aaaaa</span>
+    <span class="done">bbbbbbb</span>
+    <span class="done">ccccccccccccccccccc</span>
+    <span class="done">ddd</span>
+  </div>
+
+  <div>
+    <button>Select</button>
+    <!-- TODO: view settings for players, open settings for game host -->
+    <button (click)="open=!open">Open settings</button>
+  </div>
 
   <app-in-game-settings *ngIf="open" [settings]="settings" (close)="closeSettings()"></app-in-game-settings>
 

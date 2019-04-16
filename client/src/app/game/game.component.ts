@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -9,17 +9,28 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class GameComponent implements OnInit {
 
   open = false;
-  gameId = '';
-  settings = {
-    aa: 'Hello'
+  settings: GameSettings = {
+    gameId: '',
+    hostId: '',
+    packs: ['Weed Pack', 'CAH Base Set', 'World Wide Web Pack'],
+    timeout: 0,
+    maxPlayers: 5,
+    players: {
+      'aaaaaa': {
+        username: 'chrome'
+      },
+      'bbbbbb': {
+        username: 'firefox'
+      },
+    }
   };
 
-  constructor(private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('params: ', this._route.params.forEach(v => {
-      this.gameId = v.id;
-    }));
+    this._route.params.forEach(v => {
+      this.settings.gameId = v.id;
+    });
   }
 
   closeSettings() {
