@@ -1,0 +1,10 @@
+div.toast {
+    position: fixed;
+    bottom: 0;
+    padding: 1em;
+    font-size: 14pt;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #222;
+    color: white;
+}

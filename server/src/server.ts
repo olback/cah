@@ -35,19 +35,18 @@ io.on('connection', socket => {
 
     });
 
-    socket.on('username', (data: UsernameUpdate) => {
+    socket.on('username', (data: Socket.UsernameUpdate) => {
 
-        const { id, username } = data;
-        players[id].username = username;
+        const { pid, username } = data;
+        players[pid].username = username;
 
-        console.log(`Player ${id} changed username to ${username ? username : '<none>'}.`);
+        console.log(`Player ${pid} changed username to ${username ? username : '<none>'}.`);
 
     });
 
     socket.on('get-packs-list', async () => {
 
         const db = new Client(dbConf);
-
         await db.connect();
         const dbres = await db.query('select distinct pack from white union select pack from black');
 
@@ -66,15 +65,60 @@ io.on('connection', socket => {
 
         }
 
-        await db.end();
+        db.end();
 
         socket.emit('get-packs-list', packs.sort((a,b) => (a.pack > b.pack) ? 1 : ((b.pack > a.pack) ? -1 : 0)));
 
     });
 
-    socket.on('new-game', (data: NewGame) => {
+    socket.on('acronym', async () => {
 
+        const db = new Client(dbConf);
+        await db.connect();
+        const dbres = await db.query('select text from acronyms offset floor(random() * (select count(*) from acronyms)) limit 1');
+        db.end();
+
+        socket.emit('acronym', dbres.rows[0].text);
+
+    });
+
+    socket.on('new-game', (data: Socket.NewGame) => {
         // games[data.gameId] = new Game(data.gameId,)
+        games[data.gid] = new Game(data.gid, players[data.pid], data.packs);
+        socket.emit('game', games[data.gid].getState());
+    });
+
+    socket.on('join-game', (data: Socket.JoinGameRequest) => {
+
+    });
+
+    socket.on('game', (data: Socket.GameRequest) => {
+
+        if (games[data.gid]) {
+
+            if (games[data.gid].players.check(data.pid)) {
+
+                socket.emit('game', games[data.gid].getState());
+
+            } else {
+
+                socket.emit('error-message', {
+                    message: `Player ${data.pid} is not a member of game ${data.gid}.`
+                });
+
+            }
+
+        } else {
+
+            socket.emit('error-message', {
+                message: `Game with ID ${data.gid} does not exist.`
+            });
+
+        }
+
+    });
+
+    socket.on('leave-game', (data: Socket.GameRequest) => {
 
     });
 
@@ -112,6 +156,10 @@ app.get('**', async (_req, res) => {
         r.players.push(p);
     }
 
+    for (const g in games) {
+        r.games.push(g);
+    }
+
     res.json(r);
 
 });
@@ -121,7 +169,7 @@ setInterval(() => {
 
     for (const game in games) {
 
-        if(new Date().getTime() - games[game].created > 4 * 3600 * 1000) {
+        if(new Date().getTime() - games[game].created > 12 * 3600 * 1000) {
             delete games[game];
         }
 

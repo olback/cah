@@ -1,17 +1,11 @@
-interface UsernameUpdate {
-    id: string;
-    username: string;
-}
-
-interface NewGame {
-    id: string;
-    gameId: string;
-    packs: string[];
-}
-
 interface WhiteCard {
     id: number;
     text: string;
+}
+
+interface BlackCard extends WhiteCard {
+    pick: number;
+    draw: number;
 }
 
 interface Pack {
@@ -26,3 +20,31 @@ interface LogResponse {
     any: any;
 }
 
+declare namespace Socket {
+
+    interface Error {
+        message: string;
+    }
+
+    interface Request {
+        pid: string;
+    }
+
+    interface UsernameUpdate extends Request {
+        username: string;
+    }
+
+    interface GameRequest extends Request {
+        gid: string;
+    }
+
+    interface NewGame extends GameRequest {
+        packs: string[];
+    }
+
+    interface JoinGameRequest extends GameRequest {
+        password: string;
+    }
+
+
+}

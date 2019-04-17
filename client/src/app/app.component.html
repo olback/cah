@@ -1,7 +1,11 @@
 <header>
-    <h1 routerLink="/">Crabs Adjust Humidity</h1> <h1 class="username">{{ username }}</h1>
+    <h1 routerLink="/">{{ acronym }}</h1> <h1 class="username">{{ username }}</h1>
 </header>
 
 <main>
     <router-outlet></router-outlet>
+    <app-toast
+    *ngIf="!toast.hidden"
+    [toast]="toast"
+    ></app-toast>
 </main>

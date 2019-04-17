@@ -22,7 +22,7 @@ export class SocketService {
 
   setUsername(username: string) {
 
-    this.socket.emit('username', { id: this._tokenService.get(), username: username });
+    this.socket.emit('username', { pid: this._tokenService.get(), username: username });
 
   }
 

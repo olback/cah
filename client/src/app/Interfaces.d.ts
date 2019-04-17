@@ -1,5 +1,4 @@
 interface Player {
-
 }
 
 interface GameSettings {
@@ -13,3 +12,5 @@ interface GameSettings {
     }
 
 }
+
+

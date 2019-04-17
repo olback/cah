@@ -21,6 +21,8 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
 import { ClipboardModule } from 'ngx-clipboard';
 import { InGameSettingsComponent } from './in-game-settings/in-game-settings.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ToastComponent } from './toast/toast.component';
 
 const sioc: SocketIoConfig = {
   url: env.siou,
@@ -33,7 +35,9 @@ const sioc: SocketIoConfig = {
     MainComponent,
     CreateGameComponent,
     GameComponent,
-    InGameSettingsComponent
+    InGameSettingsComponent,
+    SettingsComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

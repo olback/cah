@@ -4,6 +4,12 @@ import { SocketService } from './_services/socket.service';
 import { UsernameService } from './_services/username.service';
 import { TokenService } from './_services/token.service';
 import { SettingsService } from './_services/settings.service';
+import { Socket } from 'ngx-socket-io';
+import { Toast } from './_classes/toast';
+
+interface SocketError {
+  message: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -12,12 +18,16 @@ import { SettingsService } from './_services/settings.service';
 })
 export class AppComponent implements OnInit, DoCheck {
 
+  acronym = 'Crabs Adjust Humidity';
   username = '';
+  toast = new Toast('');
 
   constructor(
     private _socketService: SocketService,
     private _usernameService: UsernameService,
-    private _tokenService: TokenService
+    private _tokenService: TokenService,
+    private _settings: SettingsService,
+    private _socket: Socket
     ) {
 
     if (!env.production) {
@@ -26,11 +36,27 @@ export class AppComponent implements OnInit, DoCheck {
 
     this._socketService.auth();
     this._usernameService.set(this._usernameService.get());
+    this.username = this._usernameService.get();
+
+    if (this._settings.get('acronyms', 'boolean')) {
+
+      this._socket.on('acronym', (acronym: string) => {
+        console.log(acronym);
+        this.acronym = acronym;
+      });
+
+      this._socket.emit('acronym');
+
+    }
+
+    this._socket.on('error-message', (data: SocketError) => {
+      this.toast.setMsg(data.message);
+      this.toast.show();
+    });
 
   }
 
   ngOnInit() {
-    this.username = this._usernameService.get();
   }
 
   ngDoCheck() {
