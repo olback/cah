@@ -3,6 +3,7 @@ import { environment as env } from '../environments/environment';
 import { SocketService } from './_services/socket.service';
 import { UsernameService } from './_services/username.service';
 import { TokenService } from './_services/token.service';
+import { SettingsService } from './_services/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,11 @@ export class AppComponent implements OnInit, DoCheck {
 
   username = '';
 
-  constructor(private _socketService: SocketService, private _usernameService: UsernameService, private _tokenService: TokenService) {
+  constructor(
+    private _socketService: SocketService,
+    private _usernameService: UsernameService,
+    private _tokenService: TokenService
+    ) {
 
     if (!env.production) {
       console.log(`Token: ${this._tokenService.get()}`);
