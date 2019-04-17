@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS acronyms;
+
+CREATE TABLE acronyms (
+    id SERIAL NOT NULL,
+    text VARCHAR(63) NOT NULL UNIQUE
+);
+
+CREATE INDEX idx_acronyms on acronyms (text);
