@@ -38,8 +38,9 @@ io.on('connection', socket => {
     socket.on('username', (data: Socket.UsernameUpdate) => {
 
         const { pid, username } = data;
-        players[pid].username = username;
-
+        if (players[pid]) {
+            players[pid].username = username;
+        }
         console.log(`Player ${pid} changed username to ${username ? username : '<none>'}.`);
 
     });
@@ -84,12 +85,30 @@ io.on('connection', socket => {
 
     socket.on('new-game', (data: Socket.NewGame) => {
         // games[data.gameId] = new Game(data.gameId,)
-        games[data.gid] = new Game(data.gid, players[data.pid], data.packs);
-        socket.emit('game', games[data.gid].getState());
+        games[data.gid] = new Game(data.gid, players[data.pid], data.packs, data.password);
+        socket.emit('game', games[data.gid].getState(data.pid));
     });
 
     socket.on('join-game', (data: Socket.JoinGameRequest) => {
-
+        console.log(data);
+        if (games[data.gid]) {
+            if (games[data.gid].password.check(data.password) && players[data.pid].username) {
+                games[data.gid].players.add(players[data.pid]);
+                socket.emit('game', games[data.gid].getState(data.pid));
+            } else if (!players[data.pid].username) {
+                socket.emit('error-message', {
+                    message: 'You may not enter a game without a username.'
+                });
+            } else {
+                socket.emit('error-message', {
+                    message: 'Incorrect password.'
+                });
+            }
+        } else {
+            socket.emit('error-message', {
+                message: `Game with ID "${data.gid}" does not exist.`
+            });
+        }
     });
 
     socket.on('game', (data: Socket.GameRequest) => {
@@ -98,13 +117,14 @@ io.on('connection', socket => {
 
             if (games[data.gid].players.check(data.pid)) {
 
-                socket.emit('game', games[data.gid].getState());
+                socket.emit('game', games[data.gid].getState(data.pid));
 
             } else {
 
                 socket.emit('error-message', {
                     message: `Player ${data.pid} is not a member of game ${data.gid}.`
                 });
+                socket.emit('redirect', ['/join', data.gid]);
 
             }
 
@@ -113,6 +133,7 @@ io.on('connection', socket => {
             socket.emit('error-message', {
                 message: `Game with ID ${data.gid} does not exist.`
             });
+            // socket.emit('redirect', ['/']);
 
         }
 

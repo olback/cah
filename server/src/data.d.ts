@@ -40,11 +40,25 @@ declare namespace Socket {
 
     interface NewGame extends GameRequest {
         packs: string[];
+        password: string;
     }
 
     interface JoinGameRequest extends GameRequest {
         password: string;
     }
 
+    namespace GameState {
+
+        interface Player {
+            username: string;
+            id: string;
+            done: boolean;
+            host: boolean;
+        }
+
+        interface State {
+        }
+
+    }
 
 }

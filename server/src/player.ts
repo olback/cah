@@ -1,7 +1,7 @@
 import * as socketio from 'socket.io';
 
 interface Players {
-    [gameId: string]: Player;
+    [playerId: string]: Player;
 }
 
 class Player {
