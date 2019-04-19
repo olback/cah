@@ -7,7 +7,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 })
 export class InGameSettingsComponent implements OnInit {
 
-  @Input() settings: GameSettings;
+  @Input() settings: GameState;
   @Output() close = new EventEmitter(true);
 
   constructor() { }

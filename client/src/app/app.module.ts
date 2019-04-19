@@ -10,19 +10,22 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { CreateGameComponent } from './create-game/create-game.component';
 import { GameComponent } from './game/game.component';
+import { InGameSettingsComponent } from './in-game-settings/in-game-settings.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ToastComponent } from './toast/toast.component';
 
 // Services
 import { SocketService } from './_services/socket.service';
 import { UsernameService } from './_services/username.service';
 import { TokenService } from './_services/token.service';
 
+// Modules
+import { ClipboardModule } from 'ngx-clipboard';
+import { FAModule } from './fa/fa.module';
+
 // Other imports
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
-import { ClipboardModule } from 'ngx-clipboard';
-import { InGameSettingsComponent } from './in-game-settings/in-game-settings.component';
-import { SettingsComponent } from './settings/settings.component';
-import { ToastComponent } from './toast/toast.component';
 
 const sioc: SocketIoConfig = {
   url: env.siou,
@@ -44,7 +47,8 @@ const sioc: SocketIoConfig = {
     AppRoutingModule,
     FormsModule,
     SocketIoModule.forRoot(sioc),
-    ClipboardModule
+    ClipboardModule,
+    FAModule
   ],
   providers: [
     SocketService,

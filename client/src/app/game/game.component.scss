@@ -1,87 +1,132 @@
 main {
 
-    padding: 20px;
+  padding: 20px;
 
-    .card-row {
-        width: 100%;
-        height: 294px;
-        overflow-x: auto;
-        margin-bottom: 30px;
+  .card-row {
+    width: 100%;
+    height: 294px;
+    overflow-x: auto;
+    margin-bottom: 30px;
 
-        .card {
+    .card {
 
-            padding: 16px;
-            border-radius: 5px;
-            width: 200px;
-            height: 260px;
-            font-size: 16pt;
-            background-color: white;
-            border: 1px solid black;
-            margin-right: 20px;
-            // margin-bottom: 20px;
-            float: left;
-            display: block;
+      padding: 16px;
+      border-radius: 5px;
+      width: 200px;
+      height: 260px;
+      font-size: 16pt;
+      background-color: white;
+      border: 1px solid black;
+      margin-right: 20px;
+      // margin-bottom: 20px;
+      float: left;
+      display: block;
 
-            &.black {
-                display: block;
-                background-color: black;
-                color: white;
-            }
+      &.black {
+        display: block;
+        background-color: black;
+        color: white;
+      }
 
-            &:not(.black) {
-                cursor: pointer;
-                transition: background-color 0.1s ease-in-out;
-            }
-
-            &:not(.black):hover {
-                background-color: #ebebeb;
-            }
-
-        }
-
-        &.my-cards > .card {
-            margin-bottom: 20px;
-        }
-
-    }
-
-    .players {
-        // display: block;
-        float: left;
-        margin-right: 20px;
-        margin-bottom: 20px;
-        span {
-            display: block;
-            font-size: 14pt;
-
-            &.header {
-                font-weight: bold;
-            }
-
-            &.done:after {
-                margin-left: 0.5em;
-                content: '\2713'
-            }
-
-        }
-    }
-
-    button {
-        padding: 10px;
-        color: black;
-        border: 1px solid black;
-        border-radius: 2px;
-        background-color: white;
-        margin-right: 10px;
-        outline: none;
+      &:not(.black) {
         cursor: pointer;
-        font-size: 12pt;
         transition: background-color 0.1s ease-in-out;
+      }
 
-        &:hover {
-            background-color: #ebebeb;
-        }
+      &:not(.black):hover {
+        background-color: #ebebeb;
+      }
 
     }
+
+    &.my-cards>.card {
+      margin-bottom: 20px;
+    }
+
+  }
+
+  .players {
+    // display: block;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    span.header {
+      font-weight: bold;
+    }
+
+    div.player {
+      display: block;
+
+      span {
+        display: inline;
+        font-size: 14pt;
+        margin: 0 .5em;
+
+        &.czar {
+          text-decoration: underline;
+          font-weight: bold;
+        }
+
+      }
+
+      fa-icon {
+        display: inline;
+
+        &.host {
+            color: #f50;
+        }
+
+        &.user {
+          padding: 0 0.2em;
+          color: #333;
+        }
+
+        &.check {
+            color: #5f0;
+        }
+
+        &.wizard {
+            color: #039be5;
+        }
+
+        &.flag {
+            color: #333;
+        }
+
+      }
+
+
+    }
+
+  }
+
+  button {
+    padding: 10px;
+    color: black;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: white;
+    margin-right: 10px;
+    outline: none;
+    cursor: pointer;
+    font-size: 12pt;
+    transition: background-color 0.1s ease-in-out;
+
+    &:hover {
+      background-color: #ebebeb;
+    }
+
+  }
+
+  div.info {
+    p {
+      margin: 0.2em;
+
+      &:first-of-type {
+        margin-top: 1em;
+      }
+    }
+  }
 
 }

@@ -6,6 +6,7 @@ import { TokenService } from './_services/token.service';
 import { SettingsService } from './_services/settings.service';
 import { Socket } from 'ngx-socket-io';
 import { Toast } from './_classes/toast';
+import { Router } from '@angular/router';
 
 interface SocketError {
   message: string;
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit, DoCheck {
     private _usernameService: UsernameService,
     private _tokenService: TokenService,
     private _settings: SettingsService,
-    private _socket: Socket
+    private _socket: Socket,
+    private _router: Router
     ) {
 
     if (!env.production) {
@@ -41,7 +43,6 @@ export class AppComponent implements OnInit, DoCheck {
     if (this._settings.get('acronyms', 'boolean')) {
 
       this._socket.on('acronym', (acronym: string) => {
-        console.log(acronym);
         this.acronym = acronym;
       });
 
@@ -52,6 +53,11 @@ export class AppComponent implements OnInit, DoCheck {
     this._socket.on('error-message', (data: SocketError) => {
       this.toast.setMsg(data.message);
       this.toast.show();
+    });
+
+    this._socket.on('redirect', (data: string[]) => {
+      console.log(data);
+      this._router.navigate(data);
     });
 
   }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsernameService } from '../_services/username.service';
+import { ActivatedRoute } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
+import { TokenService } from '../_services/token.service';
 
 @Component({
   selector: 'app-main',
@@ -9,15 +12,39 @@ import { UsernameService } from '../_services/username.service';
 export class MainComponent implements OnInit {
 
   username: string;
+  password = '';
+  gid = '';
 
-  constructor(private usernameService: UsernameService) { }
+  constructor(
+    private _route: ActivatedRoute,
+    private _socket: Socket,
+    private _token: TokenService,
+    private _usernameService: UsernameService
+    ) { }
 
   ngOnInit() {
-    this.username = this.usernameService.get();
+    this.username = this._usernameService.get();
+
+    if (this._route.routeConfig.path === 'join/:id') {
+      this._route.params.forEach(v => {
+        this.gid = v.id;
+      });
+    }
+
   }
 
   setUsername() {
-    this.usernameService.set(this.username);
+    this._usernameService.set(this.username);
+  }
+
+  join() {
+
+    this._socket.emit('join-game', {
+      pid: this._token.get(),
+      gid: this.gid,
+      password: this.password
+    });
+
   }
 
 }

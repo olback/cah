@@ -1,16 +1,17 @@
 <main>
 
   <div class="username">
-    <input (keyup)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="15" placeholder="Username*" />
+    <input (keyup)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="24" placeholder="Username*" />
   </div>
 
   <div class="left">
-    <input type="text" name="game-id" id="game-id" placeholder="Game ID*" />
+    <input [(ngModel)]="gid" type="text" name="game-id" id="game-id" placeholder="Game ID" />
     <button class="create" routerLink="/create">Create game</button>
   </div>
 
   <div class="right">
-    <input type="text" name="game-password" id="game-id" placeholder="Game password" />
-    <button class="join">Join game</button>
+    <input [(ngModel)]="password" type="password" name="game-password" id="game-password" placeholder="Game password" />
+    <button (click)="join()" class="join">Join game</button>
   </div>
+
 </main>

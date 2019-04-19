@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
+import { TokenService } from '../_services/token.service';
 
 @Component({
   selector: 'app-game',
@@ -9,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class GameComponent implements OnInit {
 
   open = false;
-  settings: GameSettings = {
+  gid = '';
+  settings: GameState = {
     gameId: '',
     hostId: '',
     packs: ['Weed Pack', 'CAH Base Set', 'World Wide Web Pack'],
@@ -25,16 +28,18 @@ export class GameComponent implements OnInit {
     }
   };
 
-  constructor(private _route: ActivatedRoute) { }
+  constructor(
+    private _route: ActivatedRoute,
+    private _socket: Socket,
+    private _token: TokenService
+  ) { }
 
   ngOnInit() {
     this._route.params.forEach(v => {
-      this.settings.gameId = v.id;
+      this.gid = v.id;
     });
-  }
 
-  closeSettings() {
-    this.open = false;
+    this._socket.emit('game', { pid: this._token.get(), gid: this.gid });
   }
 
 }

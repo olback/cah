@@ -1,7 +1,7 @@
 interface Player {
 }
 
-interface GameSettings {
+interface GameState {
     gameId: string;
     hostId: string;
     packs: string[];

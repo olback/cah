@@ -31,7 +31,6 @@ export class CreateGameComponent implements OnInit, DoCheck {
   constructor(private _socket: Socket, private _socketService: SocketService) {
 
     this._socket.on('get-packs-list', data => {
-      console.log(data);
       for (const d of data) {
         this.packs.push({
           name: d.pack,
