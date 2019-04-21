@@ -1,7 +1,10 @@
 <main>
 
   <div class="username">
-    <input (keyup)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="24" placeholder="Username*" />
+    <input (keyup)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="24" placeholder="Username" />
+  </div>
+
+  <div class="username">
     <small [hidden]="username">A username is required to create and join games.</small>
   </div>
 
