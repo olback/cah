@@ -65,10 +65,9 @@ main {
       display: block;
 
       &>small {
-        bottom: 0;
         font-size: 8pt;
         display: block;
-        position: relative;
+        margin-top: .5em;
       }
 
       &.black {
