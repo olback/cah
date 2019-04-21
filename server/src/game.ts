@@ -36,7 +36,7 @@ class Game {
 
         const promisesW: Promise<QueryResult>[] = [];
         const promisesB: Promise<QueryResult>[] = [];
-        const finalPromises = [];
+        const finalPromises: Promise<void>[] = [];
 
         for (const p of this._packs) {
             promisesW.push(db.query('select * from white where pack=$1', [p]));
@@ -74,7 +74,7 @@ class Game {
             // End db connection
             db.end();
 
-            // 'Randomize' cards
+            // 'Randomize' cards TODO:FIXME:improve this!!
             this._whiteCards.sort(() => Math.random() - 0.5);
             this._blackCards.sort(() => Math.random() - 0.5);
 
@@ -106,6 +106,7 @@ class Game {
         add: (player: Player) => {
             if (!this.players.check(player.id)) {
                 this._players[player.id] = player;
+                this._players[player.id].inGame = true;
                 for (let i = 0; i < 10; i++) {
                     player.hand.push(this.randomWhiteCard());
                 }
@@ -113,8 +114,12 @@ class Game {
             }
         },
         remove: (player: Player) => {
-            delete this._players[player.id];
-            this.sendState('all');
+            // FIXME: What happens when the czar leaves?
+            if (this.players.check(player.id)) {
+                this._players[player.id].cleanUp();
+                delete this._players[player.id];
+                this.sendState('all');
+            }
         },
         check: (pid: string) => {
             for (const p in this._players) {
@@ -123,6 +128,9 @@ class Game {
                 }
             }
             return false;
+        },
+        amount: () => {
+            return Object.keys(this._players).length;
         }
     }
 
@@ -141,7 +149,7 @@ class Game {
             }
             return false;
         },
-        check: (pack: string) => {
+        check: (pack: string) => { // TODO: Refactor. Use indexOf().
             for (const p of this._packs) {
                 if (pack === p) {
                     return true;

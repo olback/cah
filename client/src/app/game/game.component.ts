@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from '../_services/token.service';
 
@@ -8,7 +8,7 @@ import { TokenService } from '../_services/token.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit, OnDestroy {
 
   open = false;
   gid = '';
@@ -33,6 +33,13 @@ export class GameComponent implements OnInit {
     });
 
     this._socket.emit('game', { pid: this._token.get(), gid: this.gid });
+  }
+
+  ngOnDestroy(): void {
+    this._socket.emit('leave-game', {
+      pid: this._token.get(),
+      gid: this.gid
+    });
   }
 
 }

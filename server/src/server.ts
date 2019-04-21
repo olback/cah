@@ -85,20 +85,25 @@ io.on('connection', socket => {
     });
 
     socket.on('new-game', (data: Socket.NewGame) => {
-        games[data.gid] = new Game(
-            data.gid,
-            players[data.pid],
-            data.packs,
-            data.password,
-            data.maxScore,
-            data.maxPlayers,
-            data.timeout
-        );
+        if(data.pid && data.gid && players[data.pid] && !players[data.pid].inGame) {
+            games[data.gid] = new Game(
+                data.gid,
+                players[data.pid],
+                data.packs,
+                data.password,
+                data.maxScore,
+                data.maxPlayers,
+                data.timeout
+            );
+        } else {
+            socket.emit('error-message', {
+                message: 'Error creating game.'
+            });
+        }
     });
 
     socket.on('join-game', (data: Socket.JoinGameRequest) => {
-        console.log(data);
-        if (games[data.gid]) {
+        if (games[data.gid] && players[data.pid] && !players[data.pid].inGame) {
             if (games[data.gid].password.check(data.password) && players[data.pid].username) {
                 games[data.gid].players.add(players[data.pid]);
                 socket.emit('redirect', ['game', data.gid]);
@@ -113,7 +118,7 @@ io.on('connection', socket => {
             }
         } else {
             socket.emit('error-message', {
-                message: `Game with ID "${data.gid}" does not exist.`
+                message: `Error joining game with ID "${data.gid}".`
             });
         }
     });
@@ -147,7 +152,18 @@ io.on('connection', socket => {
     });
 
     socket.on('leave-game', (data: Socket.GameRequest) => {
-
+        if (data.pid && data.gid && games[data.gid]) {
+            if (games[data.gid].players.check(data.pid)) {
+                games[data.gid].players.remove(players[data.pid]);
+                if (!games[data.gid].players.amount()) {
+                    delete games[data.gid];
+                }
+            }
+        } else {
+            socket.emit('error-message', {
+                message: `Error leaving game with ID "${data.gid}"`
+            });
+        }
     });
 
     socket.on('error', e => {
@@ -165,6 +181,9 @@ io.on('connection', socket => {
                 for (const g in games) {
                     if (games[g].players.check(players[p].id)) {
                         games[g].players.remove(players[p]);
+                        if (!games[g].players.amount()) {
+                            delete games[g];
+                        }
                     }
                 }
 
