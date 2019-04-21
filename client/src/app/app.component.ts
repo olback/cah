@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, DoCheck {
     private _socketService: SocketService,
     private _usernameService: UsernameService,
     private _tokenService: TokenService,
-    private _settings: SettingsService,
+    private _settingsService: SettingsService,
     private _socket: Socket,
     private _router: Router,
     private _toastService: ToastService
@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, DoCheck {
     this._usernameService.set(this._usernameService.get());
     this.username = this._usernameService.get();
 
-    if (this._settings.acronyms.get()) {
+    if (this._settingsService.settings.acronyms.get()) {
 
       this._socket.on('acronym', (acronym: string) => {
         this.acronym = acronym;

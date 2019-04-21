@@ -19,11 +19,10 @@ export class SettingsComponent implements OnInit {
   settings = [];
 
   constructor(public settingsService: SettingsService) {
-    console.log(settingsService);
 
     // tslint:disable-next-line:forin
-    for (const s in settingsService) {
-      this.settings.push(settingsService[s]);
+    for (const s in settingsService.settings) {
+      this.settings.push(settingsService.settings[s]);
     }
 
   }

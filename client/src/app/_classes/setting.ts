@@ -1,9 +1,17 @@
 export class Setting {
 
-  constructor(public name: string, public type: 'string' | 'number' | 'boolean', public prettyName = '') { }
+  constructor(
+      public name: string,
+      public type: 'string' | 'number' | 'boolean',
+      public prettyName = '',
+      private cb?: (v: any) => void
+    ) { }
 
   public set(value: any) {
     localStorage.setItem(this.name, String(value));
+    if (this.cb) {
+        this.cb(value);
+    }
   }
 
   public get() {
