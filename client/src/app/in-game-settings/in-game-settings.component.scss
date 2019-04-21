@@ -17,6 +17,7 @@ div {
         width: calc(90vw - 60px);
         height: calc(90vh - 60px);
         padding: 30px;
+        overflow-y: auto;
 
 
         .row {

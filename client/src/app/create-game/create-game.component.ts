@@ -1,11 +1,13 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { SocketService } from '../_services/socket.service';
+import { TokenService } from '../_services/token.service';
+import { ToastService } from '../_services/toast.service';
+import { Toast } from '../_classes/toast';
 
 // TODO:FIXME: Temp interface
 interface Pack {
   name: string;
-  // tag: string;
+  tag: string;
   black: number;
   white: number;
   selected: boolean;
@@ -27,13 +29,22 @@ export class CreateGameComponent implements OnInit, DoCheck {
   black = 0;
   white = 0;
   packs: Pack[] = [];
+  maxScore = 8;
+  maxPlayers = 5;
+  timeout = 0;
+  password = '';
 
-  constructor(private _socket: Socket, private _socketService: SocketService) {
+  constructor(
+    private _socket: Socket,
+    private _tokenService: TokenService,
+    private _toastService: ToastService
+  ) {
 
     this._socket.on('get-packs-list', data => {
       for (const d of data) {
         this.packs.push({
           name: d.pack,
+          tag: '',
           black: d.black,
           white: d.white,
           selected: false,
@@ -102,6 +113,29 @@ export class CreateGameComponent implements OnInit, DoCheck {
       }
 
     }
+
+  }
+
+  startGame() {
+
+    const options = {
+      pid: this._tokenService.get(),
+      gid: this.gameId,
+      maxScore: this.maxScore,
+      maxPlayers: this.maxPlayers,
+      timeout: Number(this.timeout),
+      password: this.password,
+      packs: this.packs.filter(e => e.selected).map(e => e.name)
+    };
+
+    if (this.maxScore * this.maxPlayers >= this.black) {
+      this._toastService.emit(new Toast(`Not enough black cards selected. ${this.maxScore * this.maxPlayers} required for this configuration.`));
+      return;
+    }
+
+    console.log(options);
+
+    this._socket.emit('new-game', options);
 
   }
 

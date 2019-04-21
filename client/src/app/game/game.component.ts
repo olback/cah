@@ -12,27 +12,20 @@ export class GameComponent implements OnInit {
 
   open = false;
   gid = '';
-  settings: GameState = {
-    gameId: '',
-    hostId: '',
-    packs: ['Weed Pack', 'CAH Base Set', 'World Wide Web Pack'],
-    timeout: 0,
-    maxPlayers: 5,
-    players: {
-      'aaaaaa': {
-        username: 'chrome'
-      },
-      'bbbbbb': {
-        username: 'firefox'
-      },
-    }
-  };
+  game: ISocket.GameState.State;
 
   constructor(
     private _route: ActivatedRoute,
     private _socket: Socket,
     private _token: TokenService
-  ) { }
+  ) {
+
+    this._socket.on('game', (game: ISocket.GameState.State) => {
+      this.game = game;
+      console.log(this.game);
+    });
+
+  }
 
   ngOnInit() {
     this._route.params.forEach(v => {

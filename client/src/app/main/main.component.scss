@@ -45,7 +45,11 @@ main {
       text-transform: uppercase;
       border-radius: .125rem;
 
-      &:hover {
+      &:disabled {
+        cursor: not-allowed;
+      }
+
+      &:not(:disabled):hover {
         background-color: #eee;
         cursor: pointer;
       }

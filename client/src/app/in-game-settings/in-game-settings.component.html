@@ -6,12 +6,12 @@
 
     <div class="row">
       <span class="property">Game ID:</span>
-      <span class="value">{{ settings.gameId }}</span>
+      <span class="value">{{ game.gid }}</span>
     </div>
 
     <div class="row">
       <span class="property">Packs:</span>
-      <span class="value">{{ settings.packs.join(', ') }}</span>
+      <span class="value">{{ game.packs.join(', ') }}</span>
     </div>
 
     <div class="row">
@@ -21,7 +21,12 @@
 
     <div class="row">
       <span class="property">Max players:</span>
-      <span class="value">{{ settings.maxPlayers }}</span>
+      <span class="value">{{ game.maxPlayers }}</span>
+    </div>
+
+    <div class="row">
+      <span class="property">Max score:</span>
+      <span class="value">{{ game.winAt }}</span>
     </div>
 
     <button (click)="closeSettings()">Close</button>

@@ -18,6 +18,7 @@ import { ToastComponent } from './toast/toast.component';
 import { SocketService } from './_services/socket.service';
 import { UsernameService } from './_services/username.service';
 import { TokenService } from './_services/token.service';
+import { ToastService } from './_services/toast.service';
 
 // Modules
 import { ClipboardModule } from 'ngx-clipboard';
@@ -53,7 +54,8 @@ const sioc: SocketIoConfig = {
   providers: [
     SocketService,
     UsernameService,
-    TokenService
+    TokenService,
+    ToastService
   ],
   bootstrap: [AppComponent]
 })

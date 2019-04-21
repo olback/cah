@@ -1,61 +1,47 @@
-<main>
+<main *ngIf="game">
 
   <div class="card-row">
 
     <div class="card black">
-      You say tomato, I say _____.
+      {{ game.black.text }}
+      <small>{{ game.black.pack }}</small>
+    </div>
+
+    <div class="played-cards">
+
+      <div class="collection selected">
+        <div class="card">Hello</div>
+        <div class="card">There</div>
+        <div class="card">aaaaaa</div>
+      </div>
+
+      <div class="collection">
+        <div class="card">Hello</div>
+        <div class="card">There</div>
+        <div class="card">aaaaaa</div>
+      </div>
+
+      <div class="collection">
+        <div class="card">Hello</div>
+        <div class="card">There</div>
+        <div class="card">aaaaaa</div>
+      </div>
+
+      <div class="collection">
+        <div class="card">Hello</div>
+        <div class="card">There</div>
+        <div class="card">aaaaaa</div>
+      </div>
+
     </div>
 
   </div>
 
   <div class="card-row my-cards">
 
-    <div class="card">
-      Land mines.
-    </div>
-
-    <div class="card">
-      Harnesing the power of the atom to slaughter 200,000 Japanese people.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
-    </div>
-
-    <div class="card">
-      YEEET.
+    <div *ngFor="let card of game.hand" class="card">
+      {{ card.text }}
+      <small>{{ card.pack }}</small>
     </div>
 
   </div>
@@ -64,63 +50,33 @@
 
     <!-- <span class="header">Players:</span> -->
 
-    <div class="player">
-      <fa-icon class="host" [icon]="['fas', 'crown']"></fa-icon> <!-- Game host -->
-      <span>chrome</span>
-      <fa-icon class="check" [icon]="['fas', 'check']"></fa-icon> <!-- Done, waiting for other players -->
-      <fa-icon class="wizard" [icon]="['fas', 'hat-wizard']"></fa-icon> <!-- Cards czar -->
-      <fa-icon class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon> <!-- Winner icon -->
-    </div>
-
-    <div class="player">
-      <fa-icon class="user" [icon]="['fas', 'user']"></fa-icon> <!-- Regular user -->
-      <span class="czar">chrome</span> <!-- Add class 'czar' to the card czar -->
-      <fa-icon class="check" [icon]="['fas', 'check']"></fa-icon>
-      <fa-icon class="wizard" [icon]="['fas', 'hat-wizard']"></fa-icon>
-      <fa-icon class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
-    </div>
-
-    <div class="player">
-      <fa-icon class="user" [icon]="['fas', 'user']"></fa-icon>
-      <span>chrome</span>
-      <fa-icon class="check" [icon]="['fas', 'check']"></fa-icon>
-      <fa-icon class="wizard" [icon]="['fas', 'hat-wizard']"></fa-icon>
-      <fa-icon class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
-    </div>
-
-    <div class="player">
-      <fa-icon class="user" [icon]="['fas', 'user']"></fa-icon>
-      <span>chrome</span>
-      <fa-icon class="check" [icon]="['fas', 'check']"></fa-icon>
-      <fa-icon class="wizard" [icon]="['fas', 'hat-wizard']"></fa-icon>
-      <fa-icon class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
-    </div>
-
-    <div class="player">
-      <fa-icon class="user" [icon]="['fas', 'user']"></fa-icon>
-      <span>chrome</span>
-      <fa-icon class="check" [icon]="['fas', 'check']"></fa-icon>
-      <fa-icon class="wizard" [icon]="['fas', 'hat-wizard']"></fa-icon>
-      <fa-icon class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
+    <div *ngFor="let p of game.players" class="player">
+      <fa-icon *ngIf="p.host" class="host" [icon]="['fas', 'crown']"></fa-icon>
+      <fa-icon *ngIf="!p.host" class="user" [icon]="['fas', 'user']"></fa-icon>
+      <span [class.czar]="p.id === game.czar">{{ p.username }}</span>
+      <span class="score">{{ p.score }}</span>
+      <fa-icon *ngIf="!p.done && p.id !== game.czar" class="playing" [icon]="['fas', 'clone']"></fa-icon>
+      <fa-icon *ngIf="p.done" class="check" [icon]="['fas', 'check']"></fa-icon>
+      <fa-icon *ngIf="p.id === game.czar" class="gavel" [icon]="['fas', 'gavel']"></fa-icon>
+      <fa-icon *ngIf="p.score === game.winAt"class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
     </div>
 
   </div>
 
-  <div>
+  <div class="other">
 
     <div>
       <button>Select</button>
-      <!-- TODO: view settings for players, open settings for game host -->
-      <button (click)="open=!open">Open settings</button>
+      <button (click)="open=!open">View settings</button>
     </div>
 
     <div class="info">
-      <p>Cards Selected: 1/3</p>
-      <p>Waiting for Players: 2/3</p>
+      <p *ngIf="game.black">Cards Selected: {{ game.picks.length }}/{{ game.black.pick }}</p>
+      <p *ngIf="game.players.length < 3">Waiting for players to join: {{ game.players.length }}/3</p>
     </div>
 
   </div>
 
-  <app-in-game-settings *ngIf="open" [settings]="settings" (close)="open=!open"></app-in-game-settings>
+  <app-in-game-settings *ngIf="open" [game]="game" (close)="open=!open"></app-in-game-settings>
 
 </main>

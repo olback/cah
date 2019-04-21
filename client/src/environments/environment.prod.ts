@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  siou: 'https://cah.ninja'
+  siou: origin.toString()
 };

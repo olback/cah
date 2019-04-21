@@ -7,6 +7,7 @@ import { SettingsService } from './_services/settings.service';
 import { Socket } from 'ngx-socket-io';
 import { Toast } from './_classes/toast';
 import { Router } from '@angular/router';
+import { ToastService } from './_services/toast.service';
 
 interface SocketError {
   message: string;
@@ -29,7 +30,8 @@ export class AppComponent implements OnInit, DoCheck {
     private _tokenService: TokenService,
     private _settings: SettingsService,
     private _socket: Socket,
-    private _router: Router
+    private _router: Router,
+    private _toastService: ToastService
     ) {
 
     if (!env.production) {
@@ -50,13 +52,17 @@ export class AppComponent implements OnInit, DoCheck {
 
     }
 
+    this._toastService.event().subscribe((data: Toast) => {
+      this.toast = data;
+      this.toast.show();
+    });
+
     this._socket.on('error-message', (data: SocketError) => {
       this.toast.setMsg(data.message);
       this.toast.show();
     });
 
     this._socket.on('redirect', (data: string[]) => {
-      console.log(data);
       this._router.navigate(data);
     });
 

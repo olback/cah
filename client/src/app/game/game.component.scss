@@ -8,8 +8,50 @@ main {
     overflow-x: auto;
     margin-bottom: 30px;
 
-    .card {
+    .played-cards {
 
+      overflow-y: hidden;
+
+      .collection {
+        display: block;
+        float: left;
+        height: 294px;
+        width: calc(200px + 20px + 16px + 16px + 2px);
+        // margin-bottom: 160px;
+
+        &:hover > .card {
+          background-color: #eee;
+        }
+
+        .card {
+          transition: margin .2s ease-in-out, background-color 0.1s ease-in-out;
+        }
+
+        .card:nth-child(1):hover {
+          margin-bottom: 240px;
+        }
+
+        .card:nth-child(2) {
+          margin-top: calc(-260px - 32px - 2px + 70px);
+          &:hover {
+            margin-top: calc(-260px - 32px - 2px);
+            margin-bottom: 240px;
+          }
+        }
+
+        .card:nth-child(3) {
+          margin-top: calc(-260px - 32px - 2px + 70px);
+          &:hover {
+            margin-top: -364px;
+          }
+        }
+
+      }
+
+    }
+
+    .card {
+      font-family: sans-serif;
       padding: 16px;
       border-radius: 5px;
       width: 200px;
@@ -21,6 +63,13 @@ main {
       // margin-bottom: 20px;
       float: left;
       display: block;
+
+      &>small {
+        bottom: 0;
+        font-size: 8pt;
+        display: block;
+        position: relative;
+      }
 
       &.black {
         display: block;
@@ -34,7 +83,7 @@ main {
       }
 
       &:not(.black):hover {
-        background-color: #ebebeb;
+        background-color: #eee;
       }
 
     }
@@ -63,6 +112,11 @@ main {
         font-size: 14pt;
         margin: 0 .5em;
 
+        &.score {
+          margin-left: 0;
+          font-weight: bold;
+        }
+
         &.czar {
           text-decoration: underline;
           font-weight: bold;
@@ -82,11 +136,15 @@ main {
           color: #333;
         }
 
+        &.playing {
+          color: #333;
+        }
+
         &.check {
             color: #5f0;
         }
 
-        &.wizard {
+        &.gavel {
             color: #039be5;
         }
 
@@ -99,6 +157,10 @@ main {
 
     }
 
+  }
+
+  .other {
+    float: left;
   }
 
   button {

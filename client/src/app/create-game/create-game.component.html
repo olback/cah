@@ -10,13 +10,31 @@
   </div>
 
   <div class="input-group">
+    <label for="max-players">Max Score:</label>
+    <input [(ngModel)]="maxScore" id="max-score" type="number" min="3" max="30" value="8" />
+  </div>
+
+  <div class="input-group">
     <label for="max-players">Max Players:</label>
-    <input id="max-players" type="number" min="2" max="10" value="5" />
+    <input [(ngModel)]="maxPlayers" id="max-players" type="number" min="3" max="10" value="5" />
+  </div>
+
+  <div class="input-group">
+    <label for="timeout">Timeout:</label>
+    <!-- <input id="max-players" type="number" min="3" max="10" value="5" /> -->
+    <select [(ngModel)]="timeout" name="timeout" id="timeout">
+      <option value="0">Unlimited</option>
+      <option value="60">1 Minute</option>
+      <option value="120">2 Minutes</option>
+      <option value="180">3 Minutes</option>
+      <option value="240">4 Minutes</option>
+      <option value="300">5 Minutes</option>
+    </select>
   </div>
 
   <div class="input-group">
     <label for="password">Game password (optional):</label>
-    <input id="password" type="text" minlength="3" maxlength="100" />
+    <input [(ngModel)]="password" id="password" type="text" minlength="3" maxlength="100" />
   </div>
 
   <div class="input-group">
@@ -26,7 +44,7 @@
   </div>
 
   <div class="input-group">
-    <button class="start-game">Start Game</button>
+    <button (click)="startGame()" class="start-game">Start Game</button>
   </div>
 
 </main>

@@ -10,6 +10,9 @@ main {
     * {
       display: inline-block;
     }
+    button {
+      color: black;
+    }
   }
 
   div.input-group {
@@ -21,18 +24,21 @@ main {
       font-size: 16pt;
     }
 
-    input {
+    input, select {
       font-size: 16pt;
       margin-left: 1rem;
       border: none;
       border-bottom: 1px solid #000;
       outline: none;
+      background-color: white;
+      color: black;
     }
 
     button {
       display: inline-block;
       margin: 0;
       margin-left: 1rem;
+      color: black;
 
       &.start-game {
         margin: auto;

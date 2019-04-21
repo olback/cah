@@ -1,6 +1,6 @@
 export class Toast {
 
-    constructor(public message: string, public time = 3000) { }
+    constructor(public message: string, public time = 5000) { }
 
     hidden = true;
 
