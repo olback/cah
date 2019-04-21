@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, DoCheck {
   acronym = 'Crabs Adjust Humidity';
   username = '';
   toast = new Toast('');
+  showSettings = false;
 
   constructor(
     private _socketService: SocketService,
@@ -42,7 +43,7 @@ export class AppComponent implements OnInit, DoCheck {
     this._usernameService.set(this._usernameService.get());
     this.username = this._usernameService.get();
 
-    if (this._settings.get('acronyms', 'boolean')) {
+    if (this._settings.acronyms.get()) {
 
       this._socket.on('acronym', (acronym: string) => {
         this.acronym = acronym;

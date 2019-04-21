@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Setting } from '../_classes/setting';
 
 // type DataType = ((a: any) => number) | ((a: any) => string);
 type DataType = 'string' | 'number' | 'boolean';
@@ -8,30 +9,7 @@ type DataType = 'string' | 'number' | 'boolean';
 })
 export class SettingsService {
 
-  constructor() { }
-
-  set(property: string, value: string) {
-    localStorage.setItem(property, value);
-  }
-
-  get(property: string, type: DataType = 'string') {
-
-    const data = localStorage.getItem(property);
-
-    if (type === 'boolean') {
-
-      return data === 'true';
-
-    } else if (type === 'number') {
-
-      return Number(data);
-
-    } else {
-
-      return data;
-
-    }
-
-  }
+  acronyms = new Setting('acronyms', 'boolean', 'Enable random acronyms');
+  eggs = new Setting('eggs', 'boolean', 'Enable easter eggs');
 
 }

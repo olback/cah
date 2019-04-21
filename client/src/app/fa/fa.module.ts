@@ -8,7 +8,8 @@ import {
   faCheck,
   faFlagCheckered,
   faGavel,
-  faClone
+  faClone,
+  faCog
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -23,7 +24,8 @@ export class FAModule {
       faCheck,
       faFlagCheckered,
       faGavel,
-      faClone
+      faClone,
+      faCog
     );
   }
 }

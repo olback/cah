@@ -19,6 +19,22 @@ header {
 
   }
 
+  fa-icon {
+    float: right;
+    font-size: 2em;
+    color: #fff;
+    padding: 0.2em;
+    cursor: pointer;
+    margin: 0.67em 0;
+    margin-right: .67em;
+    transition: color .2s ease-in-out;
+
+    &:hover {
+      color: #ddd;
+    }
+
+  }
+
 }
 
 main {

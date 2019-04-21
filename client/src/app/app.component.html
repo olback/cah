@@ -1,11 +1,13 @@
 <header>
-    <h1 routerLink="/">{{ acronym }}</h1> <h1 class="username">{{ username }}</h1>
+    <h1 routerLink="/">{{ acronym }}</h1>
+    <fa-icon (click)="showSettings=!showSettings" [icon]="['fas', 'cog']"></fa-icon>
+    <h1 class="username">{{ username }}</h1>
 </header>
 
 <main>
     <router-outlet></router-outlet>
-    <app-toast
-    *ngIf="!toast.hidden"
-    [toast]="toast"
-    ></app-toast>
 </main>
+
+<app-toast *ngIf="!toast.hidden" [toast]="toast"></app-toast>
+<app-settings *ngIf="showSettings" (close)="showSettings=!showSettings"></app-settings>
+

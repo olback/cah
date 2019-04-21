@@ -1,3 +1,18 @@
-<p>
-  settings works!
-</p>
+<div class="background">
+
+  <div class="container">
+
+    <h1>Settings</h1>
+
+    <div *ngFor="let s of settings" class="row">
+      <span class="property">{{ s.prettyName ? s.prettyName : s.name }}</span>
+      <!-- <span class="value">{{ s.get() }}</span> -->
+      <input (change)="s.set(!s.get())" type="checkbox" [checked]="s.get()" id="{{ s.name }}">
+      <label for="{{ s.name }}" class="switch"></label>
+    </div>
+
+    <button (click)="closeSettings()">Close</button>
+
+  </div>
+
+</div>
