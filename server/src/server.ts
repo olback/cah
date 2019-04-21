@@ -5,6 +5,7 @@ import { Game, Games } from './game';
 import { Player, Players } from './player';
 import { Client } from 'pg';
 import { dbConf } from './config';
+import * as path from 'path';
 // import './data.d.ts';
 
 const port = env.PORT ? Number(env.PORT) : 5000;
@@ -84,9 +85,15 @@ io.on('connection', socket => {
     });
 
     socket.on('new-game', (data: Socket.NewGame) => {
-        // games[data.gameId] = new Game(data.gameId,)
-        games[data.gid] = new Game(data.gid, players[data.pid], data.packs, data.password);
-        socket.emit('game', games[data.gid].getState(data.pid));
+        games[data.gid] = new Game(
+            data.gid,
+            players[data.pid],
+            data.packs,
+            data.password,
+            data.maxScore,
+            data.maxPlayers,
+            data.timeout
+        );
     });
 
     socket.on('join-game', (data: Socket.JoinGameRequest) => {
@@ -94,7 +101,7 @@ io.on('connection', socket => {
         if (games[data.gid]) {
             if (games[data.gid].password.check(data.password) && players[data.pid].username) {
                 games[data.gid].players.add(players[data.pid]);
-                socket.emit('game', games[data.gid].getState(data.pid));
+                socket.emit('redirect', ['game', data.gid]);
             } else if (!players[data.pid].username) {
                 socket.emit('error-message', {
                     message: 'You may not enter a game without a username.'
@@ -133,7 +140,7 @@ io.on('connection', socket => {
             socket.emit('error-message', {
                 message: `Game with ID ${data.gid} does not exist.`
             });
-            // socket.emit('redirect', ['/']);
+            socket.emit('redirect', ['/']);
 
         }
 
@@ -154,6 +161,13 @@ io.on('connection', socket => {
             if (players[p].socket.id === socket.id) {
 
                 console.log(`Player ${players[p].id} has left the game.`);
+
+                for (const g in games) {
+                    if (games[g].players.check(players[p].id)) {
+                        games[g].players.remove(players[p]);
+                    }
+                }
+
                 delete players[p];
 
             }
@@ -165,7 +179,7 @@ io.on('connection', socket => {
 
 });
 
-app.get('**', async (_req, res) => {
+app.get('/info', (_req, res) => {
 
     const r: LogResponse = {
         players: [],
@@ -178,10 +192,22 @@ app.get('**', async (_req, res) => {
     }
 
     for (const g in games) {
-        r.games.push(g);
+        r.games.push({
+            gid: g,
+            // @ts-ignore
+            players: Object.keys(games[g]._players)
+        });
     }
 
     res.json(r);
+
+});
+
+app.use(express.static(path.join(process.cwd(), '..', 'client', 'dist')));
+
+app.get('**', async (_req, res) => {
+
+    res.sendFile(path.join(process.cwd(), '..', 'client', 'dist', 'index.html'));
 
 });
 

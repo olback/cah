@@ -1,11 +1,16 @@
 interface WhiteCard {
     id: number;
     text: string;
+    pack: string;
 }
 
 interface BlackCard extends WhiteCard {
     pick: number;
     draw: number;
+}
+
+interface PlayedCard extends WhiteCard {
+    pid: string;
 }
 
 interface Pack {
@@ -16,7 +21,7 @@ interface Pack {
 
 interface LogResponse {
     players: string[];
-    games: string[];
+    games: any[];
     any: any;
 }
 
@@ -39,6 +44,9 @@ declare namespace Socket {
     }
 
     interface NewGame extends GameRequest {
+        maxScore: number;
+        maxPlayers: number;
+        timeout: number;
         packs: string[];
         password: string;
     }
@@ -54,9 +62,22 @@ declare namespace Socket {
             id: string;
             done: boolean;
             host: boolean;
+            score: number;
         }
 
         interface State {
+            hid: string;
+            gid: string;
+            czar: string;
+            hand: WhiteCard[];
+            picks: WhiteCard[];
+            black: BlackCard;
+            playedCards: PlayedCard[];
+            players: Player[];
+            packs: string[];
+            winAt: number;
+            maxPlayers: number;
+            timeout: number;
         }
 
     }

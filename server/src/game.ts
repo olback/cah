@@ -1,10 +1,6 @@
 import { Player, Players } from './player';
-// import { Client } from 'pg';
-// import { dbConf } from './config';
-
-interface PlayedCard extends WhiteCard {
-    pid: string;
-}
+import { Client, QueryResult } from 'pg';
+import { dbConf } from './config';
 
 interface Games {
     [gameId: string]: Game;
@@ -16,28 +12,80 @@ class Game {
 
     private _players: Players = {};
     private _bIndex = 0;
+    private _round = 0;
     private _blackCards: BlackCard[] = [];
     private _whiteCards: WhiteCard[] = [];
     private _playedCards: PlayedCard[] = [];
-    private _czar = this._players[this._host.id].id; // this._players[Object.keys(this._players)[2 % Object.keys(this._players).length]].id?
-    private _settings = {
-        winAt: 10,
-        maxPlayers: 5,
-        timeout: 0
-    }
+    // private _czar = this._players[this._host.id].id; // this._players[Object.keys(this._players)[2 % Object.keys(this._players).length]].id?
+    // private _czar = this._players[Object.keys(this._players)[this._bIndex % Object.keys(this._players).length]].id;
+    // private _czar = this._host.id;
+    private _czar = this._host.id;
 
     constructor(
         public id: string,
         private _host: Player,
         private _packs: string[],
-        private _password: string
+        private _password: string,
+        private _winAt: number,
+        private _maxPlayers: number,
+        private _timeout: number
     ) {
-        this.players.add(_host);
-        // TODO: Fetch cards from database
-        // const db = new Client(dbConf);
-        // db.connect();
-        // db.query('select distinct pack from white union select pack from black');
-        // db.end();
+
+        const db = new Client(dbConf);
+        db.connect();
+
+        const promisesW: Promise<QueryResult>[] = [];
+        const promisesB: Promise<QueryResult>[] = [];
+        const finalPromises = [];
+
+        for (const p of this._packs) {
+            promisesW.push(db.query('select * from white where pack=$1', [p]));
+            promisesB.push(db.query('select * from black where pack=$1', [p]));
+        }
+
+        finalPromises.push(Promise.all(promisesW).then(v => {
+            v.forEach(pack => {
+                pack.rows.forEach((row: WhiteCard) => {
+                    this._whiteCards.push({
+                        id: Number(row.id),
+                        text: row.text,
+                        pack: row.pack
+                    });
+                })
+            });
+        }));
+
+        finalPromises.push(Promise.all(promisesB).then(v => {
+            v.forEach(pack => {
+                pack.rows.forEach((row: BlackCard) => {
+                    this._blackCards.push({
+                        id: Number(row.id),
+                        text: row.text,
+                        pick: Number(row.pick),
+                        draw: Number(row.draw),
+                        pack: row.pack
+                    });
+                })
+            });
+        }));
+
+        Promise.all(finalPromises).then(() => {
+
+            // End db connection
+            db.end();
+
+            // 'Randomize' cards
+            this._whiteCards.sort(() => Math.random() - 0.5);
+            this._blackCards.sort(() => Math.random() - 0.5);
+
+            // Add the host to the players
+            this.players.add(_host);
+
+            // Redirect the host to the game
+            _host.socket.emit('redirect', ['game', id]);
+            // this.sendState(_host); // No need to send the state. The client requests it when being redirected to the game page.
+        });
+
     }
 
     // start () {
@@ -56,15 +104,25 @@ class Game {
 
     public players = {
         add: (player: Player) => {
-            if (player.id !in this._players) {
+            if (!this.players.check(player.id)) {
                 this._players[player.id] = player;
+                for (let i = 0; i < 10; i++) {
+                    player.hand.push(this.randomWhiteCard());
+                }
+                this.sendState('all');
             }
         },
         remove: (player: Player) => {
             delete this._players[player.id];
+            this.sendState('all');
         },
         check: (pid: string) => {
-            return pid in this.players;
+            for (const p in this._players) {
+                if (pid === p) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 
@@ -102,6 +160,12 @@ class Game {
         }
     }
 
+    private randomWhiteCard(): WhiteCard {
+
+        return this._whiteCards[Math.floor(Math.random() * this._whiteCards.length)];
+
+    }
+
     getState(pid: string): Socket.GameState.State {
 
         const pa: Socket.GameState.Player[] = [];
@@ -111,19 +175,24 @@ class Game {
                 id: this._players[p].id,
                 username: this._players[p].username,
                 done: this._players[p].picks.length === this._blackCards[this._bIndex].pick,
-                host: this._host.id === this._players[p].id
+                host: this._host.id === this._players[p].id,
+                score: this._players[p].score
             });
         }
 
-        const state /*: Socket.GameState*/ = {
+        const state: Socket.GameState.State = {
             hid: this._host.id,
             gid: this.id,
             czar: this._czar,
             hand: this._players[pid].hand,
+            picks: this._players[pid].picks,
             black: this._blackCards[this._bIndex],
             playedCards: this._playedCards,
             players: pa,
-            settings: this._settings
+            packs: this._packs,
+            winAt: this._winAt,
+            maxPlayers: this._maxPlayers,
+            timeout: this._timeout
         }
 
         return state;
