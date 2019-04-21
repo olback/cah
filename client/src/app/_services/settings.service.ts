@@ -9,7 +9,7 @@ type DataType = 'string' | 'number' | 'boolean';
 })
 export class SettingsService {
 
-  acronyms = new Setting('acronyms', 'boolean', 'Enable random acronyms');
-  eggs = new Setting('eggs', 'boolean', 'Enable easter eggs');
+  public acronyms = new Setting('acronyms', 'boolean', 'Enable random acronyms');
+  public eggs = new Setting('eggs', 'boolean', 'Enable easter eggs');
 
 }
