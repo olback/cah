@@ -38,27 +38,27 @@ div {
             label.switch {
 
                 display: inline-block;
+                cursor: pointer;
 
                 &:before {
-                    height: 14pt;
+                    height: 16pt;
                     width: 28pt;
                     background-color: #9e9e9e;
                     border-radius: 7pt;
                     display: block;
                     content: '';
                     transition: background-color 0.15s ease-in-out;
-                    cursor: pointer;
                 }
 
                 &:after {
                     height: 10pt;
                     width: 10pt;
-                    border-radius: 7pt;
+                    border-radius: 8pt;
                     display: block;
                     content: '';
                     background-color: #fff;
-                    margin-top: -12pt;
-                    margin-left: 2pt;
+                    margin-top: -13pt;
+                    margin-left: 3pt;
                     transition: margin-left 0.15s ease-in-out;
                 }
 
@@ -73,7 +73,7 @@ div {
             }
 
             input[type=checkbox]:checked + label.switch:after {
-                margin-left: 16pt;
+                margin-left: 15pt;
             }
 
 
