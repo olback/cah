@@ -60,6 +60,7 @@ declare namespace ISocket {
             black: BlackCard;
             playedCards: PlayedCard[];
             players: Player[];
+            packs: string[];
             winAt: number;
             maxPlayers: number;
             timeout: number;
