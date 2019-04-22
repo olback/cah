@@ -15,7 +15,9 @@ const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });
 
-const io = socketio(server);
+const io = socketio(server, {
+    origins: env.NODE_ENV === 'production' ? ['cah.ninja:443'] : ['*:*']
+});
 
 const games: Games = {};
 const players: Players = {};
@@ -151,6 +153,9 @@ io.on('connection', socket => {
 
     });
 
+    socket.on('pick', (data) => {
+    });
+
     socket.on('leave-game', (data: Socket.GameRequest) => {
         if (data.pid && data.gid && games[data.gid]) {
             if (games[data.gid].players.check(data.pid)) {
@@ -230,7 +235,7 @@ app.get('**', async (_req, res) => {
 
 });
 
-// Remove games older than 4 hours.
+// Remove games older than 12 hours.
 setInterval(() => {
 
     for (const game in games) {
