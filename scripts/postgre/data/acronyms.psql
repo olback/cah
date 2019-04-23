@@ -17,3 +17,11 @@ INSERT INTO acronyms (text) VALUES ('Cunts And Hate');
 INSERT INTO acronyms (text) VALUES ('Cats Are Heroes');
 INSERT INTO acronyms (text) VALUES ('Careers Are Hell');
 INSERT INTO acronyms (text) VALUES ('Conspiracies Are Heaven');
+INSERT INTO acronyms (text) VALUES ('Communist Ambulance Helpers');
+INSERT INTO acronyms (text) VALUES ('Carbon-Actinium-Hydride');
+INSERT INTO acronyms (text) VALUES ('Chickens Attack Helicopters');
+INSERT INTO acronyms (text) VALUES ('Camels Attract Hammers');
+INSERT INTO acronyms (text) VALUES ('Carbon And Hydrogen');
+INSERT INTO acronyms (text) VALUES ('Congressman Applies Hovercraft');
+
+
