@@ -153,8 +153,8 @@ io.on('connection', socket => {
 
     });
 
-    socket.on('pick', (data) => {
-    });
+    // socket.on('pick', (data) => {
+    // });
 
     socket.on('leave-game', (data: Socket.GameRequest) => {
         if (data.pid && data.gid && games[data.gid]) {

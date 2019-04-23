@@ -12,7 +12,7 @@ class Game {
 
     private _players: Players = {};
     private _bIndex = 0;
-    private _round = 0;
+    //  private _round = 0;
     private _blackCards: BlackCard[] = [];
     private _whiteCards: WhiteCard[] = [];
     private _playedCards: PlayedCard[] = [];
