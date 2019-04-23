@@ -20,7 +20,7 @@ interface SocketError {
 })
 export class AppComponent implements OnInit, DoCheck {
 
-  acronym = 'Crabs Adjust Humidity';
+  acronym = 'Chickens Attack Helicopters';
   username = '';
   toast = new Toast('');
   showSettings = false;
