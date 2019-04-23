@@ -19,10 +19,10 @@ interface Pack {
     white: number;
 }
 
-interface LogResponse {
-    players: string[];
-    games: any[];
-    any: any;
+interface InfoResponse {
+    players: number;
+    games: number;
+    version: string;
 }
 
 declare namespace Socket {

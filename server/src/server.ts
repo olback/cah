@@ -6,7 +6,8 @@ import { Player, Players } from './player';
 import { Client } from 'pg';
 import { dbConf } from './config';
 import * as path from 'path';
-// import './data.d.ts';
+// @ts-ignore
+import * as git from 'git-rev-sync';
 
 const port = env.PORT ? Number(env.PORT) : 5000;
 const app = express();
@@ -200,30 +201,14 @@ io.on('connection', socket => {
 
     });
 
-
-});
-
-app.get('/info', (_req, res) => {
-
-    const r: LogResponse = {
-        players: [],
-        games: [],
-        any: []
-    }
-
-    for (const p in players) {
-        r.players.push(p);
-    }
-
-    for (const g in games) {
-        r.games.push({
-            gid: g,
-            // @ts-ignore
-            players: Object.keys(games[g]._players)
+    socket.on('info', () => {
+        socket.emit('info', {
+            players: Object.keys(players).length,
+            games: Object.keys(games).length,
+            version: git.short()
         });
-    }
+    });
 
-    res.json(r);
 
 });
 
@@ -235,15 +220,15 @@ app.get('**', async (_req, res) => {
 
 });
 
-// Remove games older than 12 hours.
-setInterval(() => {
+// Remove games older than 12 hours. // Not needed since games get removed when there are no players left.
+// setInterval(() => {
 
-    for (const game in games) {
+//     for (const game in games) {
 
-        if(new Date().getTime() - games[game].created > 12 * 3600 * 1000) {
-            delete games[game];
-        }
+//         if(new Date().getTime() - games[game].created > 12 * 3600 * 1000) {
+//             delete games[game];
+//         }
 
-    }
+//     }
 
-}, 1000 * 1800);
+// }, 1000 * 1800);

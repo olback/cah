@@ -27,6 +27,7 @@ import { FAModule } from './fa/fa.module';
 // Other imports
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
+import { InfoComponent } from './info/info.component';
 
 const sioc: SocketIoConfig = {
   url: env.siou,
@@ -41,7 +42,8 @@ const sioc: SocketIoConfig = {
     GameComponent,
     InGameSettingsComponent,
     SettingsComponent,
-    ToastComponent
+    ToastComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

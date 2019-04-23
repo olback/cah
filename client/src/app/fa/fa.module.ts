@@ -10,12 +10,15 @@ import {
   faFlagCheckered,
   faGavel,
   faClone,
-  faCog
+  faCog,
+  faDatabase
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
   faGithub,
-  faTwitter
+  faTwitter,
+  faAngular,
+  faNodeJs
 } from '@fortawesome/free-brands-svg-icons';
 
 @NgModule({
@@ -33,7 +36,10 @@ export class FAModule {
       faClone,
       faCog,
       faGithub,
-      faTwitter
+      faTwitter,
+      faDatabase,
+      faAngular,
+      faNodeJs
     );
   }
 }

@@ -1,0 +1,29 @@
+main {
+
+  a {
+    color: #444;
+    transition: color .15s ease-in-out;
+    &:hover {
+      color: #000;
+    }
+  }
+
+  div {
+
+    &.info {
+        text-align: center;
+    }
+
+    margin: auto;
+    display: block;
+    width: fit-content;
+
+    section {
+      display: block;
+      float: left;
+      margin: 1em;
+    }
+
+  }
+
+}
