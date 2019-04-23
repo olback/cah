@@ -4,6 +4,8 @@
   "description": "CAH Node.js Server",
   "main": "out/server.js",
   "scripts": {
+    "prestart": "npm install && npm run ts:compile",
+    "start": "node out/server.js",
     "ts:compile": "tsc -p ./",
     "ts:watch": "tsc -p ./ --watch",
     "dev": "npm rebuild --build-from-source && node devserver"
