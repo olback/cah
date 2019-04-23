@@ -25,7 +25,7 @@ services:
   postgres:
       image: postgres
       restart: ${DOCKER_RESTART}
-      ports:
+      # ports:
        # - "${PG_PORT}:${PG_PORT}"
       environment:
         POSTGRES_USER: ${PG_USER}
