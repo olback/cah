@@ -9,8 +9,9 @@ interface BlackCard extends WhiteCard {
     draw: number;
 }
 
-interface PlayedCard extends WhiteCard {
+interface PlayedCards {
     pid: string;
+    cards: WhiteCard[];
 }
 
 declare namespace ISocket {
@@ -58,7 +59,7 @@ declare namespace ISocket {
             czar: string;
             hand: WhiteCard[];
             black: BlackCard;
-            playedCards: PlayedCard[];
+            playedCards: PlayedCards;
             players: Player[];
             packs: string[];
             winAt: number;

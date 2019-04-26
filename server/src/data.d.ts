@@ -9,8 +9,9 @@ interface BlackCard extends WhiteCard {
     draw: number;
 }
 
-interface PlayedCard extends WhiteCard {
+interface PlayedCards {
     pid: string;
+    cards: WhiteCard[];
 }
 
 interface Pack {
@@ -72,7 +73,7 @@ declare namespace Socket {
             hand: WhiteCard[];
             picks: WhiteCard[];
             black: BlackCard;
-            playedCards: PlayedCard[];
+            playedCards: PlayedCards[];
             players: Player[];
             packs: string[];
             winAt: number;

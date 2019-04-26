@@ -15,7 +15,7 @@ class Game {
     //  private _round = 0;
     private _blackCards: BlackCard[] = [];
     private _whiteCards: WhiteCard[] = [];
-    private _playedCards: PlayedCard[] = [];
+    private _playedCards: PlayedCards[] = [];
     // private _czar = this._players[this._host.id].id; // this._players[Object.keys(this._players)[2 % Object.keys(this._players).length]].id?
     // private _czar = this._players[Object.keys(this._players)[this._bIndex % Object.keys(this._players).length]].id;
     // private _czar = this._host.id;
