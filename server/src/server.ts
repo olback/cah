@@ -212,6 +212,16 @@ io.on('connection', socket => {
 
 });
 
+if (env.NODE_ENV === 'dev') {
+    app.get('/i', (_req, res) => {
+        res.json({
+            players: Object.keys(players).length,
+            games: Object.keys(games).length,
+            version: git.short()
+        });
+    });
+}
+
 app.use(express.static(path.join(process.cwd(), '..', 'client', 'dist')));
 
 app.get('**', async (_req, res) => {
