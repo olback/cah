@@ -20,7 +20,7 @@ main {
         // margin-bottom: 160px;
 
         &:hover > .card, &.selected>.card {
-          background-color: #eee;
+          background-color: #ddd;
         }
 
         &.winner>.card {
@@ -86,7 +86,7 @@ main {
       }
 
       &:not(.black):hover, &.selected {
-        background-color: #eee;
+        background-color: #ddd;
       }
 
     }
