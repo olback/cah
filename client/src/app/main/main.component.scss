@@ -97,6 +97,14 @@ footer {
   font-size: 10pt;
   color: #444;
 
+  a {
+    color: #444;
+    transition: color .1s ease-in-out;
+    &:hover {
+      color: #000;
+    }
+  }
+
   fa-icon {
     margin: 0 .25em;
     transition: color 0.15s ease-in-out;
