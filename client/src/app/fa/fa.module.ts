@@ -11,7 +11,8 @@ import {
   faGavel,
   faClone,
   faCog,
-  faDatabase
+  faDatabase,
+  faSync
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -39,7 +40,8 @@ export class FAModule {
       faTwitter,
       faDatabase,
       faAngular,
-      faNodeJs
+      faNodeJs,
+      faSync
     );
   }
 }

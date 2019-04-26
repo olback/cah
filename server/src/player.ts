@@ -14,6 +14,10 @@ class Player {
 
     constructor(public id: string, public socket: socketio.Socket) {}
 
+    public newRound() {
+        this.picks = [];
+    }
+
     public cleanUp() {
         this.inGame = false;
         this.score = 0;

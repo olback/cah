@@ -11,6 +11,7 @@ interface BlackCard extends WhiteCard {
 
 interface PlayedCards {
     pid: string;
+    winner?: true;
     cards: WhiteCard[];
 }
 
@@ -51,6 +52,7 @@ declare namespace ISocket {
             id: string;
             done: boolean;
             host: boolean;
+            score: number;
         }
 
         interface State {
@@ -59,7 +61,7 @@ declare namespace ISocket {
             czar: string;
             hand: WhiteCard[];
             black: BlackCard;
-            playedCards: PlayedCards;
+            playedCards: PlayedCards[];
             players: Player[];
             packs: string[];
             winAt: number;

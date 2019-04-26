@@ -28,15 +28,10 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.settings);
   }
 
   closeSettings() {
     this.close.emit();
-  }
-
-  aa(v) {
-    console.log(v);
   }
 
 }

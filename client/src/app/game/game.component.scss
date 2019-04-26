@@ -19,8 +19,12 @@ main {
         width: calc(200px + 20px + 16px + 16px + 2px);
         // margin-bottom: 160px;
 
-        &:hover > .card {
+        &:hover > .card, &.selected>.card {
           background-color: #eee;
+        }
+
+        &.winner>.card {
+          background-color: #94d82d;
         }
 
         .card {
@@ -81,7 +85,7 @@ main {
         transition: background-color 0.1s ease-in-out;
       }
 
-      &:not(.black):hover {
+      &:not(.black):hover, &.selected {
         background-color: #eee;
       }
 
@@ -89,6 +93,14 @@ main {
 
     &.my-cards>.card {
       margin-bottom: 20px;
+    }
+
+    &.my-cards>h1 {
+      // margin: auto;
+      text-align: center;
+      margin: calc((294px - 2em) / 2) auto;
+      // top: 50%;
+      // transform: translateY(-50%);
     }
 
   }
@@ -116,8 +128,8 @@ main {
           font-weight: bold;
         }
 
-        &.czar {
-          text-decoration: underline;
+        &.me {
+          // text-decoration: underline;
           font-weight: bold;
         }
 
@@ -174,8 +186,13 @@ main {
     font-size: 12pt;
     transition: background-color 0.1s ease-in-out;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #ebebeb;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: #555;
     }
 
   }

@@ -9,7 +9,7 @@
 
     <div class="played-cards">
 
-      <div class="collection selected">
+      <!-- <div class="collection selected">
         <div class="card">Hello</div>
         <div class="card">There</div>
         <div class="card">aaaaaa</div>
@@ -31,7 +31,19 @@
         <div class="card">Hello</div>
         <div class="card">There</div>
         <div class="card">aaaaaa</div>
-      </div>
+      </div> -->
+
+      <ng-template [ngIf]="game.playedCards.length === game.players.length - 1">
+        <div *ngFor="let cards of game.playedCards" class="collection" [class.winner]="cards.winner" [class.selected]="winnerCard && cards.pid === winnerCard.pid" (click)="selectWinner(cards)">
+          <div *ngFor="let c of cards.cards" class="card">{{ c.text }}</div>
+        </div>
+      </ng-template>
+
+      <ng-template [ngIf]="game.playedCards.length !== game.players.length - 1">
+        <div class="collection">
+          <div *ngFor="let c of game.picks" class="card">{{ c.text }}</div>
+        </div>
+      </ng-template>
 
     </div>
 
@@ -39,10 +51,14 @@
 
   <div class="card-row my-cards">
 
-    <div *ngFor="let card of game.hand" class="card">
-      {{ card.text }}
-      <small>{{ card.pack }}</small>
-    </div>
+    <ng-template [ngIf]="!message">
+      <div *ngFor="let card of game.hand" class="card" [class.selected]="selectedWhite && selectedWhite.id === card.id" (click)="selectWhite(card)">
+        {{ card.text }}
+        <small>{{ card.pack }}</small>
+      </div>
+    </ng-template>
+
+    <h1 *ngIf="message">{{ message }}</h1>
 
   </div>
 
@@ -53,11 +69,11 @@
     <div *ngFor="let p of game.players" class="player">
       <fa-icon *ngIf="p.host" class="host" [icon]="['fas', 'crown']"></fa-icon>
       <fa-icon *ngIf="!p.host" class="user" [icon]="['fas', 'user']"></fa-icon>
-      <span [class.czar]="p.id === game.czar">{{ p.username }}</span>
+      <span [class.me]="p.id === pid">{{ p.username }}</span>
       <span class="score">{{ p.score }}</span>
-      <fa-icon *ngIf="!p.done && p.id !== game.czar" class="playing" [icon]="['fas', 'clone']"></fa-icon>
+      <fa-icon *ngIf="!p.done && p.id !== game.czar && p.score !== game.winAt" class="playing" [icon]="['fas', 'clone']"></fa-icon>
       <fa-icon *ngIf="p.done" class="check" [icon]="['fas', 'check']"></fa-icon>
-      <fa-icon *ngIf="p.id === game.czar" class="gavel" [icon]="['fas', 'gavel']"></fa-icon>
+      <fa-icon *ngIf="p.id === game.czar && p.score !== game.winAt" class="gavel" [icon]="['fas', 'gavel']"></fa-icon>
       <fa-icon *ngIf="p.score === game.winAt"class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
     </div>
 
@@ -66,12 +82,14 @@
   <div class="other">
 
     <div>
-      <button>Select</button>
+      <button *ngIf="pid !== game.czar" [disabled]="done || gameOver" (click)="confirm()">Confirm selection</button>
+      <button *ngIf="pid === game.czar" [disabled]="!winnerCard || gameOver" (click)="confirm()">Confirm selection</button>
       <button (click)="open=!open">View settings</button>
+      <button (click)="sync"><fa-icon [icon]="['fas', 'sync']"></fa-icon></button>
     </div>
 
     <div class="info">
-      <p *ngIf="game.black">Cards Selected: {{ game.picks.length }}/{{ game.black.pick }}</p>
+      <p *ngIf="game.black && game.players.length >= 3 && !message">Cards Selected: {{ game.picks.length }}/{{ game.black.pick }}</p>
       <p *ngIf="game.players.length < 3">Waiting for players to join: {{ game.players.length }}/3</p>
     </div>
 

@@ -56,6 +56,14 @@ declare namespace Socket {
         password: string;
     }
 
+    interface PickWhite extends GameRequest {
+        card: WhiteCard
+    }
+
+    interface PickWinner extends GameRequest {
+        winner: string;
+    }
+
     namespace GameState {
 
         interface Player {

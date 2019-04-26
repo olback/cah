@@ -133,8 +133,6 @@ export class CreateGameComponent implements OnInit, DoCheck {
       return;
     }
 
-    console.log(options);
-
     this._socket.emit('new-game', options);
 
   }

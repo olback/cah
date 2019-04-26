@@ -12,7 +12,7 @@ class Game {
 
     private _players: Players = {};
     private _bIndex = 0;
-    //  private _round = 0;
+    // private _round = 0;
     private _blackCards: BlackCard[] = [];
     private _whiteCards: WhiteCard[] = [];
     private _playedCards: PlayedCards[] = [];
@@ -220,6 +220,47 @@ class Game {
 
         }
 
+    }
+
+    pickWhite(pid: string, card: WhiteCard): boolean {
+
+        for (let [i, wc] of this._players[pid].hand.entries()) {
+            if (wc.id === card.id && this._players[pid].picks.length < this._blackCards[this._bIndex].pick) {
+                this._players[pid].picks.push(card);
+                this._players[pid].hand.splice(i, 1);
+                this._players[pid].hand.push(this.randomWhiteCard());
+                if (this._players[pid].picks.length === this._blackCards[this._bIndex].pick) {
+                    this._playedCards.push({
+                        pid: pid,
+                        cards: this._players[pid].picks
+                    });
+                    this.sendState('all');
+                }
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    pickWinner(winner: string) {
+
+        this._players[winner].score++;
+        this._playedCards = [];
+        this._bIndex++;
+        this._czar = Object.keys(this._players)[this._bIndex % Object.keys(this._players).length];
+        for (const p in this._players) {
+            this._players[p].newRound();
+        }
+        for (const p in this._players) {
+            this._players[p].socket.emit('round-winner', {
+                pid: winner
+            });
+        }
+        setTimeout(() => {
+            this.sendState('all');
+        }, 5000);
     }
 
 }

@@ -25,16 +25,16 @@ const players: Players = {};
 
 io.on('connection', socket => {
 
-    console.log(`New socket: ${socket.id}`);
+    // console.log(`New socket: ${socket.id}`);
 
     socket.on('login', (id: string) => {
 
         if (players[id]) {
             players[id].socket = socket;
-            console.log(`Updating socket for player ${id}.`);
+            // console.log(`Updating socket for player ${id}.`);
         } else {
             players[String(id)] = new Player(id, socket);
-            console.log(`Player ${id} joined the game.`);
+            // console.log(`Player ${id} joined the game.`);
         }
 
     });
@@ -45,7 +45,7 @@ io.on('connection', socket => {
         if (players[pid]) {
             players[pid].username = username;
         }
-        console.log(`Player ${pid} changed username to ${username ? username : '<none>'}.`);
+        // console.log(`Player ${pid} changed username to ${username ? username : '<none>'}.`);
 
     });
 
@@ -154,8 +154,49 @@ io.on('connection', socket => {
 
     });
 
-    // socket.on('pick', (data) => {
-    // });
+    socket.on('pick-white', (data: Socket.PickWhite) => {
+
+        if (games[data.gid]) {
+
+            if (games[data.gid].players.check(data.pid)) {
+
+                if (games[data.gid].pickWhite(data.pid, data.card)) {
+                    socket.emit('game', games[data.gid].getState(data.pid));
+                } else {
+                    socket.emit('error-message', {
+                        message: 'Error selecting card'
+                    });
+                }
+
+            } else {
+
+                socket.emit('error-message', {
+                    message: `Player ${data.pid} is not a member of game`
+                });
+
+            }
+
+        } else {
+
+            socket.emit('error-message', {
+                message: `Game ${data.gid} does not exist`
+            });
+
+        }
+
+    });
+
+    socket.on('pick-winner', (data: Socket.PickWinner) => {
+
+        if (data.pid && games[data.gid] && data.winner) {
+            games[data.gid].pickWinner(data.winner);
+        } else {
+            socket.emit('error-message', {
+                message: 'Error selecting winner'
+            });
+        }
+
+    });
 
     socket.on('leave-game', (data: Socket.GameRequest) => {
         if (data.pid && data.gid && games[data.gid]) {
@@ -165,11 +206,11 @@ io.on('connection', socket => {
                     delete games[data.gid];
                 }
             }
-        } else {
+        } /* else {
             socket.emit('error-message', {
                 message: `Error leaving game with ID "${data.gid}"`
             });
-        }
+        } */
     });
 
     socket.on('error', e => {
@@ -182,7 +223,7 @@ io.on('connection', socket => {
 
             if (players[p].socket.id === socket.id) {
 
-                console.log(`Player ${players[p].id} has left the game.`);
+                // console.log(`Player ${players[p].id} has left the game.`);
 
                 for (const g in games) {
                     if (games[g].players.check(players[p].id)) {
