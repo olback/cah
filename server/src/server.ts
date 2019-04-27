@@ -106,7 +106,7 @@ io.on('connection', socket => {
     });
 
     socket.on('join-game', (data: Socket.JoinGameRequest) => {
-        if (games[data.gid] && players[data.pid] && !players[data.pid].inGame) {
+        if (games[data.gid] && players[data.pid] && !players[data.pid].inGame && games[data.gid].players.amount() < games[data.gid].maxPlayers) {
             if (games[data.gid].password.check(data.password) && players[data.pid].username) {
                 games[data.gid].players.add(players[data.pid]);
                 socket.emit('redirect', ['game', data.gid]);

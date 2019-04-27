@@ -27,7 +27,7 @@ class Game {
         private _packs: string[],
         private _password: string,
         private _winAt: number,
-        private _maxPlayers: number,
+        public maxPlayers: number,
         private _timeout: number
     ) {
 
@@ -199,7 +199,7 @@ class Game {
             players: pa,
             packs: this._packs,
             winAt: this._winAt,
-            maxPlayers: this._maxPlayers,
+            maxPlayers: this.maxPlayers,
             timeout: this._timeout
         }
 
