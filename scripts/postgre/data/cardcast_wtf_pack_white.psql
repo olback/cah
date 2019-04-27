@@ -147,7 +147,7 @@ INSERT INTO white (text, pack) VALUES (E'Nuns with nice buns.', E'WTF Pack (CC:H
 INSERT INTO white (text, pack) VALUES (E'Your dad\'s hairy, beautiful taint.', E'WTF Pack (CC:H94KK)');
 INSERT INTO white (text, pack) VALUES (E'A fleshlight with teeth.', E'WTF Pack (CC:H94KK)');
 INSERT INTO white (text, pack) VALUES (E'Non-prophet Atheism.', E'WTF Pack (CC:H94KK)');
-INSERT INTO white (text, pack) VALUES (E'9\11, The Musical.', E'WTF Pack (CC:H94KK)');
+INSERT INTO white (text, pack) VALUES (E'9\\11, The Musical.', E'WTF Pack (CC:H94KK)');
 INSERT INTO white (text, pack) VALUES (E'Wet nightmares.', E'WTF Pack (CC:H94KK)');
 INSERT INTO white (text, pack) VALUES (E'Fire roasted little boy stuffed with baby.', E'WTF Pack (CC:H94KK)');
 INSERT INTO white (text, pack) VALUES (E'Converting to Islam mid-flight.', E'WTF Pack (CC:H94KK)');

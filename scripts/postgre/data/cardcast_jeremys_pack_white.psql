@@ -1,7 +1,7 @@
-INSERT INTO white (text, pack) VALUES (E'stupid fucking Jeremy', E'Jeremy's Pack (CC:8CEN3)');
-INSERT INTO white (text, pack) VALUES (E'Jeremy', E'Jeremy's Pack (CC:8CEN3)');
-INSERT INTO white (text, pack) VALUES (E'pranking Jeremy', E'Jeremy's Pack (CC:8CEN3)');
-INSERT INTO white (text, pack) VALUES (E'Jeremy being president', E'Jeremy's Pack (CC:8CEN3)');
-INSERT INTO white (text, pack) VALUES (E'beating Jeremy up', E'Jeremy's Pack (CC:8CEN3)');
-INSERT INTO white (text, pack) VALUES (E'a Jeremy voodoo doll', E'Jeremy's Pack (CC:8CEN3)');
-INSERT INTO white (text, pack) VALUES (E'throwing Jeremy into the volcano', E'Jeremy's Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'stupid fucking Jeremy', E'Jeremy\'s Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'Jeremy', E'Jeremy\'s Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'pranking Jeremy', E'Jeremy\'s Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'Jeremy being president', E'Jeremy\'s Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'beating Jeremy up', E'Jeremy\'s Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'a Jeremy voodoo doll', E'Jeremy\'s Pack (CC:8CEN3)');
+INSERT INTO white (text, pack) VALUES (E'throwing Jeremy into the volcano', E'Jeremy\'s Pack (CC:8CEN3)');

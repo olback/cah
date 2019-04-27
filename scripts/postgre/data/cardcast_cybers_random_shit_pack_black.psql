@@ -1,4 +1,4 @@
-INSERT INTO black (text, pack, pick, draw) VALUES (E'What do you call ______, and ______, at the same time? A ______.', E'Cyber's Random Shit Pack (CC:YM66T)', 3, 3);
-INSERT INTO black (text, pack, pick, draw) VALUES (E'Oh God,.What is behind that link ______?', E'Cyber's Random Shit Pack (CC:YM66T)', 1, 1);
-INSERT INTO black (text, pack, pick, draw) VALUES (E'As far as fetishes go, ______ isn\'t even my worst one.', E'Cyber's Random Shit Pack (CC:YM66T)', 1, 1);
-INSERT INTO black (text, pack, pick, draw) VALUES (E'What makes me cringe ______?', E'Cyber's Random Shit Pack (CC:YM66T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What do you call ______, and ______, at the same time? A ______.', E'Cyber\'s Random Shit Pack (CC:YM66T)', 3, 3);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Oh God,.What is behind that link ______?', E'Cyber\'s Random Shit Pack (CC:YM66T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'As far as fetishes go, ______ isn\'t even my worst one.', E'Cyber\'s Random Shit Pack (CC:YM66T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What makes me cringe ______?', E'Cyber\'s Random Shit Pack (CC:YM66T)', 1, 1);

@@ -61,7 +61,7 @@ INSERT INTO white (text, pack) VALUES (E'(づಠ ͟ʖಠ)づ', E'Lenny Collectio
 INSERT INTO white (text, pack) VALUES (E'(｡◕‿‿◕｡)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'>_>', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'༼ʘ̚ل͜ʘ̚༽', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'̿ ̿ ̿\'̿\'\̵͇̿̿\з=(•_•)=ε/̵͇̿̿/\'̿\'̿ ̿', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'̿ ̿ ̿\'̿\'\\̵͇̿̿\\з=(•_•)=ε/̵͇̿̿/\'̿\'̿ ̿', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ರ_ರ', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ಠ~ಠ', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ヽ༼ຈل͜ຈ༽ﾉ', E'Lenny Collection! (CC:4U357)');
@@ -86,7 +86,7 @@ INSERT INTO white (text, pack) VALUES (E'ಠoಠ', E'Lenny Collection! (CC:4U357
 INSERT INTO white (text, pack) VALUES (E'(ó ì_í)=óò=(ì_í ò)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕ヽ)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(✿´‿`)', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'¯\_(ツ)_/¯', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'¯\\_(ツ)_/¯', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'( ͠°෴ °)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'☺', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'~(˘▾˘~)', E'Lenny Collection! (CC:4U357)');
@@ -103,14 +103,14 @@ INSERT INTO white (text, pack) VALUES (E'😉', E'Lenny Collection! (CC:4U357)')
 INSERT INTO white (text, pack) VALUES (E'☻', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(._.) ( l: ) ( .-. ) ( :l ) (._.)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'͡ ° ͜ ʖ ͡ ° ͡° ͜ʖ ͡°', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'\ (•◡•) /', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'\\ (•◡•) /', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'( ಠ ͜ʖರೃ)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'( ͡ö ͜ʖ ͡ö)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'♪~ ᕕ(ᐛ)ᕗ', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(¬‿¬)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'°Д°', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(°ロ°)☝', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'̿\'̿\'\̵͇̿̿\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/\'̿̿ ̿ ̿ ̿ ̿ ̿', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'̿\'̿\'\\̵͇̿̿\\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/\'̿̿ ̿ ̿ ̿ ̿ ̿', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'=U', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(ʘᗩʘ\')', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'♥', E'Lenny Collection! (CC:4U357)');
@@ -120,7 +120,7 @@ INSERT INTO white (text, pack) VALUES (E'(~˘▾˘)~', E'Lenny Collection! (CC:4
 INSERT INTO white (text, pack) VALUES (E'^̮^', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ʕ・ ͜ʖ・ʔ', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'̿̿ ̿̿ ̿̿ ̿\'̿\'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'̿̿ ̿̿ ̿̿ ̿\'̿\'\\̵͇̿̿\\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ಠ⌣ಠ', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(° ͡ ͜ ͡ʖ ͡ °)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(ง\'̀-\'́)ง', E'Lenny Collection! (CC:4U357)');
@@ -148,8 +148,8 @@ INSERT INTO white (text, pack) VALUES (E'◉_◉', E'Lenny Collection! (CC:4U357
 INSERT INTO white (text, pack) VALUES (E'͡ ͜ ʖ͡', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(/) (°,,°) (/)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ᕕ(ಠل͜ಠ)ᕗ', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'/╲/\╭( ͡° ͡° ͜ʖ ͡° ͡°)╮/\╱\', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'¯\_ಠ ͟ʖಠ_/¯', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'/╲/\\╭( ͡° ͡° ͜ʖ ͡° ͡°)╮/\\╱\\', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'¯\\_ಠ ͟ʖಠ_/¯', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'( ﾟヮﾟ)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(╯°□°）╯︵ ┻━┻', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(•ω•)', E'Lenny Collection! (CC:4U357)');
@@ -158,7 +158,7 @@ INSERT INTO white (text, pack) VALUES (E'(･.◤)', E'Lenny Collection! (CC:4U3
 INSERT INTO white (text, pack) VALUES (E'༼ つ  ͡° ͜ʖ ͡° ༽つ', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'☜(˚▽˚)☞', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'ლ,ᔑ•ﺪ͟͠•ᔐ.ლ', E'Lenny Collection! (CC:4U357)');
-INSERT INTO white (text, pack) VALUES (E'¯\(°_o)/¯', E'Lenny Collection! (CC:4U357)');
+INSERT INTO white (text, pack) VALUES (E'¯\\(°_o)/¯', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(•_•) ( •_•)>⌐■-■ (⌐■_■)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'(─‿‿─)', E'Lenny Collection! (CC:4U357)');
 INSERT INTO white (text, pack) VALUES (E'┬┴┬┴┤ ͜ʖ ͡°) ├┬┴┬┴', E'Lenny Collection! (CC:4U357)');
