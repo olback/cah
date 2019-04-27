@@ -9,7 +9,7 @@ import * as path from 'path';
 // @ts-ignore
 import * as git from 'git-rev-sync';
 
-const port = env.PORT ? Number(env.PORT) : 5000;
+const port = env.PORT ? Number(env.NODE_PORT) : 5000;
 const app = express();
 
 const server = app.listen(port, () => {
