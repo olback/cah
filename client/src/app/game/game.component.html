@@ -35,13 +35,19 @@
 
       <ng-template [ngIf]="game.playedCards.length === game.players.length - 1">
         <div *ngFor="let cards of game.playedCards" class="collection" [class.winner]="cards.winner" [class.selected]="winnerCard && cards.pid === winnerCard.pid" (click)="selectWinner(cards)">
-          <div *ngFor="let c of cards.cards" class="card">{{ c.text }}</div>
+          <div *ngFor="let c of cards.cards" class="card">
+            {{ c.text }}
+            <small>{{ c.pack }}</small>
+          </div>
         </div>
       </ng-template>
 
       <ng-template [ngIf]="game.playedCards.length !== game.players.length - 1">
         <div class="collection">
-          <div *ngFor="let c of game.picks" class="card">{{ c.text }}</div>
+          <div *ngFor="let c of game.picks" class="card">
+            {{ c.text }}
+            <small>{{ c.pack }}</small>
+          </div>
         </div>
       </ng-template>
 

@@ -29,6 +29,12 @@ main {
 
         .card {
           transition: margin .2s ease-in-out, background-color 0.1s ease-in-out;
+          text-transform: capitalize;
+          &>small {
+            font-size: 8pt;
+            display: block;
+            margin-top: .5em;
+          }
         }
 
         .card:nth-child(1):hover {
@@ -67,6 +73,7 @@ main {
       // margin-bottom: 20px;
       float: left;
       display: block;
+      text-transform: capitalize;
 
       &>small {
         font-size: 8pt;
