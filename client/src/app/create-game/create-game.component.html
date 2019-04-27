@@ -2,7 +2,9 @@
 
   <input (keyup)="filter()" [(ngModel)]="query" type="text" class="search" placeholder="Filter..." />
   <ul>
-    <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngFor="let pack of packs">{{ pack.name }} <div class="black">{{ pack.black }}</div> <div class="white">{{ pack.white }}</div></li>
+    <ng-template [ngIf]="true" *ngFor="let pack of packs">
+        <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngIf="!pack.hidden">{{ pack.name }} <div class="black">{{ pack.black }}</div> <div class="white">{{ pack.white }}</div></li>
+    </ng-template>
   </ul>
 
   <div class="cards-info">
