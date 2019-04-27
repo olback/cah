@@ -224,6 +224,10 @@ class Game {
 
     pickWhite(pid: string, card: WhiteCard): boolean {
 
+        if (typeof card !== 'object' || card === null) {
+            return false;
+        }
+
         for (let [i, wc] of this._players[pid].hand.entries()) {
             if (wc.id === card.id && this._players[pid].picks.length < this._blackCards[this._bIndex].pick) {
                 this._players[pid].picks.push(card);
