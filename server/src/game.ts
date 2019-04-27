@@ -2,6 +2,13 @@ import { Player, Players } from './player';
 import { Client, QueryResult } from 'pg';
 import { dbConf } from './config';
 
+function shuffleArray(array: Array<any>) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
 interface Games {
     [gameId: string]: Game;
 }
@@ -74,9 +81,8 @@ class Game {
             // End db connection
             db.end();
 
-            // 'Randomize' cards TODO:FIXME:improve this!!
-            this._whiteCards.sort(() => Math.random() - 0.5);
-            this._blackCards.sort(() => Math.random() - 0.5);
+            shuffleArray(this._whiteCards);
+            shuffleArray(this._blackCards);
 
             // Add the host to the players
             this.players.add(_host);
