@@ -1,0 +1,13 @@
+INSERT INTO white (text, pack) VALUES (E'having a crush on your step mom', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'Mark', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'tearing me apart', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'Lisa\'s red dress', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'drinking vodka mixed with whiskey', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'killing yourself on your birthday', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'aimlessly throwing a football around', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'breast cancer', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'cheating on me with my best friend', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'Johnny', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'pouring wine for 5 minutes in silence', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'attempting to throw your psychiatrist friend off a roof', E'The Room (CC:2VHRE)');
+INSERT INTO white (text, pack) VALUES (E'thigh humping', E'The Room (CC:2VHRE)');

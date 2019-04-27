@@ -1,0 +1,6 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Who killed Harambe? ______', E'Harambe Pack (CC:MVU9T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Harambe is ______, Harambe is ______.', E'Harambe Pack (CC:MVU9T)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Bush did ______.', E'Harambe Pack (CC:MVU9T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is a child saving hero.', E'Harambe Pack (CC:MVU9T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Whip it out for ______.', E'Harambe Pack (CC:MVU9T)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ out for Harambe.', E'Harambe Pack (CC:MVU9T)', 1, 1);

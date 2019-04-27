@@ -1,0 +1,14 @@
+INSERT INTO white (text, pack) VALUES (E'I\'m ready!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'It\'s not just a boulder... it\'s a rock!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'Shake that bubble butt!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'We\'re in Squidward\'s body. No wonder it smells funny in here', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'I got it. Let\'s get naked!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'I\'m a big man. A big, big man!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'I\'m absorbing his blows like I\'m made of some sort of spongy material!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'You\'re sitting on my body, which is also my face', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'Run like you\'re not in a coma!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'No, Gary, I like wearing my underwear like this', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'We\'ve been smeckledorfed!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'I\'m Dirty Dan', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'Oh, barnacles', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');
+INSERT INTO white (text, pack) VALUES (E'I guess I\'m not wearing any pants today!', E'Out-Of-Context Spongebob Quotes (CC:UMBR4)');

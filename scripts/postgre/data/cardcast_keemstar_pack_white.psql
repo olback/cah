@@ -1,0 +1,8 @@
+INSERT INTO white (text, pack) VALUES (E'Code Keem', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'LeafyIshere', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'Sam pepper', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'HilaryClinton', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'Pyrocynical', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'Keemotherapy', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'Noose', E'Keemstar Pack (CC:N6FW3)');
+INSERT INTO white (text, pack) VALUES (E'donaldtrump', E'Keemstar Pack (CC:N6FW3)');

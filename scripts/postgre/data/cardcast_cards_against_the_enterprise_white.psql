@@ -1,0 +1,9 @@
+INSERT INTO white (text, pack) VALUES (E'Pavel Chekov.', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'Tribbles. So many Tribbles.', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'Talos IV', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'Scotty', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'Uhura', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'The USS Enterprise', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'Mr. Spock.', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'Jim Kirk.', E'Cards Against the Enterprise (CC:XYEEK)');
+INSERT INTO white (text, pack) VALUES (E'O\'Reily', E'Cards Against the Enterprise (CC:XYEEK)');

@@ -1,0 +1,7 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The only thing worse than vegan pizza is ______.', E'Pizza! Pack (CC:30OOW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'When needed, pizza can be used to replace ______.', E'Pizza! Pack (CC:30OOW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The only thing better than pizza is ______.', E'Pizza! Pack (CC:30OOW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Instead of olives they put ______ on my pizza.', E'Pizza! Pack (CC:30OOW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'My friend and I ate a Pizza with ______, it was like ______.', E'Pizza! Pack (CC:30OOW)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'My favorite pizza topping is ______.', E'Pizza! Pack (CC:30OOW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Pizza is surpsingly good with ______.', E'Pizza! Pack (CC:30OOW)', 1, 1);

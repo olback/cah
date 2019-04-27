@@ -1,0 +1,8 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'How the fuck did Jeremy get ______?', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'R.I.P. Jeremy. His greatest achievement was ______.', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Fuck Jeremy! He deserves death by ______!', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Screw Jeremy, he can shove ______ up his ass!', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Jeremy actually paid money for ______.', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Well Jeremy fucked ______ again and now he\'s back in prison.', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What happened to Jeremy? ______', E'Jeremy's Pack (CC:8CEN3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Jeremy deserves nothing but ______.', E'Jeremy's Pack (CC:8CEN3)', 1, 1);

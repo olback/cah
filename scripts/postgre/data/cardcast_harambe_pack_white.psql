@@ -1,0 +1,6 @@
+INSERT INTO white (text, pack) VALUES (E'Dicks out for Harambe.', E'Harambe Pack (CC:MVU9T)');
+INSERT INTO white (text, pack) VALUES (E'Harambe', E'Harambe Pack (CC:MVU9T)');
+INSERT INTO white (text, pack) VALUES (E'Harambe is love, Harambe is life.', E'Harambe Pack (CC:MVU9T)');
+INSERT INTO white (text, pack) VALUES (E'Cincinatti Zoo.', E'Harambe Pack (CC:MVU9T)');
+INSERT INTO white (text, pack) VALUES (E'Dicks.', E'Harambe Pack (CC:MVU9T)');
+INSERT INTO white (text, pack) VALUES (E'Bush', E'Harambe Pack (CC:MVU9T)');

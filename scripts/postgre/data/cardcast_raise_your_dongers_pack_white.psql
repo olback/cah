@@ -1,0 +1,4 @@
+INSERT INTO white (text, pack) VALUES (E'(╯°□°）╯︵ ┻━┻', E'Raise Your Dongers Pack (CC:CVW2M)');
+INSERT INTO white (text, pack) VALUES (E'ಠ_ಠ', E'Raise Your Dongers Pack (CC:CVW2M)');
+INSERT INTO white (text, pack) VALUES (E'( ͡° ͜ʖ ͡°)', E'Raise Your Dongers Pack (CC:CVW2M)');
+INSERT INTO white (text, pack) VALUES (E'ヽ༼ຈل͜ຈ༽ﾉ raise your dongers', E'Raise Your Dongers Pack (CC:CVW2M)');

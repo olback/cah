@@ -1,0 +1,17 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'And I\'m...  ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______. That is... so gross.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What you don\'t know about ______ could fill a really big plastic bag.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ was a Jupiter spy all along?', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______. Which you designate ______.', E'CAH: On Mars! (CC:K5NS3)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The father is ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I\'ve sworn by the burrs of my astro spurs to ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The Barkeep\'s been using the Force Galactic to create ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Kids, shine your astro spurs and don your robot fists, \'cause it\'s time for ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Praise ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'That ______ Cactoid Jim...', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"I don\'t want no ______ in my place."', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Love is ______ and ______.', E'CAH: On Mars! (CC:K5NS3)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______! How babies are made.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is pleasing to 9 of Croach\'s 28 senses.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What is Croach under onus to Sparks for now? ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The Marshal Station Doors are ______.', E'CAH: On Mars! (CC:K5NS3)', 1, 1);

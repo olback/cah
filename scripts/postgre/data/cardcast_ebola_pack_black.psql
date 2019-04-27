@@ -1,0 +1,1 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I always say ______ is a great gift.', E'Ebola Pack (CC:863M3)', 1, 1);

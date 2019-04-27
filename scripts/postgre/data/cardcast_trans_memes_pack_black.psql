@@ -1,0 +1,2 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'There are only two genders, ______ and ______.', E'Trans Memes Pack (CC:RQ9MF)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Actually, The Surgery is ______', E'Trans Memes Pack (CC:RQ9MF)', 1, 1);

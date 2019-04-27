@@ -1,0 +1,17 @@
+INSERT INTO white (text, pack) VALUES (E'OpieOP', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'DansGame', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'SwiftRage', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'PJSalt', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'OMGScoots', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'KappaPride', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'Kappa', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'PogChamp', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'KreyGasm', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'delluminati', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'FailFish', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'Keepo', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'WutFace', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'BibleThump', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'4Head', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'BabyRage', E'Twitch Against Humanity (CC:2ANCR)');
+INSERT INTO white (text, pack) VALUES (E'ResidentSleeper', E'Twitch Against Humanity (CC:2ANCR)');

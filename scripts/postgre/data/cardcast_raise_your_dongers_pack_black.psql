@@ -1,0 +1,1 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Raise your ______!', E'Raise Your Dongers Pack (CC:CVW2M)', 1, 1);

@@ -1,0 +1,4 @@
+INSERT INTO white (text, pack) VALUES (E'not enough tentacles', E'scarywigglythings Pack (CC:5NHYW)');
+INSERT INTO white (text, pack) VALUES (E'too many tentacles', E'scarywigglythings Pack (CC:5NHYW)');
+INSERT INTO white (text, pack) VALUES (E'a demon with erectile dysfuntion', E'scarywigglythings Pack (CC:5NHYW)');
+INSERT INTO white (text, pack) VALUES (E'slime that gets stuck in the cracks', E'scarywigglythings Pack (CC:5NHYW)');

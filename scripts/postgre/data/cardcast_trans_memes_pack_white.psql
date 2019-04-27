@@ -1,0 +1,5 @@
+INSERT INTO white (text, pack) VALUES (E'The down with cis bus', E'Trans Memes Pack (CC:RQ9MF)');
+INSERT INTO white (text, pack) VALUES (E'Hormone replacement therapy', E'Trans Memes Pack (CC:RQ9MF)');
+INSERT INTO white (text, pack) VALUES (E'Septum piercings', E'Trans Memes Pack (CC:RQ9MF)');
+INSERT INTO white (text, pack) VALUES (E'Relating more to an animal version of yourself than your own body', E'Trans Memes Pack (CC:RQ9MF)');
+INSERT INTO white (text, pack) VALUES (E'Peeing in the corner', E'Trans Memes Pack (CC:RQ9MF)');

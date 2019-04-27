@@ -1,0 +1,2 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Cards Against ______', E'Meta CAH (CC:EU6EP)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What\'s a new way to make Cards Against Humanity more interesting? ______', E'Meta CAH (CC:EU6EP)', 1, 1);

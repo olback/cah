@@ -1,0 +1,3 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Why are your neighbors asking why you are limping down the street? ______.', E'Fucked Up Shit Pack (CC:68K9W)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Who beat their meat in class?.', E'Fucked Up Shit Pack (CC:68K9W)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What did I do to the dead body?', E'Fucked Up Shit Pack (CC:68K9W)', 1, 1);

@@ -1,0 +1,12 @@
+INSERT INTO white (text, pack) VALUES (E'Pisces', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Scorpio', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Sagittarius', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Cancer', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Capricorn', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Gemini', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Aquarius', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Taurus', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Aries', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Leo', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Libra', E'Cards Against Astrology (CC:AQVPW)');
+INSERT INTO white (text, pack) VALUES (E'Virgo', E'Cards Against Astrology (CC:AQVPW)');

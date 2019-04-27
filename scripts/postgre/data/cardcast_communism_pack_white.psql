@@ -1,0 +1,7 @@
+INSERT INTO white (text, pack) VALUES (E'Josef Stalin', E'Communism Pack (CC:TB3RR)');
+INSERT INTO white (text, pack) VALUES (E'Vladimir Lenin', E'Communism Pack (CC:TB3RR)');
+INSERT INTO white (text, pack) VALUES (E'Dictatorship of the Proletariat', E'Communism Pack (CC:TB3RR)');
+INSERT INTO white (text, pack) VALUES (E'Leon Trotsky', E'Communism Pack (CC:TB3RR)');
+INSERT INTO white (text, pack) VALUES (E'Ernesto Guevara', E'Communism Pack (CC:TB3RR)');
+INSERT INTO white (text, pack) VALUES (E'Fidel & Ernesto', E'Communism Pack (CC:TB3RR)');
+INSERT INTO white (text, pack) VALUES (E'Fidel Castro', E'Communism Pack (CC:TB3RR)');

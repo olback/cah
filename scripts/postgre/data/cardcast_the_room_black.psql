@@ -1,0 +1,10 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Oh hi ______!', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Oh hi ______! I didn\'t know it was you.', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'You\'re ______ Lisa!', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ looks so good on you, Lisa!', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is my best friend!', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I got the results of the test back - I definitely have ______.', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'You know what they say -  ______ is blind', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I bought some ______ off of him. Things got mixed up. I didn\'t mean for this to happen!', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Why are you doing this to me? ______.', E'The Room (CC:2VHRE)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What are these characters doing here? ______.', E'The Room (CC:2VHRE)', 1, 1);

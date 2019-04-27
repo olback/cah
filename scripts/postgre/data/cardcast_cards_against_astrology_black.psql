@@ -1,0 +1,16 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Scorpios because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Libras because  ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'What\'s your sign? ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Capricorns because ______.', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Virgos because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Leos because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Scorpios are ______', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Sagittarians because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'My favorite thing to do with a Scorpio is ______.', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Aquarians because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Geminis because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Pisces people because ______.', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Cancers because  ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Aries because ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I\'m a ().', E'Cards Against Astrology (CC:AQVPW)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I like Taureans because  ( ______ ).', E'Cards Against Astrology (CC:AQVPW)', 1, 1);

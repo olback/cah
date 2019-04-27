@@ -1,0 +1,1 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The best way to ______ is not to do it.', E'Full Retard Pack (CC:UF4T4)', 1, 1);

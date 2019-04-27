@@ -1,0 +1,1 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Kim Il-sung and ______ walk into a bar', E'Communism Pack (CC:TB3RR)', 1, 1);

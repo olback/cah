@@ -1,0 +1,2 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"Today on drama alert we havevs"', E'Keemstar Pack (CC:N6FW3)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"What is upalert nation lets Get right in to the"', E'Keemstar Pack (CC:N6FW3)', 1, 1);

@@ -1,0 +1,10 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"Turn to page 15 and the first sentence describes you" ______.', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Boys go to ______ to get my knowlege, Girls go to ______ to get more stupider.', E'Tik Tok Pack (CC:3NT2J)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'This is my voice 1 week on ______.', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"Hey man can my sister come?" "No way man it\'s bro time." "But look" ______ "Okay she can come."', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Why do good girls like bad guys? ______.', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"How do you call your lover boy?" "I simply say ______."', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Take two steps forward if you ______.', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Now ladies ______. Good goly.', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Hit or miss, I guess they never miss huh? You gotta boyfriend I bet he doesn\'t ______.', E'Tik Tok Pack (CC:3NT2J)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'"Maybe I\'ll be Tracer" "I\'m already Tracer" "What about Widowmaker?" "I\'m already Widowmaker" "Then I\'ll be ______."', E'Tik Tok Pack (CC:3NT2J)', 1, 1);

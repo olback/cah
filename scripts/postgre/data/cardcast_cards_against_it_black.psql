@@ -1,0 +1,18 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is Layer 8 of the OSI Networking Model.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is the last stage of our ______ rollout.', E'Cards Against IT (CC:G73PU)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is now included for free with every OS update.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Had a user fall prey to a sophisticated ______ phishing attack.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Two factor auth with ______ and ______.', E'Cards Against IT (CC:G73PU)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The hot new videogame this year is ______ Simulator!', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'In a pinch, ______ can be used to remotely reboot a server.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The new IT Director has a sick tattoo of ______.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The last consultant was fired over ______.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'That red plunger switch on the wall launches ______.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'______ is now required every time you restart ______.', E'Cards Against IT (CC:G73PU)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'A helpdesk call to fix ______ with ______.', E'Cards Against IT (CC:G73PU)', 2, 2);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Forgetting ______ in the datacenter is a firing offense.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'We\'re going to use ______ instead of updating to IPv6.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I got this coffee mug from a conference about ______ back in 1997.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I just got a new certification in ______.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Forgot my badge this morning and had to use ______ to get in.', E'Cards Against IT (CC:G73PU)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Nothing transfers data faster than ______.', E'Cards Against IT (CC:G73PU)', 1, 1);

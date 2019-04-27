@@ -1,0 +1,16 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'_____ means never having to say you\'re sorry.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The pen tester found _____ in the trash while dumpster diving.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Our CIO has a framed a picture of _____.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'9 out of 10 experts agree, _____ will increase your security effectiveness.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'The man who trades _____ for security does not deserve, nor will he ever receive, either', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'_____ can often represent the weakest.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'_____ will help make everything more secure.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'You can work around the issue by _____.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Our in house team handles _____.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Who needs network credentials when you have _____?', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I keep _____ in a case above my desk.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'When I\'m not at work, I really enjoy _____.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I wrote a syslog parser that found a user who was _____.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Hey, did you hear about that new malware called _____?', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'As a security admin, it probably won\'t come as a surprise to you that my favorite childhood hobby was _____.', E'Cards Against Security', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I was considering dating a security expert, until they gave me _____.', E'Cards Against Security', 1, 1);

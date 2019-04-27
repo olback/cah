@@ -1,0 +1,4 @@
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Rekt', E'MLG Illuminati Shrek Questions (CC:KPJRX)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Illuminati', E'MLG Illuminati Shrek Questions (CC:KPJRX)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'I\'m Illuminati ______', E'MLG Illuminati Shrek Questions (CC:KPJRX)', 1, 1);
+INSERT INTO black (text, pack, pick, draw) VALUES (E'Shrek is ______ Shrek is ______', E'MLG Illuminati Shrek Questions (CC:KPJRX)', 2, 2);
