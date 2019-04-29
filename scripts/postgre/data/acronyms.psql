@@ -15,6 +15,7 @@ INSERT INTO acronyms (text) VALUES ('Confidential Agreements Hug');
 INSERT INTO acronyms (text) VALUES ('Chemicals And Homicide');
 INSERT INTO acronyms (text) VALUES ('Cunts And Hate');
 INSERT INTO acronyms (text) VALUES ('Cats Are Heroes');
+INSERT INTO acronyms (text) VALUES ('Cats Against Hounds');
 INSERT INTO acronyms (text) VALUES ('Careers Are Hell');
 INSERT INTO acronyms (text) VALUES ('Conspiracies Are Heaven');
 INSERT INTO acronyms (text) VALUES ('Communist Ambulance Helpers');
@@ -23,5 +24,14 @@ INSERT INTO acronyms (text) VALUES ('Chickens Attack Helicopters');
 INSERT INTO acronyms (text) VALUES ('Camels Attract Hammers');
 INSERT INTO acronyms (text) VALUES ('Carbon And Hydrogen');
 INSERT INTO acronyms (text) VALUES ('Congressman Applies Hovercraft');
-
-
+INSERT INTO acronyms (text) VALUES ('Christians Assassinating Hebrews');
+INSERT INTO acronyms (text) VALUES ('Conservative Affordable healthcare');
+INSERT INTO acronyms (text) VALUES ('Coal Argon Helium');
+INSERT INTO acronyms (text) VALUES ('Chinese Accent: Herro!');
+INSERT INTO acronyms (text) VALUES ('Cucked And Homeless');
+INSERT INTO acronyms (text) VALUES ('Cuffed And Hogtied');
+INSERT INTO acronyms (text) VALUES ('Cucumber + Anus = Hospital');
+INSERT INTO acronyms (text) VALUES ('Cunts Against Humping');
+INSERT INTO acronyms (text) VALUES ('CSS Against HTML');
+INSERT INTO acronyms (text) VALUES ('Curd Against Hairloss');
+INSERT INTO acronyms (text) VALUES ('Carls Against Humanity');
