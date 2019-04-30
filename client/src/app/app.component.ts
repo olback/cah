@@ -49,11 +49,7 @@ export class AppComponent implements OnInit, DoCheck {
       this._socket.on('acronym', (acronym: string) => {
         this.acronym = acronym;
 
-        if (this._settingsService.settings.eggs.get() && acronym === 'CSS Against HTML') {
-          this.tilted = true;
-        } else {
-          this.tilted = false;
-        }
+        this.tilted = this._settingsService.settings.eggs.get() && acronym === 'CSS Against HTML';
 
       });
 
