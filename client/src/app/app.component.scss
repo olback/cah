@@ -12,6 +12,10 @@ header {
     cursor: pointer;
     float: left;
 
+    &.tilted {
+      transform: rotate(-10deg);
+    }
+
     &.username {
       float: right;
       cursor: default;

@@ -1,5 +1,5 @@
 <header>
-    <h1 routerLink="/">{{ acronym }}</h1>
+    <h1 [class.tilted]="tilted" routerLink="/">{{ acronym }}</h1>
     <fa-icon (click)="showSettings=!showSettings" [icon]="['fas', 'cog']"></fa-icon>
     <h1 class="username">{{ username }}</h1>
 </header>

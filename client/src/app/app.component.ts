@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, DoCheck {
   username = '';
   toast = new Toast('');
   showSettings = false;
+  tilted = false;
 
   constructor(
     private _socketService: SocketService,
@@ -47,6 +48,13 @@ export class AppComponent implements OnInit, DoCheck {
 
       this._socket.on('acronym', (acronym: string) => {
         this.acronym = acronym;
+
+        if (this._settingsService.settings.eggs.get() && acronym === 'CSS Against HTML') {
+          this.tilted = true;
+        } else {
+          this.tilted = false;
+        }
+
       });
 
       this._socket.emit('acronym');
