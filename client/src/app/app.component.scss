@@ -12,6 +12,10 @@ header {
     cursor: pointer;
     float: left;
 
+    &:first-of-type {
+      text-transform: capitalize;
+    }
+
     &.tilted {
       transform: rotate(-10deg);
     }
