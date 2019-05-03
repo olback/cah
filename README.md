@@ -3,7 +3,7 @@
 
 #### :fire: Key features:
 * 34 000 Playing cards.
-* No loggin at all.
+* No logging at all.
 * No accounts.
 * Blank cards.
 * No language filters. :underage:
