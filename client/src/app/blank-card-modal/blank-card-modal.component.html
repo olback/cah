@@ -1,0 +1,14 @@
+<div class="background">
+
+  <div class="container">
+
+    <h1>Text:</h1>
+
+    <textarea [(ngModel)]="text"></textarea>
+
+    <button (click)="closeModal()">Close</button>
+    <button [disabled]="!text" (click)="closeAndSend()">Confirm</button>
+
+  </div>
+
+</div>

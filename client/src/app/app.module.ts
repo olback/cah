@@ -28,6 +28,7 @@ import { FAModule } from './fa/fa.module';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
 import { InfoComponent } from './info/info.component';
+import { BlankCardModalComponent } from './blank-card-modal/blank-card-modal.component';
 
 const sioc: SocketIoConfig = {
   url: env.siou,
@@ -43,7 +44,8 @@ const sioc: SocketIoConfig = {
     InGameSettingsComponent,
     SettingsComponent,
     ToastComponent,
-    InfoComponent
+    InfoComponent,
+    BlankCardModalComponent
   ],
   imports: [
     BrowserModule,

@@ -21,7 +21,6 @@ interface Pack {
 })
 export class CreateGameComponent implements OnInit, DoCheck {
 
-  // Temp variable FIXME:TODO:
   gameId: string = (Math.random() * 1E17).toString(36);
   baseUrl: string =  location.origin;
 
@@ -33,6 +32,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
   maxPlayers = 5;
   timeout = 0;
   password = '';
+  blanks = 5;
 
   constructor(
     private _socket: Socket,
@@ -125,7 +125,8 @@ export class CreateGameComponent implements OnInit, DoCheck {
       maxPlayers: this.maxPlayers,
       timeout: Number(this.timeout),
       password: this.password,
-      packs: this.packs.filter(e => e.selected).map(e => e.name)
+      packs: this.packs.filter(e => e.selected).map(e => e.name),
+      blanks: this.blanks
     };
 
     if (this.maxScore * this.maxPlayers >= this.black) {

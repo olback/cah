@@ -24,7 +24,7 @@ export class InGameSettingsComponent implements OnInit {
     if (this.game.timeout === 0) {
       return 'Unlimited';
     } else if (this.game.timeout < 61) {
-      return '61 seconds';
+      return '60 seconds';
     } else {
       return `${Math.floor(this.game.timeout / 60)} minutes, ${this.game.timeout % 60} seconds`;
     }

@@ -50,10 +50,15 @@ declare namespace Socket {
         timeout: number;
         packs: string[];
         password: string;
+        blanks: number;
     }
 
     interface JoinGameRequest extends GameRequest {
         password: string;
+    }
+
+    interface CustomWhite extends GameRequest {
+        text: string;
     }
 
     interface PickWhite extends GameRequest {
@@ -87,6 +92,7 @@ declare namespace Socket {
             winAt: number;
             maxPlayers: number;
             timeout: number;
+            blanksRemaining: number;
         }
 
     }

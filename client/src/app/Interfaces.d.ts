@@ -67,6 +67,7 @@ declare namespace ISocket {
             winAt: number;
             maxPlayers: number;
             timeout: number;
+            blanksRemaining: number;
         }
 
     }

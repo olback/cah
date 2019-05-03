@@ -1,0 +1,52 @@
+div {
+
+    &.background {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .container {
+        position: relative;
+        background-color: white;
+        margin-top: 15vh;
+        margin-left: 30vw;
+        width: calc(40vw - 60px);
+        // height: calc(70vh - 60px);
+        padding: 30px;
+        overflow-y: auto;
+
+        textarea {
+            display: block;
+            width: 100%;
+            height: max-content;
+            margin-bottom: 30px;
+            resize: none;
+            font-size: 14pt;
+            min-height: 40vh;
+        }
+
+        button {
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 2px;
+            background-color: white;
+            margin-right: 10px;
+            outline: none;
+            cursor: pointer;
+            font-size: 12pt;
+            transition: background-color 0.1s ease-in-out;
+
+            &:hover {
+                background-color: #ebebeb;
+            }
+
+        }
+
+
+    }
+
+}

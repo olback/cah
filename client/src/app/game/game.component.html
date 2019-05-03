@@ -90,7 +90,8 @@
     <div>
       <button *ngIf="pid !== game.czar" [disabled]="done || gameOver" (click)="confirm()">Confirm selection</button>
       <button *ngIf="pid === game.czar" [disabled]="!winnerCard || gameOver" (click)="confirm()">Confirm selection</button>
-      <button (click)="open=!open">View settings</button>
+      <button [disabled]="pid === game.czar || game.players.length < 3" (click)="modals.blank=!modals.blank">Use blank card ({{ game.blanksRemaining }})</button>
+      <button (click)="modals.settings=!modals.settings">View settings</button>
       <button (click)="sync"><fa-icon [icon]="['fas', 'sync']"></fa-icon></button>
     </div>
 
@@ -101,6 +102,7 @@
 
   </div>
 
-  <app-in-game-settings *ngIf="open" [game]="game" (close)="open=!open"></app-in-game-settings>
+  <app-in-game-settings *ngIf="modals.settings" [game]="game" (close)="modals.settings=!modals.settings"></app-in-game-settings>
+  <app-blank-card-modal *ngIf="modals.blank" (send)="playBlank($event)" (close)="modals.blank=!modals.blank"></app-blank-card-modal>
 
 </main>

@@ -96,7 +96,8 @@ io.on('connection', socket => {
                 data.password,
                 data.maxScore,
                 data.maxPlayers,
-                data.timeout
+                data.timeout,
+                data.blanks
             );
         } else {
             socket.emit('error-message', {
@@ -180,6 +181,36 @@ io.on('connection', socket => {
 
             socket.emit('error-message', {
                 message: `Game ${data.gid} does not exist`
+            });
+
+        }
+
+    });
+
+    socket.on('blank-card', (data: Socket.CustomWhite) => {
+
+        if (games[data.gid] && players[data.pid]) {
+
+            if (games[data.gid].players.check(data.pid)) {
+
+                if (!games[data.gid].blankPick(data)) {
+                    socket.emit('error-message', {
+                        message: 'Error playing blank card'
+                    });
+                }
+
+            } else {
+
+                socket.emit('error-message', {
+                    message: `Player ${data.pid} is not a member of game`
+                });
+
+            }
+
+        } else {
+
+            socket.emit('error-message', {
+                message: 'Error playing card'
             });
 
         }

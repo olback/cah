@@ -10,7 +10,10 @@ import { TokenService } from '../_services/token.service';
 })
 export class GameComponent implements OnInit, OnDestroy {
 
-  open = false;
+  modals = {
+    settings: false,
+    blank: false
+  };
   gid = '';
   pid = this._token.get();
   game: ISocket.GameState.State;
@@ -130,6 +133,15 @@ export class GameComponent implements OnInit, OnDestroy {
     this._socket.emit('game', {
       pid: this._token.get(),
       gid: this.gid
+    });
+  }
+
+  playBlank(text: string) {
+    this.modals.blank = false;
+    this._socket.emit('blank-card', {
+      pid: this._token.get(),
+      gid: this.gid,
+      text: text
     });
   }
 

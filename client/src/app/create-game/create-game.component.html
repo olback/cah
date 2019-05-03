@@ -22,6 +22,11 @@
   </div>
 
   <div class="input-group">
+    <label for="max-players">Blank cards per player:</label>
+    <input [(ngModel)]="blanks" id="blanks" type="number" min="0" max="100" value="3" />
+  </div>
+
+  <div class="input-group" style="display:none">
     <label for="timeout">Timeout:</label>
     <!-- <input id="max-players" type="number" min="3" max="10" value="5" /> -->
     <select [(ngModel)]="timeout" name="timeout" id="timeout">

@@ -35,7 +35,8 @@ class Game {
         private _password: string,
         private _winAt: number,
         public maxPlayers: number,
-        private _timeout: number
+        private _timeout: number,
+        private _blanks: number
     ) {
 
         const db = new Client(dbConf);
@@ -206,7 +207,8 @@ class Game {
             packs: this._packs,
             winAt: this._winAt,
             maxPlayers: this.maxPlayers,
-            timeout: this._timeout
+            timeout: this._timeout,
+            blanksRemaining: this._blanks - this._players[pid].blanksPlayed
         }
 
         return state;
@@ -248,6 +250,32 @@ class Game {
                 }
                 return true;
             }
+        }
+
+        return false;
+
+    }
+
+    blankPick(card: Socket.CustomWhite) {
+
+        if (this._players[card.pid].blanksPlayed < this._blanks) {
+            this._players[card.pid].blanksPlayed++;
+            this._players[card.pid].picks.push({
+                id: Number((Math.random() * 100000000).toFixed(0)) + 100000000,
+                pack: 'Custom Card',
+                text: card.text
+            });
+
+            if (this._players[card.pid].picks.length === this._blackCards[this._bIndex].pick) {
+                this._playedCards.push({
+                    pid: card.pid,
+                    cards: this._players[card.pid].picks
+                });
+                this.sendState('all');
+            }
+
+            return true;
+
         }
 
         return false;
