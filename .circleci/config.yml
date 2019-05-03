@@ -1,0 +1,54 @@
+version: 2
+
+jobs:
+  server:
+    docker:
+      - image: node:10-stretch
+    # working_directory: ~/project/server/
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: npm-cache-server-{{ checksum "server/package.json" }}
+
+      - run:
+          name: Install node packages
+          command: cd server && npm install
+
+      - run:
+          name: Run TSC
+          command: cd server && npm run ts:compile
+
+      - save_cache:
+          paths:
+            - server/node_modules
+          key: npm-cache-server-{{ checksum "server/package.json" }}
+
+  client:
+    docker:
+      - image: node:10-stretch
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: npm-cache-client-{{ checksum "client/package.json" }}
+
+      - run:
+          name: Install node packages
+          command: cd client && npm install
+
+      - run:
+          name: Build Angular app
+          command: cd client && node_modules/.bin/ng build --prod
+
+      - save_cache:
+          paths:
+            - client/node_modules
+          key: npm-cache-client-{{ checksum "client/package.json" }}
+
+workflows:
+  version: 2
+  build:
+      jobs:
+        - server
+        - client
