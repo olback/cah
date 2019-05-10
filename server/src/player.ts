@@ -6,10 +6,10 @@ interface Players {
 
 class Player {
 
-    public username: string = '';
-    public inGame: boolean = false;
-    public score: number = 0;
-    public blanksPlayed: number = 0;
+    public username = '';
+    public inGame = false;
+    public score = 0;
+    public blanksPlayed = 0;
     public hand: WhiteCard[] = [];
     public picks: WhiteCard[] = [];
 
@@ -32,4 +32,4 @@ class Player {
 export {
     Player,
     Players
-}
+};

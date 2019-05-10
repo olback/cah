@@ -6,7 +6,6 @@ import { Player, Players } from './player';
 import { Client } from 'pg';
 import { dbConf } from './config';
 import * as path from 'path';
-// @ts-ignore
 import * as git from 'git-rev-sync';
 
 const port = env.NODE_PORT ? Number(env.NODE_PORT) : 5000;
@@ -72,7 +71,7 @@ io.on('connection', socket => {
 
         db.end();
 
-        socket.emit('get-packs-list', packs.sort((a,b) => (a.pack > b.pack) ? 1 : ((b.pack > a.pack) ? -1 : 0)));
+        socket.emit('get-packs-list', packs.sort((a, b) => (a.pack > b.pack) ? 1 : ((b.pack > a.pack) ? -1 : 0)));
 
     });
 
@@ -88,7 +87,7 @@ io.on('connection', socket => {
     });
 
     socket.on('new-game', (data: Socket.NewGame) => {
-        if(data.pid && data.gid && players[data.pid] && !players[data.pid].inGame) {
+        if (data.pid && data.gid && players[data.pid] && !players[data.pid].inGame) {
             games[data.gid] = new Game(
                 data.gid,
                 players[data.pid],
@@ -250,7 +249,7 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
 
-        for(const p in players) {
+        for (const p in players) {
 
             if (players[p].socket.id === socket.id) {
 
