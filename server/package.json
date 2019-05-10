@@ -8,6 +8,7 @@
     "start": "node out/server.js",
     "ts:compile": "tsc -p ./",
     "ts:watch": "tsc -p ./ --watch",
+    "ts:lint": "node_modules/.bin/tslint --project .",
     "dev": "npm rebuild --build-from-source && node devserver"
   },
   "keywords": [
@@ -16,10 +17,12 @@
     "nodejs"
   ],
   "author": "olback",
+  "private": true,
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "tslint": "^5.16.0"
   },
   "dependencies": {
     "@types/express": "^4.16.0",
