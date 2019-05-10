@@ -17,16 +17,11 @@ interface Games {
 class Game {
 
     public created = new Date().getTime();
-
     private _players: Players = {};
     private _bIndex = 0;
-    // private _round = 0;
     private _blackCards: BlackCard[] = [];
     private _whiteCards: WhiteCard[] = [];
     private _playedCards: PlayedCards[] = [];
-    // private _czar = this._players[this._host.id].id; // this._players[Object.keys(this._players)[2 % Object.keys(this._players).length]].id?
-    // private _czar = this._players[Object.keys(this._players)[this._bIndex % Object.keys(this._players).length]].id;
-    // private _czar = this._host.id;
     private _czar = this._host.id;
 
     constructor(
@@ -96,20 +91,6 @@ class Game {
 
     }
 
-    // start () {
-    //     this._started = true;
-    //     for (const p in this._players) {
-    //         this._players[p].socket.emit('game-start', null);
-    //     }
-    // }
-
-    // end() {
-    //     this._started = false;
-    //     for (const p in this._players) {
-    //         this._players[p].socket.emit('end', null);
-    //     }
-    // }
-
     public players = {
         add: (player: Player) => {
             if (!this.players.check(player.id)) {
@@ -122,7 +103,7 @@ class Game {
             }
         },
         remove: (player: Player) => {
-            // FIXME: What happens when the czar leaves?
+            // TODO: What happens when the czar leaves? Nothing? The game just pauses?
             if (this.players.check(player.id)) {
                 this._players[player.id].cleanUp();
                 delete this._players[player.id];
@@ -157,13 +138,8 @@ class Game {
             }
             return false;
         },
-        check: (pack: string) => { // TODO: Refactor. Use indexOf().
-            for (const p of this._packs) {
-                if (pack === p) {
-                    return true;
-                }
-            }
-            return false;
+        check: (pack: string) => {
+            return this._packs.includes(pack);
         }
     };
 
@@ -251,6 +227,7 @@ class Game {
                         pid: pid,
                         cards: this._players[pid].picks
                     });
+                    shuffleArray(this._playedCards);
                     this.sendState('all');
                 }
                 return true;
@@ -276,6 +253,7 @@ class Game {
                     pid: card.pid,
                     cards: this._players[card.pid].picks
                 });
+                shuffleArray(this._playedCards);
                 this.sendState('all');
             }
 
