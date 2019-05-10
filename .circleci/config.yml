@@ -62,9 +62,9 @@ workflows:
       - server
       - client
       - deply:
-        requires:
-          - server
-          - client
+          requires:
+            - server
+            - client
           filters:
             branches:
               only: master
