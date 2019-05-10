@@ -14,6 +14,7 @@ export class GameComponent implements OnInit, OnDestroy {
     settings: false,
     blank: false
   };
+
   gid = '';
   pid = this._token.get();
   game: ISocket.GameState.State;
@@ -21,7 +22,6 @@ export class GameComponent implements OnInit, OnDestroy {
   selectedWhite: WhiteCard | null = null;
   winnerCard: PlayedCards;
   done = true;
-  gameOver = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -34,23 +34,28 @@ export class GameComponent implements OnInit, OnDestroy {
 
       if (this.game.players.length < 3) {
         this.message = 'Waiting for players';
+        this.done = true;
       } else if (game.czar === this._token.get()) {
         this.message = 'You are the card czar';
       } else {
         this.message = '';
+        this.done = false;
       }
 
       for (const p of game.playedCards) {
         if (p.pid === this._token.get()) {
           this.done = true;
           break;
+        } else {
+          this.done = false;
         }
       }
 
       for (const p of game.players) {
         if (p.score === this.game.winAt) {
           this.message = `${p.username} won the game!`;
-          this.gameOver = true;
+          this.done = true;
+          // this.gameOver = true;
         }
       }
 
@@ -124,6 +129,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   selectWinner(winner: PlayedCards) {
+    this.done = false;
     if (this.game.czar === this._token.get()) {
       this.winnerCard = winner;
     }

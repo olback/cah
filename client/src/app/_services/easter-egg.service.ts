@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 
+interface IEggs {
+  [key: string]: (b: boolean) => void;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class EasterEggService {
 
-  private eggs = {
+  private eggs: IEggs = {
     comicSans(enabled: boolean) {
       if (enabled) {
         document.getElementsByTagName('body')[0].classList.add('comic-sans');

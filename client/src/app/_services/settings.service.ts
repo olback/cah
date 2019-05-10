@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Setting } from '../_classes/setting';
 import { EasterEggService } from './easter-egg.service';
 
+interface ISettings {
+  [key: string]: Setting;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +13,7 @@ export class SettingsService {
 
   constructor(private _eggs: EasterEggService) {}
 
-  public settings = {
+  public settings: ISettings = {
     acronyms: new Setting('acronyms', 'boolean', 'Enable random acronyms (offensive)'),
     eggs: new Setting('eggs', 'boolean', 'Enable easter eggs', (v) => {
       this._eggs.disableAll();

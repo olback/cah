@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SettingsService } from '../_services/settings.service';
+import { Setting } from '../_classes/setting';
 
 // interface Setting {
 //   type: 'string' | 'number' | 'boolean';
@@ -16,7 +17,7 @@ export class SettingsComponent implements OnInit {
 
   @Output() close = new EventEmitter(true);
 
-  settings = [];
+  settings: Setting[] = [];
 
   constructor(public settingsService: SettingsService) {
 
