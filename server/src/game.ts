@@ -2,9 +2,10 @@ import { Player, Players } from './player';
 import { Client, QueryResult } from 'pg';
 import { dbConf } from './config';
 
+// tslint:disable-next-line:no-any
 function shuffleArray(array: Array<any>) {
     for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
@@ -59,7 +60,7 @@ class Game {
                         text: row.text,
                         pack: row.pack
                     });
-                })
+                });
             });
         }));
 
@@ -73,7 +74,7 @@ class Game {
                         draw: Number(row.draw),
                         pack: row.pack
                     });
-                })
+                });
             });
         }));
 
@@ -139,7 +140,7 @@ class Game {
         amount: () => {
             return Object.keys(this._players).length;
         }
-    }
+    };
 
     public packs = {
         add: (pack: string) => {
@@ -164,7 +165,7 @@ class Game {
             }
             return false;
         }
-    }
+    };
 
     public password = {
         set: (password: string) => {
@@ -173,7 +174,7 @@ class Game {
         check: (password: string) => {
             return this._password === password;
         }
-    }
+    };
 
     private randomWhiteCard(): WhiteCard {
 
@@ -186,13 +187,15 @@ class Game {
         const pa: Socket.GameState.Player[] = [];
 
         for (const p in this._players) {
-            pa.push({
-                id: this._players[p].id,
-                username: this._players[p].username,
-                done: this._players[p].picks.length === this._blackCards[this._bIndex].pick,
-                host: this._host.id === this._players[p].id,
-                score: this._players[p].score
-            });
+            if (this._players.hasOwnProperty(p)) {
+                pa.push({
+                    id: this._players[p].id,
+                    username: this._players[p].username,
+                    done: this._players[p].picks.length === this._blackCards[this._bIndex].pick,
+                    host: this._host.id === this._players[p].id,
+                    score: this._players[p].score
+                });
+            }
         }
 
         const state: Socket.GameState.State = {
@@ -209,7 +212,7 @@ class Game {
             maxPlayers: this.maxPlayers,
             timeout: this._timeout,
             blanksRemaining: this._blanks - this._players[pid].blanksPlayed
-        }
+        };
 
         return state;
     }
@@ -219,7 +222,9 @@ class Game {
         if (player === 'all') {
 
             for (const pid in this._players) {
-                this._players[pid].socket.emit('game', this.getState(pid));
+                if (this._players.hasOwnProperty(pid)) {
+                    this._players[pid].socket.emit('game', this.getState(pid));
+                }
             }
 
         } else {
@@ -236,7 +241,7 @@ class Game {
             return false;
         }
 
-        for (let [i, wc] of this._players[pid].hand.entries()) {
+        for (const [i, wc] of this._players[pid].hand.entries()) {
             if (wc.id === card.id && this._players[pid].picks.length < this._blackCards[this._bIndex].pick) {
                 this._players[pid].picks.push(card);
                 this._players[pid].hand.splice(i, 1);
@@ -289,12 +294,12 @@ class Game {
         this._bIndex++;
         this._czar = Object.keys(this._players)[this._bIndex % Object.keys(this._players).length];
         for (const p in this._players) {
-            this._players[p].newRound();
-        }
-        for (const p in this._players) {
-            this._players[p].socket.emit('round-winner', {
-                pid: winner
-            });
+            if (this._players.hasOwnProperty(p)) {
+                this._players[p].newRound();
+                this._players[p].socket.emit('round-winner', {
+                    pid: winner
+                });
+            }
         }
         setTimeout(() => {
             this.sendState('all');
@@ -306,4 +311,4 @@ class Game {
 export {
     Game,
     Games
-}
+};

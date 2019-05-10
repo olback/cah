@@ -3,6 +3,7 @@
     "jsRules": {},
     "rules": {
         "arrow-return-shorthand": true,
+        "ban-ts-ignore": true,
         "callable-types": true,
         "class-name": true,
         "comment-format": [
@@ -40,6 +41,7 @@
           }
         ],
         "no-arg": true,
+        "no-any": true,
         "no-bitwise": true,
         "no-console": [
           true,

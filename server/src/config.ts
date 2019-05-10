@@ -7,8 +7,8 @@ const dbConf: ClientConfig = {
     user: env.PG_USER,
     password: env.PG_PASSWORD,
     database: env.PG_USER
-}
+};
 
 export {
     dbConf
-}
+};
