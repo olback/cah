@@ -31,7 +31,7 @@ Because Angular and Typescript are what I'm most familiar with. :man_shrugging:
 ### Can i host my own verison of this?
 
 Yes. Clone the repository and run `scripts/setup.sh`.
-You should now have the game running on port 5000. For more info see [Setup.md](Setup.md).
+You should now have the game running on port 5000. For more info see [Setup.md](setup.md).
 
 ### Why is it called _Chickens Attach Helicopters_?
 
