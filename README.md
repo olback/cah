@@ -31,9 +31,9 @@ Because Angular and Typescript are what I'm most familiar with. :man_shrugging:
 ### Can i host my own verison of this?
 
 Yes. Clone the repository and run `scripts/setup.sh`.
-You should now have the game running on port 5000. For more info see [Setup.md](setup.md).
+You should now have the game running on port 5000. For more info see [setup.md](setup.md).
 
-### Why is it called _Chickens Attach Helicopters_?
+### Why is it called _Chickens Attack Helicopters_?
 
 > "We own the name "Cards Against Humanity," so you have to call your crappy thing something else."
 
@@ -42,7 +42,7 @@ You should now have the game running on port 5000. For more info see [Setup.md](
 ## Installation
 
 [cah.ninja](https://cah.ninja/) is the main URL for the game but if you want to run your own version of the game you can do so.
-[Setup.md](Setup.md) explains how to set up your own version of the game on GNU/Linux.
+[setup.md](setup.md) explains how to set up your own version of the game on GNU/Linux.
 
 ## Contributing
 
