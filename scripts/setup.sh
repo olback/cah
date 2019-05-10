@@ -1,47 +1,15 @@
 #!/bin/bash
 
-# Get node version
-# NODE_MAJOR_VERSION=$(node -v | cut -b 2,3)
-# if [ $NODE_MAJOR_VERSION != 10 ]; then
-#   echo -e '\e[33mNode version 10 is higly recomended!\e[0m'
-#   sleep 2
-# else
-#   echo -e '✔ \e[32mNode version OK\e[0m'
-# fi
-
-# Get NPM version
-NPM_VERSION=$(npm -v | cut -b 1)
-if [ $NPM_VERSION != 6 ]; then
-  echo -e '\e[33mNPM version 6 or higher is higly recomended!\e[0m'
-  sleep 2
-else
-  echo -e '\e[32m✔ NPM version OK\e[0m'
-fi
-
-# Make sure ng (Angular CLI is installed globaly)
-NG=$(basename $(which ng))
-if [[ $NG != "ng" ]]; then
-  echo -e '\e[31m✘ Angular CLI not installed. Install with "npm install -g @angular/cli"\e[0m'
+bash scripts/_common.sh
+if [ $? -ne 0 ]; then
   exit -1
-else
-  echo -e '\e[32m✔ Angular CLI Installed\e[0m'
-fi
-
-# Make sure we have enough memory available for npm install (ugh)
-MEMFREE=$(cat /proc/meminfo | grep MemFree | awk '{print $2}')
-SWPFREE=$(cat /proc/meminfo | grep SwapFree | awk '{print $2}')
-if [ $(($MEMFREE + $SWPFREE)) -lt 1000000 ]; then
-  echo -e '\e[31m✘ Not enough memory available!\e[0m'
-  exit -1
-else
-  echo -e '\e[32m✔ Enough memory\e[0m'
 fi
 
 # Build the Angular App
 echo '- Building Angular App'
 cd client
 npm install
-ng build --prod
+node_modules/.bin/ng build --prod
 cd ..
 
 # Create .env

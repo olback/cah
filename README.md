@@ -49,12 +49,12 @@ You should now have the game running on port 5000. For more info see [setup.md](
 ### Card packs
 
 All card packs are gathered from external sources.
-If you think we're missing one you can add it as a PostgreSQL file and store it in `scripts/postgre/data/`.  
+If you think we're missing one you can add it as a PostgreSQL file and store it in `scripts/postgres/data/`.  
 Remember to use the same layout for the PostgreSQL file as us.
 
 ### Acronyms
 
-All CAH acronyms are stored in `scripts/postgre/sql/acronyms.psql`.
+All CAH acronyms are stored in `scripts/postgres/sql/acronyms.psql`.
 If you want to add more, edit that file and create a [pull request](https://github.com/olback/cah/pulls).
 
 ## Enjoy! :tada:

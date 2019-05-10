@@ -31,6 +31,6 @@ services:
         POSTGRES_USER: ${PG_USER}
         POSTGRES_PASSWORD: ${PG_PASSWORD}
       volumes:
-        - ${DATA_STORE}/postgre:/var/lib/postgresql/data
-        - ${CAH_DIR}/scripts/postgre:/scripts/
-        - ${DUMP_DIR}/postgre:/export/
+        - ${DATA_STORE}/postgres:/var/lib/postgresql/data
+        - ${CAH_DIR}/scripts/postgres:/scripts/
+        - ${DUMP_DIR}/postgres:/export/
