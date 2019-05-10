@@ -46,9 +46,25 @@ jobs:
             - client/node_modules
           key: npm-cache-client-{{ checksum "client/package.json" }}
 
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST -p$SSH_PORT $SSH_COMMAND
+
 workflows:
   version: 2
   build:
-      jobs:
-        - server
-        - client
+    jobs:
+      - server
+      - client
+      - deply:
+        requires:
+          - server
+          - client
+          filters:
+            branches:
+              only: master
