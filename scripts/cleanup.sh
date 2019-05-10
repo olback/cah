@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -p "Are you sure? (y/n)" -n 1 -r
-echo    # (optional) move to a new line
+echo    # move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo 'About to delete "data" and "export". Waiting for 5 seconds...'
