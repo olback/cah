@@ -15,6 +15,12 @@ interface PlayedCards {
     cards: WhiteCard[];
 }
 
+type PackList = [{
+    pack: string;
+    black: number;
+    white: number;
+}]
+
 declare namespace ISocket {
 
     interface Error {

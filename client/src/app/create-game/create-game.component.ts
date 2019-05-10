@@ -4,7 +4,6 @@ import { TokenService } from '../_services/token.service';
 import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
 
-// TODO:FIXME: Temp interface
 interface Pack {
   name: string;
   tag: string;
@@ -12,6 +11,7 @@ interface Pack {
   white: number;
   selected: boolean;
   hidden: boolean;
+  [key: string]: any;
 }
 
 @Component({
@@ -40,7 +40,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
     private _toastService: ToastService
   ) {
 
-    this._socket.on('get-packs-list', data => {
+    this._socket.on('get-packs-list', (data: PackList) => {
       for (const d of data) {
         this.packs.push({
           name: d.pack,
