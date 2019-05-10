@@ -54,7 +54,7 @@ Remember to use the same layout for the PostgreSQL file as us.
 
 ### Acronyms
 
-All CAH acronyms are stored in `scripts/postgre/data/acronyms.psql`.
+All CAH acronyms are stored in `scripts/postgre/sql/acronyms.psql`.
 If you want to add more, edit that file and create a [pull request](https://github.com/olback/cah/pulls).
 
 ## Enjoy! :tada:
