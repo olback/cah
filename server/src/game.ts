@@ -189,7 +189,8 @@ class Game {
                 maxPlayers: this.maxPlayers,
                 timeout: this._timeout,
                 packs: this._packs,
-                password: this._password
+                password: this._password,
+                blanks: this._blanks
             }
         };
 

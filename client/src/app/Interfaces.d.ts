@@ -77,6 +77,7 @@ declare namespace ISocket {
                 timeout: number;
                 packs: string[];
                 password: string;
+                blanks: number;
             }
         }
 

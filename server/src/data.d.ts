@@ -95,6 +95,7 @@ declare namespace Socket {
                 timeout: number;
                 packs: string[];
                 password: string;
+                blanks: number;
             }
         }
 
