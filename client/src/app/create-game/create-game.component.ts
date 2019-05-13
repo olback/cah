@@ -3,6 +3,7 @@ import { Socket } from 'ngx-socket-io';
 import { TokenService } from '../_services/token.service';
 import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
+import { ClipboardService } from 'ngx-clipboard';
 
 interface Pack {
   name: string;
@@ -37,7 +38,8 @@ export class CreateGameComponent implements OnInit, DoCheck {
   constructor(
     private _socket: Socket,
     private _tokenService: TokenService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
+    private _clipboardService: ClipboardService
   ) {
 
     this._socket.on('get-packs-list', (data: PackList) => {
@@ -136,6 +138,18 @@ export class CreateGameComponent implements OnInit, DoCheck {
 
     this._socket.emit('new-game', options);
 
+  }
+
+  copyUrl() {
+    const url = `${origin.toString()}/join/${this.gameId}`;
+    console.log(url);
+    if (this._clipboardService.copyFromContent(url)) {
+      const toast = new Toast('URL copied to clipboard.');
+      this._toastService.emit(toast);
+    } else {
+      const toast = new Toast('Failed to copy URL to clipboard.');
+      this._toastService.emit(toast);
+    }
   }
 
 }

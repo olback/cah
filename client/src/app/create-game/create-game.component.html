@@ -47,7 +47,7 @@
   <div class="input-group">
     <label for="gameId">Game ID:</label>
     <input id="gameId" type="text" readonly value="{{ gameId }}" />
-    <button ngxClipboard [cbContent]="baseUrl + '/join/' + gameId" >Copy join URL</button>
+    <button (click)="copyUrl()">Copy join URL</button>
   </div>
 
   <div class="input-group">
