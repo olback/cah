@@ -25,16 +25,33 @@ div {
             padding: 1em 0;
             border-bottom: 1px solid #666;
 
+            span {
+                margin-right: 1em;
+            }
+
             .property {
                 font-weight: bold;
-                margin-right: 1em;
+                user-select: none;
+            }
+
+            .extra {
+                color: #666;
+                font-style: italic;
+            }
+
+            .clickable {
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .noselect {
+                user-select: none;
             }
 
             &:last-of-type {
                 margin-bottom: 1em;
                 border-bottom: none;
             }
-
 
         }
 
