@@ -30,7 +30,10 @@ main {
 
         .card {
           transition: margin .2s ease-in-out, background-color 0.1s ease-in-out;
-          text-transform: capitalize;
+          text-transform: lowercase;
+          &::first-letter {
+            text-transform: uppercase;
+          }
           &>small {
             font-size: 8pt;
             display: block;
@@ -74,7 +77,10 @@ main {
       // margin-bottom: 20px;
       float: left;
       display: block;
-      text-transform: capitalize;
+      text-transform: lowercase;
+      &::first-letter {
+        text-transform: uppercase;
+      }
 
       &>small {
         font-size: 8pt;
