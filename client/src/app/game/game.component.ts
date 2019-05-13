@@ -52,10 +52,9 @@ export class GameComponent implements OnInit, OnDestroy {
       }
 
       for (const p of game.players) {
-        if (p.score === this.game.winAt) {
+        if (p.score === this.game.settings.maxScore) {
           this.message = `${p.username} won the game!`;
           this.done = true;
-          // this.gameOver = true;
         }
       }
 

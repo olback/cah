@@ -51,10 +51,10 @@
       <fa-icon *ngIf="!p.host" class="user" [icon]="['fas', 'user']"></fa-icon>
       <span [class.me]="p.id === pid">{{ p.username }}</span>
       <span class="score">{{ p.score }}</span>
-      <fa-icon *ngIf="!p.done && p.id !== game.czar && p.score !== game.winAt" class="playing" [icon]="['fas', 'clone']"></fa-icon>
+      <fa-icon *ngIf="!p.done && p.id !== game.czar && p.score !== game.settings.maxScore" class="playing" [icon]="['fas', 'clone']"></fa-icon>
       <fa-icon *ngIf="p.done" class="check" [icon]="['fas', 'check']"></fa-icon>
-      <fa-icon *ngIf="p.id === game.czar && p.score !== game.winAt" class="gavel" [icon]="['fas', 'gavel']"></fa-icon>
-      <fa-icon *ngIf="p.score === game.winAt"class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
+      <fa-icon *ngIf="p.id === game.czar && p.score !== game.settings.maxScore" class="gavel" [icon]="['fas', 'gavel']"></fa-icon>
+      <fa-icon *ngIf="p.score === game.settings.maxScore"class="flag" [icon]="['fas', 'flag-checkered']"></fa-icon>
     </div>
 
   </div>

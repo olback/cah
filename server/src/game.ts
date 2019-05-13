@@ -29,7 +29,7 @@ class Game {
         private _host: Player,
         private _packs: string[],
         private _password: string,
-        private _winAt: number,
+        private _maxScore: number,
         public maxPlayers: number,
         private _timeout: number,
         private _blanks: number
@@ -183,11 +183,14 @@ class Game {
             black: this._blackCards[this._bIndex],
             playedCards: this._playedCards,
             players: pa,
-            packs: this._packs,
-            winAt: this._winAt,
-            maxPlayers: this.maxPlayers,
-            timeout: this._timeout,
-            blanksRemaining: this._blanks - this._players[pid].blanksPlayed
+            blanksRemaining: this._blanks - this._players[pid].blanksPlayed,
+            settings: {
+                maxScore: this._maxScore,
+                maxPlayers: this.maxPlayers,
+                timeout: this._timeout,
+                packs: this._packs,
+                password: this._password
+            }
         };
 
         return state;
