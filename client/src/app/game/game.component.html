@@ -33,12 +33,10 @@
 
   <div class="card-row my-cards">
 
-    <ng-template [ngIf]="!message">
-      <div *ngFor="let card of game.hand" class="card" [class.selected]="selectedWhite && selectedWhite.id === card.id" (click)="selectWhite(card)">
-        {{ card.text }}
-        <small>{{ card.pack }}</small>
-      </div>
-    </ng-template>
+    <div *ngFor="let card of game.hand" class="card" [class.selected]="selectedWhite && selectedWhite.id === card.id" (click)="selectWhite(card)">
+      {{ card.text }}
+      <small>{{ card.pack }}</small>
+    </div>
 
     <h1 *ngIf="message">{{ message }}</h1>
 

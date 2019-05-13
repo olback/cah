@@ -1,10 +1,11 @@
 main {
 
   padding: 20px;
+  padding-top: 0;
 
   .card-row {
     width: 100%;
-    height: 294px;
+    height: 234px;
     overflow-x: auto;
     margin-bottom: 30px;
 
@@ -15,7 +16,7 @@ main {
       .collection {
         display: block;
         float: left;
-        height: 294px;
+        height: 234px;
         width: calc(200px + 20px + 16px + 16px + 2px);
         // margin-bottom: 160px;
 
@@ -38,21 +39,21 @@ main {
         }
 
         .card:nth-child(1):hover {
-          margin-bottom: 240px;
+          margin-bottom: 180px;
         }
 
         .card:nth-child(2) {
-          margin-top: calc(-260px - 32px - 2px + 70px);
+          margin-top: calc(-200px - 32px - 2px + 70px);
           &:hover {
-            margin-top: calc(-260px - 32px - 2px);
+            margin-top: calc(-200px - 32px - 2px);
             margin-bottom: 240px;
           }
         }
 
         .card:nth-child(3) {
-          margin-top: calc(-260px - 32px - 2px + 70px);
+          margin-top: calc(-200px - 32px - 2px + 70px);
           &:hover {
-            margin-top: -364px;
+            margin-top: -304px;
           }
         }
 
@@ -65,8 +66,8 @@ main {
       padding: 16px;
       border-radius: 5px;
       width: 200px;
-      height: 260px;
-      font-size: 16pt;
+      height: 200px;
+      font-size: 15pt;
       background-color: white;
       border: 1px solid black;
       margin-right: 20px;
@@ -103,11 +104,17 @@ main {
     }
 
     &.my-cards>h1 {
-      // margin: auto;
       text-align: center;
-      margin: calc((294px - 2em) / 2) auto;
-      // top: 50%;
-      // transform: translateY(-50%);
+      display: block;
+      margin: 0;
+      margin-top: -.14em;
+      padding-top: calc((234px - .9em) / 2);
+      padding-bottom: calc((234px - .9em) / 2);
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      position: absolute;
+      margin-left: -20px;
+      width: 100vw;
     }
 
   }
