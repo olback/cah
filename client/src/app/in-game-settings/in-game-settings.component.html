@@ -7,11 +7,12 @@
     <div class="row">
       <span class="property">Game ID:</span>
       <span class="value">{{ game.gid }}</span>
+      <span class="extra clickable" (click)="copyUrl()">Copy join URL</span>
     </div>
 
     <div class="row">
       <span class="property">Packs:</span>
-      <span class="value">{{ game.packs.join(', ') }}</span>
+      <span class="value">{{ game.settings.packs.join(', ') }}</span>
     </div>
 
     <div class="row">
@@ -21,13 +22,33 @@
 
     <div class="row">
       <span class="property">Max players:</span>
-      <span class="value">{{ game.maxPlayers }}</span>
+      <span class="value">{{ game.settings.maxPlayers }}</span>
     </div>
 
     <div class="row">
       <span class="property">Max score:</span>
-      <span class="value">{{ game.winAt }}</span>
+      <span class="value">{{ game.settings.maxScore }}</span>
     </div>
+
+    <div class="row">
+      <span class="property">Blanks:</span>
+      <span class="value">{{ game.settings.blanks }}</span>
+    </div>
+
+    <div class="row">
+      <span class="property">Password:</span>
+      <ng-template [ngIf]="game.settings.password">
+        <span *ngIf="hidePassword" class="value">●●●●●●●●</span>
+        <span *ngIf="!hidePassword" class="value">{{ game.settings.password }}</span>
+        <span class="extra clickable" (click)="hidePassword=!hidePassword">Click to show/hide.</span>
+      </ng-template>
+      <span *ngIf="!game.settings.password" class="extra noselect">No password set</span>
+    </div>
+
+    <!-- <div class="row">
+      <span class="property"></span>
+      <span class="value"></span>
+    </div> -->
 
     <button (click)="closeSettings()">Close</button>
 

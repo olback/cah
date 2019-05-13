@@ -62,18 +62,23 @@ declare namespace ISocket {
         }
 
         interface State {
-            hid: string;
-            gid: string;
+            hid: string; // Host ID
+            gid: string; // Game ID
             czar: string;
             hand: WhiteCard[];
+            picks: WhiteCard[];
             black: BlackCard;
             playedCards: PlayedCards[];
             players: Player[];
-            packs: string[];
-            winAt: number;
-            maxPlayers: number;
-            timeout: number;
             blanksRemaining: number;
+            settings: {
+                maxScore: number;
+                maxPlayers: number;
+                timeout: number;
+                packs: string[];
+                password: string;
+                blanks: number;
+            }
         }
 
     }
