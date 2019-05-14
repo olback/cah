@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from '../_services/token.service';
+import { ToastService } from '../_services/toast.service';
+import { Toast } from '../_classes/toast';
 
 @Component({
   selector: 'app-game',
@@ -26,7 +28,8 @@ export class GameComponent implements OnInit, OnDestroy {
   constructor(
     private _route: ActivatedRoute,
     private _socket: Socket,
-    private _token: TokenService
+    private _token: TokenService,
+    private _toastService: ToastService
   ) {
 
     this._socket.on('game', (game: ISocket.GameState.State) => {
@@ -139,6 +142,7 @@ export class GameComponent implements OnInit, OnDestroy {
       pid: this._token.get(),
       gid: this.gid
     });
+    this._toastService.emit(new Toast('Game synced.', 3000));
   }
 
   playBlank(text: string) {

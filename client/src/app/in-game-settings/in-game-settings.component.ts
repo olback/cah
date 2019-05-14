@@ -64,6 +64,7 @@ export class InGameSettingsComponent {
       gid: this.game.gid
     });
     this.close.emit();
+    this._toastService.emit(new Toast('Game restarted.'));
   }
 
 }
