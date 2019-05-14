@@ -84,6 +84,7 @@ declare namespace Socket {
         }
 
         interface State {
+            created: number;
             hid: string; // Host ID
             gid: string; // Game ID
             czar: string;

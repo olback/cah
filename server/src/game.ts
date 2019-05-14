@@ -170,6 +170,7 @@ class Game {
         }
 
         const state: Socket.GameState.State = {
+            created: this.created,
             hid: this._host.id,
             gid: this.id,
             czar: this._czar,

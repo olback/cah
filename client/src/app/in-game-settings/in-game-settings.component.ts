@@ -17,6 +17,7 @@ export class InGameSettingsComponent {
 
   hidePassword = true;
   pid: string;
+  created: string;
 
   constructor(
     private _clipboardService: ClipboardService,
@@ -26,6 +27,11 @@ export class InGameSettingsComponent {
     ) {
       this.pid = this._tokenService.get();
     }
+
+  formatCreationDateTime() {
+    const d = new Date(this.game.created);
+    return `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
+  }
 
   formatTime() {
 

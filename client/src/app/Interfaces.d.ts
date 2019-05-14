@@ -62,6 +62,7 @@ declare namespace ISocket {
         }
 
         interface State {
+            created: number;
             hid: string; // Host ID
             gid: string; // Game ID
             czar: string;
