@@ -8,15 +8,19 @@
     <small [hidden]="username">A username is required to create and join games.</small>
   </div>
 
-  <div class="left">
-    <input [(ngModel)]="gid" type="text" name="game-id" id="game-id" placeholder="Game ID" />
-    <button [disabled]="!username" class="create" routerLink="/create">Create game</button>
-  </div>
+  <form #joinGameForm="ngForm">
 
-  <div class="right">
-    <input [(ngModel)]="password" type="password" name="game-password" id="game-password" placeholder="Game password" />
-    <button [disabled]="!username" (click)="join()" class="join">Join game</button>
-  </div>
+    <div class="left">
+      <input [(ngModel)]="joinGame.gid" type="text" name="game-id" id="game-id" placeholder="Game ID" />
+      <button [disabled]="!username" class="create" routerLink="/create">Create game</button>
+    </div>
+
+    <div class="right">
+      <input [(ngModel)]="joinGame.password" type="password" name="game-password" id="game-password" placeholder="Game password" />
+      <button [disabled]="!username" (click)="join()" class="join">Join game</button>
+    </div>
+
+  </form>
 
 </main>
 

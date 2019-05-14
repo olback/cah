@@ -4,6 +4,7 @@ import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from '../_services/token.service';
+import { GameRequest } from '../_classes/game-request';
 
 @Component({
   selector: 'app-in-game-settings',
@@ -59,10 +60,8 @@ export class InGameSettingsComponent {
   }
 
   restart() {
-    this._socket.emit('restart-game', {
-      pid: this._tokenService.get(),
-      gid: this.game.gid
-    });
+    const gr = new GameRequest(this._tokenService.get(), this.game.gid);
+    this._socket.emit('restart-game', gr);
     this.close.emit();
     this._toastService.emit(new Toast('Game restarted.'));
   }

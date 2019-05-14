@@ -27,30 +27,6 @@ declare namespace ISocket {
         message: string;
     }
 
-    interface Request {
-        pid: string;
-    }
-
-    interface UsernameUpdate extends Request {
-        username: string;
-    }
-
-    interface GameRequest extends Request {
-        gid: string;
-    }
-
-    interface NewGame extends GameRequest {
-        maxScore: number;
-        maxPlayers: number;
-        timeout: number;
-        packs: string[];
-        password: string;
-    }
-
-    interface JoinGameRequest extends GameRequest {
-        password: string;
-    }
-
     namespace GameState {
 
         interface Player {

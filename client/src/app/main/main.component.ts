@@ -3,6 +3,7 @@ import { UsernameService } from '../_services/username.service';
 import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from '../_services/token.service';
+import { JoinGame } from '../_classes/join-game';
 
 @Component({
   selector: 'app-main',
@@ -12,8 +13,7 @@ import { TokenService } from '../_services/token.service';
 export class MainComponent implements OnInit {
 
   username: string;
-  password = '';
-  gid = '';
+  joinGame = new JoinGame(this._token.get(), '', '');
 
   constructor(
     private _route: ActivatedRoute,
@@ -23,27 +23,26 @@ export class MainComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+
     this.username = this._usernameService.get();
 
     if (this._route.routeConfig.path === 'join/:id') {
       this._route.params.forEach(v => {
-        this.gid = v.id;
+        this.joinGame.gid = v.id;
       });
     }
 
   }
 
   setUsername() {
+
     this._usernameService.set(this.username);
+
   }
 
   join() {
 
-    this._socket.emit('join-game', {
-      pid: this._token.get(),
-      gid: this.gid,
-      password: this.password
-    });
+    this._socket.emit('join-game', this.joinGame);
 
   }
 
