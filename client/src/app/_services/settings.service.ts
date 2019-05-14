@@ -14,11 +14,10 @@ export class SettingsService {
   constructor(private _eggs: EasterEggService) {}
 
   public settings: ISettings = {
-    acronyms: new Setting('acronyms', 'boolean', 'Enable random acronyms (offensive)'),
-    eggs: new Setting('eggs', 'boolean', 'Enable easter eggs', (v) => {
+    acronyms: new Setting('acronyms', 'Boolean', 'Enable random acronyms (offensive)'),
+    eggs: new Setting('eggs', 'Boolean', 'Enable easter eggs', () => {
       this._eggs.disableAll();
     })
   };
-
 
 }
