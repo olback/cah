@@ -1,31 +1,31 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
+import { Socket } from 'ngx-socket-io';
+import { TokenService } from '../_services/token.service';
 
 @Component({
   selector: 'app-in-game-settings',
   templateUrl: './in-game-settings.component.html',
   styleUrls: ['./in-game-settings.component.scss']
 })
-export class InGameSettingsComponent implements OnInit {
+export class InGameSettingsComponent {
 
   @Input() game: ISocket.GameState.State;
   @Output() close = new EventEmitter(true);
 
   hidePassword = true;
+  pid: string;
 
   constructor(
     private _clipboardService: ClipboardService,
-    private _toastService: ToastService
-    ) { }
-
-  ngOnInit() {
-  }
-
-  closeSettings() {
-    this.close.emit();
-  }
+    private _toastService: ToastService,
+    private _socket: Socket,
+    private _tokenService: TokenService
+    ) {
+      this.pid = this._tokenService.get();
+    }
 
   formatTime() {
 
@@ -41,12 +41,23 @@ export class InGameSettingsComponent implements OnInit {
 
   copyUrl() {
     const url = `${origin.toString()}/join/${this.game.gid}`;
-    console.log(url);
     if (this._clipboardService.copyFromContent(url)) {
       this._toastService.emit(new Toast('URL copied to clipboard.'));
     } else {
       this._toastService.emit(new Toast('Failed to copy URL to clipboard.'));
     }
+  }
+
+  closeSettings() {
+    this.close.emit();
+  }
+
+  restart() {
+    this._socket.emit('restart-game', {
+      pid: this._tokenService.get(),
+      gid: this.game.gid
+    });
+    this.close.emit();
   }
 
 }

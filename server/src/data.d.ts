@@ -53,6 +53,10 @@ declare namespace Socket {
         blanks: number;
     }
 
+    interface RestartGame extends GameRequest {
+        hid: string;
+    }
+
     interface JoinGameRequest extends GameRequest {
         password: string;
     }
@@ -89,6 +93,7 @@ declare namespace Socket {
             playedCards: PlayedCards[];
             players: Player[];
             blanksRemaining: number;
+            round: number;
             settings: {
                 maxScore: number;
                 maxPlayers: number;

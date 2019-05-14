@@ -71,6 +71,7 @@ declare namespace ISocket {
             playedCards: PlayedCards[];
             players: Player[];
             blanksRemaining: number;
+            round: number;
             settings: {
                 maxScore: number;
                 maxPlayers: number;

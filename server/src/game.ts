@@ -17,6 +17,7 @@ interface Games {
 class Game {
 
     public created = new Date().getTime();
+    public hid = this._host.id;
     private _players: Players = {};
     private _bIndex = 0;
     private _blackCards: BlackCard[] = [];
@@ -105,7 +106,7 @@ class Game {
         remove: (player: Player) => {
             // TODO: What happens when the czar leaves? Nothing? The game just pauses?
             if (this.players.check(player.id)) {
-                this._players[player.id].cleanUp();
+                this._players[player.id].leaveGame();
                 delete this._players[player.id];
                 this.sendState('all');
             }
@@ -152,13 +153,7 @@ class Game {
         }
     };
 
-    private randomWhiteCard(): WhiteCard {
-
-        return this._whiteCards[Math.floor(Math.random() * this._whiteCards.length)];
-
-    }
-
-    getState(pid: string): Socket.GameState.State {
+    public getState(pid: string): Socket.GameState.State {
 
         const pa: Socket.GameState.Player[] = [];
 
@@ -180,10 +175,11 @@ class Game {
             czar: this._czar,
             hand: this._players[pid].hand,
             picks: this._players[pid].picks,
-            black: this._blackCards[this._bIndex],
+            black: this._blackCards[this._bIndex % this._blackCards.length],
             playedCards: this._playedCards,
             players: pa,
             blanksRemaining: this._blanks - this._players[pid].blanksPlayed,
+            round: this._bIndex,
             settings: {
                 maxScore: this._maxScore,
                 maxPlayers: this.maxPlayers,
@@ -197,25 +193,7 @@ class Game {
         return state;
     }
 
-    private sendState(player: Player | 'all') {
-
-        if (player === 'all') {
-
-            for (const pid in this._players) {
-                if (this._players.hasOwnProperty(pid)) {
-                    this._players[pid].socket.emit('game', this.getState(pid));
-                }
-            }
-
-        } else {
-
-            player.socket.emit('game', this.getState(player.id));
-
-        }
-
-    }
-
-    pickWhite(pid: string, card: WhiteCard): boolean {
+    public pickWhite(pid: string, card: WhiteCard): boolean {
 
         if (typeof card !== 'object' || card === null) {
             return false;
@@ -242,7 +220,7 @@ class Game {
 
     }
 
-    blankPick(card: Socket.CustomWhite) {
+    public blankPick(card: Socket.CustomWhite) {
 
         if (this._players[card.pid].blanksPlayed < this._blanks) {
             this._players[card.pid].blanksPlayed++;
@@ -269,7 +247,7 @@ class Game {
 
     }
 
-    pickWinner(winner: string) {
+    public pickWinner(winner: string) {
 
         this._players[winner].score++;
         this._playedCards = [];
@@ -286,6 +264,56 @@ class Game {
         setTimeout(() => {
             this.sendState('all');
         }, 5000);
+    }
+
+    public restart() {
+
+        // Prepare all players for a new round
+        // tslint:disable-next-line:forin
+        for (const p in this._players) {
+            this._players[p].newGame();
+            for (let i = 0; i < 10; i++) {
+                this._players[p].hand.push(this.randomWhiteCard());
+            }
+        }
+
+        // Reshuffle arrays of cards
+        shuffleArray(this._blackCards);
+        shuffleArray(this._whiteCards);
+
+        // Reset the round index
+        this._bIndex = 0;
+
+        // Reset the cardzar
+        this._czar = this._host.id;
+
+        // Send the new game state to all players
+        this.sendState('all');
+
+    }
+
+    private randomWhiteCard(): WhiteCard {
+
+        return this._whiteCards[Math.floor(Math.random() * this._whiteCards.length)];
+
+    }
+
+    private sendState(player: Player | 'all') {
+
+        if (player === 'all') {
+
+            for (const pid in this._players) {
+                if (this._players.hasOwnProperty(pid)) {
+                    this._players[pid].socket.emit('game', this.getState(pid));
+                }
+            }
+
+        } else {
+
+            player.socket.emit('game', this.getState(player.id));
+
+        }
+
     }
 
 }

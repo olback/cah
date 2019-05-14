@@ -126,6 +126,14 @@ io.on('connection', socket => {
         }
     });
 
+    socket.on('restart-game', (data: Socket.GameRequest) => {
+
+        if (games[data.gid] && games[data.gid].hid === data.pid) {
+            games[data.gid].restart();
+        }
+
+    });
+
     socket.on('game', (data: Socket.GameRequest) => {
 
         if (games[data.gid]) {

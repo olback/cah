@@ -19,12 +19,16 @@ class Player {
         this.picks = [];
     }
 
-    public cleanUp() {
-        this.inGame = false;
+    public newGame() {
         this.blanksPlayed = 0;
         this.score = 0;
         this.hand = [];
         this.picks = [];
+    }
+
+    leaveGame() {
+        this.inGame = false;
+        this.newGame();
     }
 
 }

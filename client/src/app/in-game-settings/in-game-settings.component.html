@@ -51,6 +51,7 @@
     </div> -->
 
     <button (click)="closeSettings()">Close</button>
+    <button *ngIf="game.hid === pid" (click)="restart()">Restart game</button>
 
   </div>
 
