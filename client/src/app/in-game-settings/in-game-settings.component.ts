@@ -1,30 +1,37 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
 import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
+import { Socket } from 'ngx-socket-io';
+import { TokenService } from '../_services/token.service';
+import { GameRequest } from '../_classes/game-request';
 
 @Component({
   selector: 'app-in-game-settings',
   templateUrl: './in-game-settings.component.html',
   styleUrls: ['./in-game-settings.component.scss']
 })
-export class InGameSettingsComponent implements OnInit {
+export class InGameSettingsComponent {
 
   @Input() game: ISocket.GameState.State;
   @Output() close = new EventEmitter(true);
 
   hidePassword = true;
+  pid: string;
+  created: string;
 
   constructor(
     private _clipboardService: ClipboardService,
-    private _toastService: ToastService
-    ) { }
+    private _toastService: ToastService,
+    private _socket: Socket,
+    private _tokenService: TokenService
+    ) {
+      this.pid = this._tokenService.get();
+    }
 
-  ngOnInit() {
-  }
-
-  closeSettings() {
-    this.close.emit();
+  formatCreationDateTime() {
+    const d = new Date(this.game.created);
+    return `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
   }
 
   formatTime() {
@@ -41,12 +48,22 @@ export class InGameSettingsComponent implements OnInit {
 
   copyUrl() {
     const url = `${origin.toString()}/join/${this.game.gid}`;
-    console.log(url);
     if (this._clipboardService.copyFromContent(url)) {
       this._toastService.emit(new Toast('URL copied to clipboard.'));
     } else {
       this._toastService.emit(new Toast('Failed to copy URL to clipboard.'));
     }
+  }
+
+  closeSettings() {
+    this.close.emit();
+  }
+
+  restart() {
+    const gr = new GameRequest(this._tokenService.get(), this.game.gid);
+    this._socket.emit('restart-game', gr);
+    this.close.emit();
+    this._toastService.emit(new Toast('Game restarted.'));
   }
 
 }

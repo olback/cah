@@ -2,9 +2,9 @@ export class Setting {
 
   constructor(
       public name: string,
-      public type: 'string' | 'number' | 'boolean',
+      public type: 'String' | 'Number' | 'Boolean',
       public prettyName = '',
-      private cb?: (v: any) => void
+      private cb?: (v?: any) => void
     ) { }
 
   public set(value: any) {
@@ -18,17 +18,15 @@ export class Setting {
 
     const data = localStorage.getItem(this.name);
 
-    if (this.type === 'boolean') {
+    if (this.type === 'Boolean') {
 
       return data === 'true';
 
-    } else if (this.type === 'number') {
-
-      return Number(data);
-
     } else {
 
-      return data ? String(data) : '';
+      // This is ok because this.type will always be "String", "Number" or "Boolean".
+      // @ts-ignore
+      return window[this.type](data);
 
     }
 

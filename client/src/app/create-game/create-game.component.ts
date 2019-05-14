@@ -4,6 +4,7 @@ import { TokenService } from '../_services/token.service';
 import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
 import { ClipboardService } from 'ngx-clipboard';
+import { NewGame } from '../_classes/new-game';
 
 interface Pack {
   name: string;
@@ -29,11 +30,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
   black = 0;
   white = 0;
   packs: Pack[] = [];
-  maxScore = 8;
-  maxPlayers = 5;
-  timeout = 0;
-  password = '';
-  blanks = 5;
+  newGame = new NewGame(this._tokenService.get(), (Math.random() * 1E17).toString(36), 8, 5, 0, [], '', 5);
 
   constructor(
     private _socket: Socket,
@@ -120,29 +117,21 @@ export class CreateGameComponent implements OnInit, DoCheck {
 
   startGame() {
 
-    const options = {
-      pid: this._tokenService.get(),
-      gid: this.gameId,
-      maxScore: this.maxScore,
-      maxPlayers: this.maxPlayers,
-      timeout: Number(this.timeout),
-      password: this.password,
-      packs: this.packs.filter(e => e.selected).map(e => e.name),
-      blanks: this.blanks
-    };
-
-    if (this.maxScore * this.maxPlayers >= this.black) {
-      this._toastService.emit(new Toast(`Not enough black cards selected. ${this.maxScore * this.maxPlayers} required for this configuration.`));
+    if (this.newGame.maxScore * this.newGame.maxPlayers >= this.black) {
+      this._toastService.emit(new Toast(`Not enough black cards selected. ${this.newGame.maxScore * this.newGame.maxPlayers} required for this configuration.`));
       return;
     }
 
-    this._socket.emit('new-game', options);
+    this.newGame.packs = this.packs.filter(e => e.selected).map(e => e.name);
+
+    this._socket.emit('new-game', this.newGame);
 
   }
 
   copyUrl() {
+
     const url = `${origin.toString()}/join/${this.gameId}`;
-    console.log(url);
+
     if (this._clipboardService.copyFromContent(url)) {
       const toast = new Toast('URL copied to clipboard.');
       this._toastService.emit(toast);
@@ -150,6 +139,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
       const toast = new Toast('Failed to copy URL to clipboard.');
       this._toastService.emit(toast);
     }
+
   }
 
 }

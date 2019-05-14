@@ -1,57 +1,59 @@
 <main>
-
   <input (keyup)="filter()" [(ngModel)]="query" type="text" class="search" placeholder="Filter..." />
   <ul>
     <ng-template [ngIf]="true" *ngFor="let pack of packs">
-        <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngIf="!pack.hidden">{{ pack.name }} <div class="black">{{ pack.black }}</div> <div class="white">{{ pack.white }}</div></li>
+      <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngIf="!pack.hidden">
+        {{ pack.name }} <div class="black">{{ pack.black }}</div>
+        <div class="white">{{ pack.white }}</div>
+      </li>
     </ng-template>
   </ul>
-
   <div class="cards-info">
-    <span class="cards">{{ black }}</span><span class="cards white">{{ white }}</span><button (click)="toggleAll(false)">None</button><button (click)="toggleAll(true)">All</button>
+    <span class="cards">{{ black }}</span><span class="cards white">{{ white }}</span><button
+      (click)="toggleAll(false)">None</button><button (click)="toggleAll(true)">All</button>
   </div>
+  <form #newGameForm="ngForm">
+    <div class="input-group">
+      <label for="max-players">Max Score:</label>
+      <input [(ngModel)]="newGame.maxScore" name="maxScore" id="max-score" type="number" min="3" max="30" value="8" />
+    </div>
 
-  <div class="input-group">
-    <label for="max-players">Max Score:</label>
-    <input [(ngModel)]="maxScore" id="max-score" type="number" min="3" max="30" value="8" />
-  </div>
+    <div class="input-group">
+      <label for="max-players">Max Players:</label>
+      <input [(ngModel)]="newGame.maxPlayers" name="maxPlayers" id="max-players" type="number" min="3" max="10" value="5" />
+    </div>
 
-  <div class="input-group">
-    <label for="max-players">Max Players:</label>
-    <input [(ngModel)]="maxPlayers" id="max-players" type="number" min="3" max="10" value="5" />
-  </div>
+    <div class="input-group">
+      <label for="max-players">Blank cards per player:</label>
+      <input [(ngModel)]="newGame.blanks" name="blanks" id="blanks" type="number" min="0" max="100" value="3" />
+    </div>
 
-  <div class="input-group">
-    <label for="max-players">Blank cards per player:</label>
-    <input [(ngModel)]="blanks" id="blanks" type="number" min="0" max="100" value="3" />
-  </div>
+    <div class="input-group" style="display:none">
+      <label for="timeout">Timeout:</label>
+      <!-- <input id="max-players" type="number" min="3" max="10" value="5" /> -->
+      <select [(ngModel)]="newGame.timeout" name="timeout" id="timeout">
+        <option value="0">Unlimited</option>
+        <option value="60">1 Minute</option>
+        <option value="120">2 Minutes</option>
+        <option value="180">3 Minutes</option>
+        <option value="240">4 Minutes</option>
+        <option value="300">5 Minutes</option>
+      </select>
+    </div>
 
-  <div class="input-group" style="display:none">
-    <label for="timeout">Timeout:</label>
-    <!-- <input id="max-players" type="number" min="3" max="10" value="5" /> -->
-    <select [(ngModel)]="timeout" name="timeout" id="timeout">
-      <option value="0">Unlimited</option>
-      <option value="60">1 Minute</option>
-      <option value="120">2 Minutes</option>
-      <option value="180">3 Minutes</option>
-      <option value="240">4 Minutes</option>
-      <option value="300">5 Minutes</option>
-    </select>
-  </div>
+    <div class="input-group">
+      <label for="password">Game password (optional):</label>
+      <input [(ngModel)]="newGame.password" name="password" id="password" type="text" minlength="3" maxlength="100" />
+    </div>
 
-  <div class="input-group">
-    <label for="password">Game password (optional):</label>
-    <input [(ngModel)]="password" id="password" type="text" minlength="3" maxlength="100" />
-  </div>
+    <div class="input-group">
+      <label for="gameId">Game ID:</label>
+      <input id="gameId" type="text" readonly value="{{ gameId }}" />
+      <button (click)="copyUrl()">Copy join URL</button>
+    </div>
 
-  <div class="input-group">
-    <label for="gameId">Game ID:</label>
-    <input id="gameId" type="text" readonly value="{{ gameId }}" />
-    <button (click)="copyUrl()">Copy join URL</button>
-  </div>
-
-  <div class="input-group">
-    <button (click)="startGame()" class="start-game">Start Game</button>
-  </div>
-
+    <div class="input-group">
+      <button [disabled]="newGameForm.form.invalid" (click)="startGame()" class="start-game">Start Game</button>
+    </div>
+  </form>
 </main>

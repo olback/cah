@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from './token.service';
+import { UpdateUsernameRequest } from '../_classes/update-username-request';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class SocketService {
 
   setUsername(username: string) {
 
-    this.socket.emit('username', { pid: this._tokenService.get(), username: username });
+    const user = new UpdateUsernameRequest(this._tokenService.get(), username);
+    this.socket.emit('username', user);
 
   }
 

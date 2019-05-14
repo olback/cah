@@ -1,19 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { SettingsService } from '../_services/settings.service';
 import { Setting } from '../_classes/setting';
-
-// interface Setting {
-//   type: 'string' | 'number' | 'boolean';
-//   name: string;
-//   value: string;
-// }
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent {
 
   @Output() close = new EventEmitter(true);
 
@@ -26,9 +20,6 @@ export class SettingsComponent implements OnInit {
       this.settings.push(settingsService.settings[s]);
     }
 
-  }
-
-  ngOnInit() {
   }
 
   closeSettings() {

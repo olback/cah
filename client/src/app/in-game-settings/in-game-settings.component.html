@@ -5,6 +5,12 @@
     <h1>Game Settings</h1>
 
     <div class="row">
+      <span class="property">Created:</span>
+      <span class="value">{{ formatCreationDateTime() }}</span>
+      <span class="extra noselect">(server time)</span>
+    </div>
+
+    <div class="row">
       <span class="property">Game ID:</span>
       <span class="value">{{ game.gid }}</span>
       <span class="extra clickable" (click)="copyUrl()">Copy join URL</span>
@@ -51,6 +57,7 @@
     </div> -->
 
     <button (click)="closeSettings()">Close</button>
+    <button *ngIf="game.hid === pid" (click)="restart()">Restart game</button>
 
   </div>
 

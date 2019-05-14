@@ -27,30 +27,6 @@ declare namespace ISocket {
         message: string;
     }
 
-    interface Request {
-        pid: string;
-    }
-
-    interface UsernameUpdate extends Request {
-        username: string;
-    }
-
-    interface GameRequest extends Request {
-        gid: string;
-    }
-
-    interface NewGame extends GameRequest {
-        maxScore: number;
-        maxPlayers: number;
-        timeout: number;
-        packs: string[];
-        password: string;
-    }
-
-    interface JoinGameRequest extends GameRequest {
-        password: string;
-    }
-
     namespace GameState {
 
         interface Player {
@@ -62,6 +38,7 @@ declare namespace ISocket {
         }
 
         interface State {
+            created: number;
             hid: string; // Host ID
             gid: string; // Game ID
             czar: string;
@@ -71,6 +48,7 @@ declare namespace ISocket {
             playedCards: PlayedCards[];
             players: Player[];
             blanksRemaining: number;
+            round: number;
             settings: {
                 maxScore: number;
                 maxPlayers: number;
