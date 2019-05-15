@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from '../_services/token.service';
@@ -8,6 +8,7 @@ import { GameRequest } from '../_classes/game-request';
 import { Winner } from '../_classes/winner';
 import { PickedWhite } from '../_classes/picked-white';
 import { BlankCard } from '../_classes/blank-card';
+import { SettingsService } from '../_services/settings.service';
 
 @Component({
   selector: 'app-game',
@@ -15,6 +16,9 @@ import { BlankCard } from '../_classes/blank-card';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit, OnDestroy {
+
+  @ViewChild('myCardsRef') myCardsRef: ElementRef;
+  @ViewChild('playedCardsRef') playedCardsRef: ElementRef;
 
   modals = {
     settings: false,
@@ -33,7 +37,8 @@ export class GameComponent implements OnInit, OnDestroy {
     private _route: ActivatedRoute,
     private _socket: Socket,
     private _token: TokenService,
-    private _toastService: ToastService
+    private _toastService: ToastService,
+    private _settingsService: SettingsService
   ) {
 
     this._socket.on('game', (game: ISocket.GameState.State) => {
@@ -148,6 +153,13 @@ export class GameComponent implements OnInit, OnDestroy {
     this.modals.blank = false;
     const blank = new BlankCard(this._token.get(), this.gid, text);
     this._socket.emit('blank-card', blank);
+  }
+
+  scrollX(e: WheelEvent, selector: string) {
+    console.log(e.deltaX, e.deltaY, e.deltaMode);
+    const scrollFactor = this._settingsService.settings.scrollFactor.get() as number;
+    // @ts-ignore
+    this[selector].nativeElement.scrollBy(e.deltaY * scrollFactor, 0);
   }
 
 }
