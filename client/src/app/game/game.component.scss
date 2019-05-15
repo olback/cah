@@ -132,11 +132,11 @@ main {
 
     &.my-cards>h1 {
       text-align: center;
-      display: none;
+      display: block;
       margin: 0;
-      margin-top: -.14em;
-      padding-top: calc((234px - .9em) / 2);
-      padding-bottom: calc((234px - .9em) / 2);
+      margin-top: -267px;
+      padding-top: calc((280px - 1em) / 2);
+      padding-bottom: calc((280px - 1em) / 2);
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       position: absolute;
