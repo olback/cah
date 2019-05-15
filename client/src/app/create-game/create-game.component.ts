@@ -5,6 +5,8 @@ import { ToastService } from '../_services/toast.service';
 import { Toast } from '../_classes/toast';
 import { ClipboardService } from 'ngx-clipboard';
 import { NewGame } from '../_classes/new-game';
+import { UsernameService } from '../_services/username.service';
+import { Router } from '@angular/router';
 
 interface Pack {
   name: string;
@@ -36,7 +38,9 @@ export class CreateGameComponent implements OnInit, DoCheck {
     private _socket: Socket,
     private _tokenService: TokenService,
     private _toastService: ToastService,
-    private _clipboardService: ClipboardService
+    private _clipboardService: ClipboardService,
+    private _usernameService: UsernameService,
+    private _router: Router
   ) {
 
     this._socket.on('get-packs-list', (data: PackList) => {
@@ -55,7 +59,11 @@ export class CreateGameComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    this._socket.emit('get-packs-list');
+    if (this._usernameService.get()) {
+      this._socket.emit('get-packs-list');
+    } else {
+      this._router.navigate(['/']);
+    }
   }
 
   ngDoCheck() {
