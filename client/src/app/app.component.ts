@@ -1,8 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { environment as env } from '../environments/environment';
 import { SocketService } from './_services/socket.service';
 import { UsernameService } from './_services/username.service';
-import { TokenService } from './_services/token.service';
 import { SettingsService } from './_services/settings.service';
 import { Socket } from 'ngx-socket-io';
 import { Toast } from './_classes/toast';
@@ -29,16 +27,11 @@ export class AppComponent implements OnInit, DoCheck {
   constructor(
     private _socketService: SocketService,
     private _usernameService: UsernameService,
-    private _tokenService: TokenService,
     private _settingsService: SettingsService,
     private _socket: Socket,
     private _router: Router,
     private _toastService: ToastService
     ) {
-
-    if (!env.production) {
-      console.log(`Token: ${this._tokenService.get()}`);
-    }
 
     this._socketService.auth();
     this._usernameService.set(this._usernameService.get());
