@@ -5,10 +5,26 @@
     <h1>Settings</h1>
 
     <div *ngFor="let s of settings" class="row">
-      <span class="property">{{ s.prettyName ? s.prettyName : s.name }}</span>
-      <!-- <span class="value">{{ s.get() }}</span> -->
-      <input (change)="s.set(!s.get())" type="checkbox" [checked]="s.get()" id="{{ s.name }}">
-      <label for="{{ s.name }}" class="switch"></label>
+
+      <ng-template [ngIf]="s.type==='Boolean'">
+          <span class="property">{{ s.prettyName }}</span>
+          <input (change)="s.set(!s.get())" type="checkbox" [checked]="s.get()" id="{{ s.name }}">
+          <label for="{{ s.name }}" class="switch"></label>
+          <span *ngIf="s.description" class="description">{{ s.description }}</span>
+      </ng-template>
+
+      <ng-template [ngIf]="s.type==='Number'">
+          <span class="property">{{ s.prettyName }}</span>
+          <input (change)="s.set($event.srcElement.valueAsNumber)" type="number" step="0.2" [value]="s.get()">
+          <span *ngIf="s.description" class="description">{{ s.description }}</span>
+      </ng-template>
+
+      <ng-template [ngIf]="s.type==='String'">
+          <span class="property">{{ s.prettyName }}</span>
+          <input (change)="s.set($event.srcElement.value)" type="text" [value]="s.get()">
+          <span *ngIf="s.description" class="description">{{ s.description }}</span>
+      </ng-template>
+
     </div>
 
     <button (click)="closeSettings()">Close</button>
