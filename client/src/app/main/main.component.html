@@ -1,23 +1,27 @@
 <main>
 
-  <div class="username">
-    <input (keyup)="setUsername()" [(ngModel)]="username" type="text" minlength="3" maxlength="24" placeholder="Username" />
-  </div>
-
-  <div class="username">
-    <small [hidden]="username">A username is required to create and join games.</small>
-  </div>
-
   <form #joinGameForm="ngForm">
 
+    <div class="username">
+      <input (keyup)="setUsername()" name="username" [(ngModel)]="username" type="text" pattern="^(?=.*\S).+$"
+        placeholder="Username" maxlength="25" minlength="1" />
+    </div>
+
+    <div class="username">
+      <small [hidden]="username && joinGameForm.valid">A username is required to create and join games.</small>
+    </div>
+
     <div class="left">
-      <input [(ngModel)]="joinGame.gid" type="text" name="game-id" id="game-id" placeholder="Game ID" />
-      <button [disabled]="!username" class="create" routerLink="/create">Create game</button>
+      <input [(ngModel)]="joinGame.gid" type="text" name="game-id" id="game-id" placeholder="Game ID" maxlength="20" />
+      <button [disabled]="!username || joinGameForm.invalid" class="create" routerLink="/create">Create game</button>
     </div>
 
     <div class="right">
-      <input [(ngModel)]="joinGame.password" type="password" name="game-password" id="game-password" placeholder="Game password" />
-      <button [disabled]="!username" (click)="join()" class="join">Join game</button>
+      <input [(ngModel)]="joinGame.password" type="password" name="game-password" id="game-password"
+        placeholder="Game password" maxlength="1000" />
+      <button [disabled]="!username || joinGameForm.invalid || !joinGame.gid" (click)="join()" class="join">
+        Join game
+      </button>
     </div>
 
   </form>
@@ -25,12 +29,11 @@
 </main>
 
 <footer>
-  <!-- <div class="cah">
-    <a href="https://s3.amazonaws.com/cah/CAH_Rules.pdf" target="_blank" rel="noopener">Official rules</a>
-    <a href="http://hawaii2.website/" target="_blank" rel="noopener">Visit Hawaii2</a>
-    <a href="https://store.cardsagainsthumanity.com/" target="_blank" rel="noopener">Buy the real game</a>
-  </div> -->
   <a routerLink="/info">Info</a> - Copyright olback
-  <a href="https://github.com/olback/cah" target="_blank" rel="noopener"><fa-icon [icon]="['fab', 'github']"></fa-icon></a>
-  <a href="https://twitter.com/mrolback" target="_blank" rel="noopener"><fa-icon [icon]="['fab', 'twitter']"></fa-icon></a>
+  <a href="https://github.com/olback/cah" target="_blank" rel="noopener">
+    <fa-icon [icon]="['fab', 'github']"></fa-icon>
+  </a>
+  <a href="https://twitter.com/mrolback" target="_blank" rel="noopener">
+    <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+  </a>
 </footer>

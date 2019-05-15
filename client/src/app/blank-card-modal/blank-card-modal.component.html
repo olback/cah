@@ -7,7 +7,7 @@
     <textarea [(ngModel)]="text"></textarea>
 
     <button (click)="closeModal()">Close</button>
-    <button [disabled]="!text" (click)="closeAndSend()">Confirm</button>
+    <button [disabled]="!text.trim()" (click)="closeAndSend()">Confirm</button>
 
   </div>
 

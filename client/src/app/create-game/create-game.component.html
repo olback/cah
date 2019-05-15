@@ -1,5 +1,7 @@
 <main>
+
   <input (keyup)="filter()" [(ngModel)]="query" type="text" class="search" placeholder="Filter..." />
+
   <ul>
     <ng-template [ngIf]="true" *ngFor="let pack of packs">
       <li (click)="togglePack(pack)" [class.hidden]="pack.hidden" [class.selected]="pack.selected" *ngIf="!pack.hidden">
@@ -8,31 +10,35 @@
       </li>
     </ng-template>
   </ul>
+
   <div class="cards-info">
     <span class="cards">{{ black }}</span><span class="cards white">{{ white }}</span><button
       (click)="toggleAll(false)">None</button><button (click)="toggleAll(true)">All</button>
   </div>
+
   <form #newGameForm="ngForm">
+
     <div class="input-group">
       <label for="max-players">Max Score:</label>
-      <input [(ngModel)]="newGame.maxScore" name="maxScore" id="max-score" type="number" min="3" max="30" value="8" />
+      <input required #maxScore="ngModel" [(ngModel)]="newGame._maxScore" name="maxScore" id="max-score" type="number"
+      min="3" max="100" value="8" pattern="^[^0][\d]{0,2}$" />
     </div>
 
     <div class="input-group">
       <label for="max-players">Max Players:</label>
-      <input [(ngModel)]="newGame.maxPlayers" name="maxPlayers" id="max-players" type="number" min="3" max="10" value="5" />
+      <input required #maxPlayers="ngModel" [(ngModel)]="newGame._maxPlayers" name="maxPlayers" id="max-players" type="number"
+      min="3" max="10" value="5" pattern="^[^0][\d]{0,1}$" />
     </div>
 
     <div class="input-group">
       <label for="max-players">Blank cards per player:</label>
-      <input [(ngModel)]="newGame.blanks" name="blanks" id="blanks" type="number" min="0" max="100" value="3" />
+      <input required #blanks="ngModel" [(ngModel)]="newGame._blanks" name="blanks" id="blanks" type="number" min="0" max="100" value="3" pattern="^[\d]{0,3}$" />
     </div>
 
     <div class="input-group" style="display:none">
       <label for="timeout">Timeout:</label>
-      <!-- <input id="max-players" type="number" min="3" max="10" value="5" /> -->
-      <select [(ngModel)]="newGame.timeout" name="timeout" id="timeout">
-        <option value="0">Unlimited</option>
+      <select required #timeout="ngModel" [(ngModel)]="newGame.timeout" name="timeout" id="timeout">
+        <option default value="0">Unlimited</option>
         <option value="60">1 Minute</option>
         <option value="120">2 Minutes</option>
         <option value="180">3 Minutes</option>
@@ -43,7 +49,7 @@
 
     <div class="input-group">
       <label for="password">Game password (optional):</label>
-      <input [(ngModel)]="newGame.password" name="password" id="password" type="text" minlength="3" maxlength="100" />
+      <input #password="ngModel" [(ngModel)]="newGame.password" name="password" id="password" type="text" maxlength="1000" />
     </div>
 
     <div class="input-group">
@@ -55,5 +61,7 @@
     <div class="input-group">
       <button [disabled]="newGameForm.form.invalid" (click)="startGame()" class="start-game">Start Game</button>
     </div>
+
   </form>
+
 </main>

@@ -27,6 +27,9 @@ div {
             resize: none;
             font-size: 14pt;
             min-height: 40vh;
+            outline: none;
+            color: black;
+            font-family: inherit;
         }
 
         button {
@@ -39,9 +42,14 @@ div {
             cursor: pointer;
             font-size: 12pt;
             transition: background-color 0.1s ease-in-out;
+            color: black;
 
-            &:hover {
+            &:hover:not(:disabled) {
                 background-color: #ebebeb;
+            }
+
+            &:disabled {
+                color: #555;
             }
 
         }

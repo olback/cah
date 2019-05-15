@@ -30,7 +30,7 @@ main {
       border: none;
       border-bottom: 1px solid #000;
       outline: none;
-      background-color: white;
+      background-color: transparent;
       color: black;
     }
 
@@ -43,6 +43,10 @@ main {
       &.start-game {
         margin: auto;
         display: block;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
       }
 
     }
@@ -59,6 +63,23 @@ main {
     padding: 1em;
     font-size: 16pt;
     width: calc(100% - 2em - 2px);
+    background-color: #efefef;
+    color: #000;
+
+    &::placeholder {
+      transition: color .15s ease-in-out;
+    }
+
+    &::placeholder:not(:focus) {
+      color: #333;
+      font-style: italic;
+    }
+
+    &:focus::placeholder {
+      color: #666;
+      font-style: italic;
+    }
+
   }
 
   ul {
@@ -75,6 +96,8 @@ main {
       padding: 0.5em 1em;
       cursor: pointer;
       color: #333;
+      user-select: none;
+      background-color: #fff;
 
       div {
         display: inline;
@@ -169,7 +192,7 @@ main {
     text-transform: uppercase;
     border-radius: .125rem;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: #eee;
       cursor: pointer;
     }
