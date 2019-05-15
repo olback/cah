@@ -7,7 +7,7 @@
       <small>{{ game.black.pack }}</small>
     </div>
 
-    <div class="played-cards">
+    <div (wheel)="scrollX($event, 'playedCardsRef')" #playedCardsRef class="played-cards">
 
       <ng-template [ngIf]="game.playedCards.length === game.players.length - 1">
         <div *ngFor="let cards of game.playedCards" class="collection" [class.winner]="cards.winner" [class.selected]="winnerCard && cards.pid === winnerCard.pid" (click)="selectWinner(cards)">
@@ -31,7 +31,9 @@
 
   </div>
 
-  <div class="card-row my-cards">
+  <hr>
+
+  <div (wheel)="scrollX($event, 'myCardsRef')" #myCardsRef class="card-row my-cards">
 
     <div *ngFor="let card of game.hand" class="card" [class.selected]="selectedWhite && selectedWhite.id === card.id" (click)="selectWhite(card)">
       {{ card.text }}
@@ -43,8 +45,6 @@
   </div>
 
   <div class="players">
-
-    <!-- <span class="header">Players:</span> -->
 
     <div *ngFor="let p of game.players" class="player">
       <fa-icon *ngIf="p.host" class="host" [icon]="['fas', 'crown']"></fa-icon>

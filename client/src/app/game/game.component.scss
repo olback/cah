@@ -5,20 +5,23 @@ main {
 
   .card-row {
     width: 100%;
-    height: 234px;
+    height: 250px;
     overflow-x: auto;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
+    white-space: nowrap;
 
     .played-cards {
 
       overflow-y: hidden;
 
       .collection {
-        display: block;
-        float: left;
+        display: inline-block;
+        vertical-align: middle;
+        white-space: initial;
+        margin-bottom: 0;
+        float: none;
         height: 234px;
         width: calc(200px + 20px + 16px + 16px + 2px);
-        // margin-bottom: 160px;
 
         &:hover > .card, &.selected>.card {
           background-color: #ddd;
@@ -31,6 +34,7 @@ main {
         .card {
           transition: margin .2s ease-in-out, background-color 0.1s ease-in-out;
           text-transform: capitalize;
+          // background-color: #fff;
           &>small {
             font-size: 8pt;
             display: block;
@@ -57,6 +61,13 @@ main {
           }
         }
 
+        &:last-of-type {
+          width: 234px;
+          .card {
+            margin-right: 0;
+          }
+        }
+
       }
 
     }
@@ -75,6 +86,7 @@ main {
       float: left;
       display: block;
       text-transform: capitalize;
+      white-space: initial;
 
       &>small {
         font-size: 8pt;
@@ -86,6 +98,7 @@ main {
         display: block;
         background-color: black;
         color: white;
+        float: left;
       }
 
       &:not(.black) {
@@ -97,19 +110,33 @@ main {
         background-color: #ddd;
       }
 
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+    }
+
+    &.my-cards {
+      height: 255px;
+      margin-bottom: 30px;
     }
 
     &.my-cards>.card {
-      margin-bottom: 20px;
+      display: inline-block;
+      vertical-align: middle;
+      white-space: initial;
+      margin-bottom: 0;
+      float: none;
+      margin-bottom: 5px;
     }
 
     &.my-cards>h1 {
       text-align: center;
       display: block;
       margin: 0;
-      margin-top: -.14em;
-      padding-top: calc((234px - .9em) / 2);
-      padding-bottom: calc((234px - .9em) / 2);
+      margin-top: -267px;
+      padding-top: calc((280px - 1em) / 2);
+      padding-bottom: calc((280px - 1em) / 2);
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       position: absolute;
@@ -220,6 +247,12 @@ main {
         margin-top: 1em;
       }
     }
+  }
+
+  hr {
+    margin: 26px 0;
+    margin-top: 10px;
+    border: 0.5px solid #aaa;
   }
 
 }

@@ -30,6 +30,12 @@ div {
                 margin-right: 1em;
             }
 
+            .description {
+                margin-left: 1em;
+                font-style: italic;
+                color: #555;
+            }
+
             &:last-of-type {
                 margin-bottom: 1em;
                 border-bottom: none;
@@ -74,6 +80,16 @@ div {
 
             input[type=checkbox]:checked + label.switch:after {
                 margin-left: 15pt;
+            }
+
+            input[type=number] {
+                background-color: transparent;
+                border: none;
+                border-bottom: 1px solid black;
+                outline: none;
+                box-sizing: border-box;
+                width: min-content;
+                display: inline-block;
             }
 
 
