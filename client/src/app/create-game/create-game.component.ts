@@ -124,7 +124,6 @@ export class CreateGameComponent implements OnInit, DoCheck {
 
     this.newGame.packs = this.packs.filter(e => e.selected).map(e => e.name);
 
-    console.log(this.newGame);
     this._socket.emit('new-game', this.newGame);
 
   }
