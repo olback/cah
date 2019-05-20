@@ -16,23 +16,24 @@
       (click)="toggleAll(false)">None</button><button (click)="toggleAll(true)">All</button>
   </div>
 
-  <form #newGameForm="ngForm">
+  <form #newGameForm="ngForm" autocomplete="off">
 
     <div class="input-group">
       <label for="max-players">Max Score:</label>
       <input required #maxScore="ngModel" [(ngModel)]="newGame._maxScore" name="maxScore" id="max-score" type="number"
-      min="3" max="100" value="8" pattern="^[^0][\d]{0,2}$" />
+      min="3" max="100" value="8" pattern="^[^0][\d]{0,2}$" autocomplete="off" />
     </div>
 
     <div class="input-group">
       <label for="max-players">Max Players:</label>
       <input required #maxPlayers="ngModel" [(ngModel)]="newGame._maxPlayers" name="maxPlayers" id="max-players" type="number"
-      min="3" max="10" value="5" pattern="^[^0][\d]{0,1}$" />
+      min="3" max="10" value="5" pattern="^[^0][\d]{0,1}$" autocomplete="off" />
     </div>
 
     <div class="input-group">
       <label for="max-players">Blank cards per player:</label>
-      <input required #blanks="ngModel" [(ngModel)]="newGame._blanks" name="blanks" id="blanks" type="number" min="0" max="100" value="3" pattern="^[\d]{0,3}$" />
+      <input required #blanks="ngModel" [(ngModel)]="newGame._blanks" name="blanks" id="blanks" type="number"
+      min="0" max="100" value="3" pattern="^[\d]{0,3}$" autocomplete="off" />
     </div>
 
     <div class="input-group" style="display:none">
@@ -49,7 +50,8 @@
 
     <div class="input-group">
       <label for="password">Game password (optional):</label>
-      <input #password="ngModel" [(ngModel)]="newGame.password" name="password" id="password" type="text" maxlength="1000" />
+      <input #password="ngModel" [(ngModel)]="newGame.password" name="password" id="password" type="text"
+      maxlength="1000" autocomplete="off" />
     </div>
 
     <div class="input-group">
