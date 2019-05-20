@@ -56,4 +56,8 @@ export class Setting {
 
   }
 
+  public reset() {
+    this.set(this.defaultValue);
+  }
+
 }

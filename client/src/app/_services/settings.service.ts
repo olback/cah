@@ -24,4 +24,12 @@ export class SettingsService {
     scrollFactor: new Setting('scrollFactor', 'Number', 'Scroll speed', 1, 'Change this to scroll through cards faster or slower. Negative values changes the direction.')
   };
 
+  public reset() {
+    for (const s in this.settings) {
+      if (this.settings.hasOwnProperty(s)) {
+        this.settings[s].reset();
+      }
+    }
+  }
+
 }
