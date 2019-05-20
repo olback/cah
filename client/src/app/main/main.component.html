@@ -1,24 +1,31 @@
 <main>
 
-  <form #joinGameForm="ngForm">
+  <form #joinGameForm="ngForm" autocomplete="off">
 
-    <div class="username">
+    <div class="fw">
       <input (keyup)="setUsername()" name="username" [(ngModel)]="username" type="text" pattern="^(?=.*\S).+$"
-        placeholder="Username" maxlength="25" minlength="1" />
+        placeholder="Username" maxlength="25" minlength="1" autocomplete="off" />
     </div>
 
-    <div class="username">
+    <div class="fw">
       <small [hidden]="username && joinGameForm.valid">A username is required to create and join games.</small>
     </div>
 
     <div class="left">
-      <input [(ngModel)]="joinGame.gid" type="text" name="game-id" id="game-id" placeholder="Game ID" maxlength="20" />
-      <button [disabled]="!username || joinGameForm.invalid" class="create" routerLink="/create">Create game</button>
+      <input [(ngModel)]="joinGame.gid" type="text" name="game-id" id="game-id" placeholder="Game ID"
+        maxlength="20" autocomplete="off" />
+      <button *ngIf="!pathIsJoin" [disabled]="!username || joinGameForm.invalid" class="create" routerLink="/create">Create game</button>
     </div>
 
     <div class="right">
       <input [(ngModel)]="joinGame.password" type="password" name="game-password" id="game-password"
-        placeholder="Game password" maxlength="1000" />
+        placeholder="Game password" maxlength="1000" autocomplete="off" />
+      <button *ngIf="!pathIsJoin" [disabled]="!username || joinGameForm.invalid || !joinGame.gid" (click)="join()" class="join">
+        Join game
+      </button>
+    </div>
+
+    <div *ngIf="pathIsJoin" class="fw">
       <button [disabled]="!username || joinGameForm.invalid || !joinGame.gid" (click)="join()" class="join">
         Join game
       </button>

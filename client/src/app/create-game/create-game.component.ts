@@ -25,7 +25,6 @@ interface Pack {
 })
 export class CreateGameComponent implements OnInit, DoCheck {
 
-  gameId: string = (Math.random() * 1E17).toString(36);
   baseUrl: string =  location.origin;
 
   query: string;
@@ -138,7 +137,7 @@ export class CreateGameComponent implements OnInit, DoCheck {
 
   copyUrl() {
 
-    const url = `${origin.toString()}/join/${this.gameId}`;
+    const url = `${origin.toString()}/join/${this.newGame.gid}`;
 
     if (this._clipboardService.copyFromContent(url)) {
       const toast = new Toast('URL copied to clipboard.');

@@ -13,17 +13,21 @@ export class SettingsComponent {
 
   settings: Setting[] = [];
 
-  constructor(public settingsService: SettingsService) {
+  constructor(private _settingsService: SettingsService) {
 
     // tslint:disable-next-line:forin
-    for (const s in settingsService.settings) {
-      this.settings.push(settingsService.settings[s]);
+    for (const s in _settingsService.settings) {
+      this.settings.push(_settingsService.settings[s]);
     }
 
   }
 
   closeSettings() {
     this.close.emit();
+  }
+
+  resetSettings() {
+    this._settingsService.reset();
   }
 
 }

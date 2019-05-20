@@ -67,7 +67,7 @@
       <button [disabled]="pid === game.czar || game.players.length < 3 || !game.blanksRemaining || done || gameOver" (click)="modals.blank=!modals.blank">Use blank card ({{ game.blanksRemaining }})</button> -->
       <button *ngIf="pid !== game.czar" [disabled]="done || !selectedWhite" (click)="confirm()">Confirm selection</button>
       <button *ngIf="pid === game.czar" [disabled]="!winnerCard || done" (click)="confirm()">Confirm selection</button>
-      <button [disabled]="done || pid === game.czar" (click)="modals.blank=!modals.blank">Use blank card ({{ game.blanksRemaining }})</button>
+      <button [disabled]="done || pid === game.czar || !game.blanksRemaining" (click)="modals.blank=!modals.blank">Use blank card ({{ game.blanksRemaining }})</button>
       <button (click)="modals.settings=!modals.settings">View settings</button>
       <button (click)="sync()"><fa-icon [icon]="['fas', 'sync']"></fa-icon></button>
     </div>

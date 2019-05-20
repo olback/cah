@@ -258,7 +258,8 @@ class Game {
             if (this._players.hasOwnProperty(p)) {
                 this._players[p].newRound();
                 this._players[p].socket.emit('round-winner', {
-                    pid: winner
+                    pid: winner,
+                    score: this._players[winner].score
                 });
             }
         }
