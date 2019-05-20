@@ -72,17 +72,23 @@ export class GameComponent implements OnInit, OnDestroy {
 
     });
 
-    this._socket.on('round-winner', (winner: { pid: string }) => {
+    this._socket.on('round-winner', (winner: { pid: string, score: number }) => {
+
       for (const p of this.game.players) {
         if (p.id === winner.pid) {
-          this.message = `${p.username} won this round!`;
+          this.message = `${p.id === this.pid ? 'You' : p.username } won this round!`;
+          p.score = winner.score;
+          break;
         }
       }
+
       for (const cards of this.game.playedCards) {
         if (cards.pid === winner.pid) {
           cards.winner = true;
+          break;
         }
       }
+
     });
 
   }
