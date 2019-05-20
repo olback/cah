@@ -30,6 +30,10 @@ export class Setting {
 
   }
 
+  setCb(cb: (v?: any) => void) {
+    this.cb = cb;
+  }
+
   public get() {
 
     const data = localStorage.getItem(this.name);

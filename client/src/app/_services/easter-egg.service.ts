@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SettingsService } from './settings.service';
 
 interface IEggs {
   [key: string]: (b: boolean) => void;
@@ -8,6 +9,14 @@ interface IEggs {
   providedIn: 'root'
 })
 export class EasterEggService {
+
+  constructor(private _settings: SettingsService) {
+    this._settings.settings.eggs.setCb((v: boolean) => {
+      if (!v) {
+        this.disableAll();
+      }
+    });
+  }
 
   private eggs: IEggs = {
     comicSans(enabled: boolean) {
@@ -27,8 +36,7 @@ export class EasterEggService {
   };
 
   public enable(egg: string) {
-    // Read directly from localStorage to avoid circular dependencies
-    if (localStorage.getItem('eggs') === 'true' && this.eggs.hasOwnProperty(egg)) {
+    if (this._settings.settings.eggs.get() && this.eggs.hasOwnProperty(egg)) {
       this.eggs[egg](true);
     }
   }
