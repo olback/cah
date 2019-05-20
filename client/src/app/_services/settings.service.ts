@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Setting } from '../_classes/setting';
-import { EasterEggService } from './easter-egg.service';
 
 interface ISettings {
   acronyms: Setting;
