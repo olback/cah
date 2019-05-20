@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
 
   username: string;
   joinGame = new JoinGame(this._token.get(), '', '');
+  pathIsJoin = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class MainComponent implements OnInit {
     this.username = this._usernameService.get();
 
     if (this._route.routeConfig.path === 'join/:id') {
+      this.pathIsJoin = true;
       this._route.params.forEach(v => {
         this.joinGame.gid = v.id;
       });
