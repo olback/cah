@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsernameService } from '../_services/username.service';
+import { UsernameService } from '@service/username.service';
 import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
-import { TokenService } from '../_services/token.service';
-import { JoinGame } from '../_classes/join-game';
+import { TokenService } from '@service/token.service';
+import { JoinGame } from '@class/join-game';
 
 @Component({
   selector: 'app-main',

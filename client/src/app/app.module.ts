@@ -15,10 +15,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { ToastComponent } from './toast/toast.component';
 
 // Services
-import { SocketService } from './_services/socket.service';
-import { UsernameService } from './_services/username.service';
-import { TokenService } from './_services/token.service';
-import { ToastService } from './_services/toast.service';
+import { SocketService } from '@service/socket.service';
+import { UsernameService } from '@service/username.service';
+import { TokenService } from '@service/token.service';
+import { ToastService } from '@service/toast.service';
 
 // Modules
 import { ClipboardModule } from 'ngx-clipboard';

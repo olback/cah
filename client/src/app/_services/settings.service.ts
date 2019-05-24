@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Setting } from '../_classes/setting';
+import { Setting } from '@class/setting';
 
 interface ISettings {
   acronyms: Setting;

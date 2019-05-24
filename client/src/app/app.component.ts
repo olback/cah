@@ -1,11 +1,11 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { SocketService } from './_services/socket.service';
-import { UsernameService } from './_services/username.service';
-import { SettingsService } from './_services/settings.service';
+import { SocketService } from '@service/socket.service';
+import { UsernameService } from '@service/username.service';
+import { SettingsService } from '@service/settings.service';
 import { Socket } from 'ngx-socket-io';
-import { Toast } from './_classes/toast';
+import { Toast } from '@class/toast';
 import { Router } from '@angular/router';
-import { ToastService } from './_services/toast.service';
+import { ToastService } from '@service/toast.service';
 
 interface SocketError {
   message: string;

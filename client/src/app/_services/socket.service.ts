@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { TokenService } from './token.service';
-import { UpdateUsernameRequest } from '../_classes/update-username-request';
+import { UpdateUsernameRequest } from '@class/update-username-request';
 
 @Injectable({
   providedIn: 'root'

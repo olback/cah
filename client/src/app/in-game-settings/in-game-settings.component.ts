@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ClipboardService } from 'ngx-clipboard';
-import { ToastService } from '../_services/toast.service';
-import { Toast } from '../_classes/toast';
+import { ToastService } from '@service/toast.service';
+import { Toast } from '@class/toast';
 import { Socket } from 'ngx-socket-io';
-import { TokenService } from '../_services/token.service';
-import { GameRequest } from '../_classes/game-request';
+import { TokenService } from '@service/token.service';
+import { GameRequest } from '@class/game-request';
 
 @Component({
   selector: 'app-in-game-settings',
