@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { SettingsService } from '../_services/settings.service';
-import { Setting } from '../_classes/setting';
+import { SettingsService } from '@service/settings.service';
+import { Setting } from '@class/setting';
 
 @Component({
   selector: 'app-settings',

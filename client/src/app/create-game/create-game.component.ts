@@ -1,11 +1,11 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { TokenService } from '../_services/token.service';
-import { ToastService } from '../_services/toast.service';
-import { Toast } from '../_classes/toast';
+import { TokenService } from '@service/token.service';
+import { ToastService } from '@service/toast.service';
+import { Toast } from '@class/toast';
 import { ClipboardService } from 'ngx-clipboard';
-import { NewGame } from '../_classes/new-game';
-import { UsernameService } from '../_services/username.service';
+import { NewGame } from '@class/new-game';
+import { UsernameService } from '@service/username.service';
 import { Router } from '@angular/router';
 
 interface Pack {

@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
-import { TokenService } from '../_services/token.service';
-import { ToastService } from '../_services/toast.service';
-import { Toast } from '../_classes/toast';
-import { GameRequest } from '../_classes/game-request';
-import { Winner } from '../_classes/winner';
-import { PickedWhite } from '../_classes/picked-white';
-import { BlankCard } from '../_classes/blank-card';
-import { SettingsService } from '../_services/settings.service';
+import { TokenService } from '@service/token.service';
+import { ToastService } from '@service/toast.service';
+import { Toast } from '@class/toast';
+import { GameRequest } from '@class/game-request';
+import { Winner } from '@class/winner';
+import { PickedWhite } from '@class/picked-white';
+import { BlankCard } from '@class/blank-card';
+import { SettingsService } from '@service/settings.service';
 
 @Component({
   selector: 'app-game',
