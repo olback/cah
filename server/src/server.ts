@@ -82,6 +82,11 @@ io.on('connection', socket => {
 
             log.error(e instanceof Error ? e.stack : e);
 
+            socket.emit('error-message', {
+                message: 'Server error.'
+            });
+
+
         }
 
         socket.emit('get-packs-list', packs.sort((a, b) => (a.pack > b.pack) ? 1 : ((b.pack > a.pack) ? -1 : 0)));
