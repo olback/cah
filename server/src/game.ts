@@ -45,7 +45,7 @@ class Game {
         const finalPromises: Promise<void>[] = [];
 
         for (const p of this._packs) {
-            promisesW.push(db.query('select * from whitee where pack=$1', [p]));
+            promisesW.push(db.query('select * from white where pack=$1', [p]));
             promisesB.push(db.query('select * from black where pack=$1', [p]));
         }
 
