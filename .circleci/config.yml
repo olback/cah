@@ -3,7 +3,8 @@ version: 2
 jobs:
   server:
     docker:
-      - image: node:10-stretch
+      - image: circleci/node:10-stretch
+      - image: circleci/postgres:10-alpine
     steps:
       - checkout
 
@@ -22,6 +23,10 @@ jobs:
           name: Run TSC
           command: cd server && npm run ts:compile
 
+      - run:
+          name: Unit Tests
+          command: cd server && npm test
+
       - save_cache:
           paths:
             - server/node_modules
@@ -29,7 +34,7 @@ jobs:
 
   client:
     docker:
-      - image: node:10-stretch
+      - image: circleci/node:10-stretch
     steps:
       - checkout
 
