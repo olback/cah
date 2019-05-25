@@ -80,7 +80,7 @@ io.on('connection', socket => {
 
         } catch (e) {
 
-            log.error(e.stack);
+            log.error(e instanceof Error ? e.stack : e);
 
         }
 
@@ -101,7 +101,7 @@ io.on('connection', socket => {
 
         } catch (e) {
 
-            log.error(e.stack);
+            log.error(e instanceof Error ? e.stack : e);
 
         }
 
