@@ -10,6 +10,7 @@
     "ts:watch": "tsc -p ./ --watch",
     "ts:lint": "node_modules/.bin/tslint --project .",
     "dev": "npm rebuild --build-from-source && node devserver",
+    "pretest": "tsc -p tsconfig.test.json",
     "test": "mocha out/test"
   },
   "keywords": [
