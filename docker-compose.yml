@@ -23,7 +23,7 @@ services:
       - ${CAH_DIR}:/cah/
 
   postgres:
-      image: postgres
+      image: postgres:10-alpine
       restart: ${DOCKER_RESTART}
       # ports:
        # - "${PG_PORT}:${PG_PORT}"

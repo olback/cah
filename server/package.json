@@ -9,7 +9,8 @@
     "ts:compile": "tsc -p ./",
     "ts:watch": "tsc -p ./ --watch",
     "ts:lint": "node_modules/.bin/tslint --project .",
-    "dev": "npm rebuild --build-from-source && node devserver"
+    "dev": "npm rebuild --build-from-source && node devserver",
+    "test": "mocha out/test"
   },
   "keywords": [
     "cah",
@@ -20,7 +21,9 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
+    "@types/mocha": "^5.2.6",
     "concurrently": "^4.1.0",
+    "mocha": "^6.1.4",
     "nodemon": "^1.18.9",
     "tslint": "^5.16.0"
   },
@@ -34,6 +37,7 @@
     "pg": "^7.9.0",
     "pg-native": "^3.0.0",
     "socket.io": "^2.2.0",
+    "solid-log": "^1.0.2",
     "typescript": "^3.2.2"
   }
 }

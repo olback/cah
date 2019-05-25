@@ -1,5 +1,6 @@
 import { Player, Players } from './player';
 import { Client, QueryResult } from 'pg';
+import * as log from 'solid-log';
 import { dbConf } from './config';
 
 // tslint:disable-next-line:no-any
@@ -58,6 +59,8 @@ class Game {
                     });
                 });
             });
+        }).catch(e => {
+            throw e;
         }));
 
         finalPromises.push(Promise.all(promisesB).then(v => {
@@ -72,6 +75,8 @@ class Game {
                     });
                 });
             });
+        }).catch(e => {
+            throw e;
         }));
 
         Promise.all(finalPromises).then(() => {
@@ -87,7 +92,18 @@ class Game {
 
             // Redirect the host to the game
             _host.socket.emit('redirect', ['game', id]);
-            // this.sendState(_host); // No need to send the state. The client requests it when being redirected to the game page.
+
+            // this.sendState(_host); // No need to send the state.
+            // The client requests it when being redirected to the game page.
+
+        }).catch(e => {
+
+            log.error(e instanceof Error ? e.stack : e);
+
+            _host.socket.emit('error-message', {
+                message: 'Server error.'
+            });
+
         });
 
     }

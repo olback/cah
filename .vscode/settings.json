@@ -1,0 +1,56 @@
+{
+    "files.associations": {
+        "*.log": "log",
+        "*.log.*": "log"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "log.error",
+                "settings": {
+                    "foreground": "#af1f1f",
+                    "fontStyle": ""
+                }
+            },
+            {
+                "scope": "log.exception",
+                "settings": {
+                    "foreground": "#464b5d",
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+    "logFileHighlighter.customPatterns": [
+        {
+            "pattern": "\\[\\bDEBUG\\b\\]",
+            "foreground": "white",
+            "background": "purple",
+        },
+        {
+            "pattern": "\\[\\bINFO\\b\\]",
+            "foreground": "white",
+            "background": "lightblue"
+        },
+        {
+            "pattern": "\\[\\bOK\\b\\]",
+            "foreground": "white",
+            "background": "green"
+        },
+        {
+            "pattern": "\\[\\bWARN\\b\\]",
+            "foreground": "white",
+            "background": "orange"
+        },
+        {
+            "pattern": "\\[\\bERROR\\b\\]",
+            "foreground": "white",
+            "background": "red"
+        },
+        {
+            "pattern": "\\[\\bPANIC\\b\\]",
+            "foreground": "red",
+            "background": "white"
+        }
+    ]
+}
