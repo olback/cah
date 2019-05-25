@@ -314,11 +314,68 @@ io.on('connection', socket => {
 
 if (env.NODE_ENV === 'dev') {
     app.get('/i', (_req, res) => {
-        res.json({
-            players: Object.keys(players).length,
-            games: Object.keys(games).length,
-            version: git.short()
-        });
+
+        interface IDevPath {
+            // tslint:disable-next-line:no-any
+            players: any[];
+            // tslint:disable-next-line:no-any
+            games: any[];
+            version: string;
+        }
+
+        const resData: IDevPath = {
+            players: [],
+            games: [],
+            version: git.long()
+        };
+
+        // tslint:disable-next-line:forin
+        for (const p in players) {
+            resData.players.push({
+                username: players[p].username,
+                score: players[p].score,
+                inGame: players[p].inGame,
+                blanksPlayed: players[p].blanksPlayed,
+                hand: players[p].hand,
+                picks: players[p].picks,
+            });
+        }
+
+        // tslint:disable-next-line:forin
+        for (const g in games) {
+            resData.games.push({
+                gid: g,
+                hid: games[g].hid,
+                // tslint:disable-next-line:ban-ts-ignore
+                // @ts-ignore
+                czar: games[g]._czar,
+                // tslint:disable-next-line:ban-ts-ignore
+                // @ts-ignore
+                packs: games[g]._packs,
+                // tslint:disable-next-line:ban-ts-ignore
+                // @ts-ignore
+                playedCards: games[g]._playedCards,
+                // tslint:disable-next-line:ban-ts-ignore
+                // @ts-ignore
+                round: games[g]._bIndex,
+                // tslint:disable-next-line:ban-ts-ignore
+                // @ts-ignore
+                players: Object.keys(games[g]._players).map(p => {
+                    return {
+                        id: p,
+                        username: players[p].username,
+                        score: players[p].score,
+                        inGame: players[p].inGame,
+                        blanksPlayed: players[p].blanksPlayed,
+                        hand: players[p].hand,
+                        picks: players[p].picks
+                    };
+                })
+            });
+        }
+
+        res.json(resData);
+
     });
 }
 
