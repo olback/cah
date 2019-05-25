@@ -7,12 +7,17 @@ import { Client } from 'pg';
 import { dbConf } from './config';
 import * as path from 'path';
 import * as git from 'git-rev-sync';
+import * as log from 'solid-log';
+
+// Configure logging
+log.add(new log.ConsoleLogger(env.NODE_ENV === 'dev' ? log.LogLevel.debug : log.LogLevel.warn));
+log.add(new log.FileLogger(env.NODE_ENV === 'dev' ? log.LogLevel.debug : log.LogLevel.warn));
 
 const port = env.NODE_PORT ? Number(env.NODE_PORT) : 5000;
 const app = express();
 
 const server = app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+    log.info(`Server listening on port ${port}`);
 });
 
 const io = socketio(server, {
@@ -50,26 +55,34 @@ io.on('connection', socket => {
 
     socket.on('get-packs-list', async () => {
 
-        const db = new Client(dbConf);
-        await db.connect();
-        const dbres = await db.query('select distinct pack from white union select pack from black');
-
         const packs: Pack[] = [];
 
-        for (const p of dbres.rows) {
+        try {
 
-            const b = await db.query('select count(*) from black where pack=$1', [p.pack]);
-            const c = await db.query('select count(*) from white where pack=$1', [p.pack]);
+            const db = new Client(dbConf);
+            await db.connect();
+            const queryRes = await db.query('select distinct pack from white union select pack from black');
 
-            packs.push({
-                pack: p.pack,
-                black: Number(b.rows[0].count),
-                white: Number(c.rows[0].count)
-            });
+            for (const p of queryRes.rows) {
+
+                const b = await db.query('select count(*) from black where pack=$1', [p.pack]);
+                const c = await db.query('select count(*) from white where pack=$1', [p.pack]);
+
+                packs.push({
+                    pack: p.pack,
+                    black: Number(b.rows[0].count),
+                    white: Number(c.rows[0].count)
+                });
+
+            }
+
+            db.end();
+
+        } catch (e) {
+
+            log.error(e.stack);
 
         }
-
-        db.end();
 
         socket.emit('get-packs-list', packs.sort((a, b) => (a.pack > b.pack) ? 1 : ((b.pack > a.pack) ? -1 : 0)));
 
@@ -77,12 +90,20 @@ io.on('connection', socket => {
 
     socket.on('acronym', async () => {
 
-        const db = new Client(dbConf);
-        await db.connect();
-        const dbres = await db.query('select text from acronyms offset floor(random() * (select count(*) from acronyms)) limit 1');
-        db.end();
+        try {
 
-        socket.emit('acronym', dbres.rows[0].text);
+            const db = new Client(dbConf);
+            await db.connect();
+            const dbres = await db.query('select text from acronyms offset floor(random() * (select count(*) from acronyms)) limit 1');
+            db.end();
+
+            socket.emit('acronym', dbres.rows[0].text);
+
+        } catch (e) {
+
+            log.error(e.stack);
+
+        }
 
     });
 
@@ -252,7 +273,7 @@ io.on('connection', socket => {
     });
 
     socket.on('error', e => {
-        console.error(e);
+        log.error(e);
     });
 
     socket.on('disconnect', () => {
