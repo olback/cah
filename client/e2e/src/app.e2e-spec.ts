@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser } from 'protractor';
 import { noBrowserErrorsCheck } from './utils';
 
 describe('workspace-project App', () => {
