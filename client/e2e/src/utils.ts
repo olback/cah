@@ -4,7 +4,6 @@ export const noBrowserErrorsCheck = async () => {
 
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    console.log(logs);
 
     // Allow errors related to not being able to connect to the web scoket.
     for (let i = 0; i < logs.length; i++) {
@@ -13,7 +12,6 @@ export const noBrowserErrorsCheck = async () => {
       }
     }
 
-    console.log(logs);
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
     } as logging.Entry));
