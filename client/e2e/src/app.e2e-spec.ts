@@ -1,14 +1,20 @@
 import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
+import { noBrowserErrorsCheck } from './utils';
 
 describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
+    browser.waitForAngularEnabled(false); // TODO:FIXME:
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('title should be \'Chickens Attack Helicopters\'', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to cah!');
+    expect(page.getTitleText()).toEqual('Chickens Attack Helicopters');
   });
+
+  afterEach(noBrowserErrorsCheck);
+
 });

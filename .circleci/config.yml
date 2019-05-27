@@ -4,16 +4,21 @@ jobs:
   server:
     docker:
       - image: circleci/node:10-stretch
-      - image: circleci/postgres:10-alpine
+      #- image: circleci/postgres:10-alpine
     steps:
       - checkout
 
       - restore_cache:
-          key: npm-cache-server-{{ checksum "server/package.json" }}
+          key: npm-cache-server-{{ checksum "server/package-lock.json" }}
 
       - run:
-          name: Install node packages
+          name: Install Node packages
           command: cd server && npm install
+
+      - save_cache:
+          paths:
+            - server/node_modules
+          key: npm-cache-server-{{ checksum "server/package-lock.json" }}
 
       - run:
           name: Run TS Lint
@@ -27,32 +32,39 @@ jobs:
           name: Unit Tests
           command: cd server && npm test
 
-      - save_cache:
-          paths:
-            - server/node_modules
-          key: npm-cache-server-{{ checksum "server/package.json" }}
-
   client:
     docker:
-      - image: circleci/node:10-stretch
+      - image: circleci/node:10-stretch-browsers
     steps:
       - checkout
 
       - restore_cache:
-          key: npm-cache-client-{{ checksum "client/package.json" }}
+          key: npm-cache-client-{{ checksum "client/package-lock.json" }}
 
       - run:
-          name: Install node packages
+          name: Install Node packages
           command: cd client && npm install
-
-      - run:
-          name: Build Angular app
-          command: cd client && node_modules/.bin/ng build --prod
 
       - save_cache:
           paths:
             - client/node_modules
-          key: npm-cache-client-{{ checksum "client/package.json" }}
+          key: npm-cache-client-{{ checksum "client/package-lock.json" }}
+
+      - run:
+          name: Run Angular Linting
+          command: cd client && npm run lint
+
+      - run:
+          name: Angular Spec (Karma/Jasmine) Tests
+          command: cd client && npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+
+      - run:
+          name: Angular Spec (Karma/Jasmine) Tests
+          command: cd client && npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+
+      # - run:
+      #     name: Build Angular app
+      #     command: cd client && node_modules/.bin/ng build --prod
 
   deploy:
     machine:

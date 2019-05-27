@@ -1,4 +1,11 @@
+import { SocketIoConfig } from 'ngx-socket-io';
+
+const sioc: SocketIoConfig = {
+  url: origin,
+  options: {}
+};
+
 export const environment = {
   production: true,
-  siou: origin.toString()
+  sioc: sioc
 };
