@@ -25,15 +25,10 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { FAModule } from './fa/fa.module';
 
 // Other imports
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SocketIoModule } from 'ngx-socket-io';
 import { environment as env } from '../environments/environment';
 import { InfoComponent } from './info/info.component';
 import { BlankCardModalComponent } from './blank-card-modal/blank-card-modal.component';
-
-const sioc: SocketIoConfig = {
-  url: env.siou,
-  options: {}
-};
 
 @NgModule({
   declarations: [
@@ -51,7 +46,7 @@ const sioc: SocketIoConfig = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SocketIoModule.forRoot(sioc),
+    SocketIoModule.forRoot(env.sioc),
     ClipboardModule,
     FAModule
   ],

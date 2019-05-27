@@ -30,7 +30,7 @@ export class Setting {
 
   }
 
-  setCb(cb: (v?: any) => void) {
+  setCb(cb: (v?: any) => void | undefined) {
     this.cb = cb;
   }
 

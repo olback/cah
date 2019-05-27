@@ -1,3 +1,5 @@
 <div class="toast">
-  {{ toast.message }}
+  <ng-template [ngIf]="toast">
+      {{ toast.message }}
+  </ng-template>
 </div>

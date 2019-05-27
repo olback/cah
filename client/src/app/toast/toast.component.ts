@@ -15,9 +15,11 @@ export class ToastComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.toast.close();
-    }, this.toast.time);
+    if (this.toast) {
+      setTimeout(() => {
+        this.toast.close();
+      }, this.toast.time);
+    }
   }
 
 }
