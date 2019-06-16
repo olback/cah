@@ -12,21 +12,22 @@
   <div>
     <section>
       <h3>Stats</h3>
-      <p>Players: {{ stats.players }}</p>
-      <p>Games: {{ stats.games }}</p>
-      <p>Version: {{ stats.version }}</p>
+      <p>Active players: {{ info.stats.players }}</p>
+      <p>Active games: {{ info.stats.games }}</p>
+      <p>Version: {{ info.stats.version }}</p>
+      <p>Updated: {{ info.stats.commitDate }}</p>
     </section>
 
     <section>
       <h3>Stack</h3>
       <p>
-        <fa-icon [icon]="['fab', 'angular']"> </fa-icon> Angular 7
+        <fa-icon style="color: #c3002f" [icon]="['fab', 'angular']"></fa-icon> Angular {{ info.stack.angular }}
       </p>
       <p>
-        <fa-icon [icon]="['fab', 'node-js']"> </fa-icon> NodeJS 10
+        <fa-icon style="color: #689f63" [icon]="['fab', 'node-js']"></fa-icon> NodeJS {{ info.stack.node }}
       </p>
       <p>
-        <fa-icon [icon]="['fas', 'database']"></fa-icon> Postgres 10
+        <fa-icon style="color: #336791" [icon]="['fas', 'database']"></fa-icon> Postgres {{ info.stack.postgres }}
       </p>
     </section>
   </div>

@@ -5,6 +5,18 @@ interface Stats {
   players: number;
   games: number;
   version: string;
+  commitDate: string;
+}
+
+interface Stack {
+  angular: string;
+  node: string;
+  postgres: string;
+}
+
+export interface IInfo {
+  stack: Stack;
+  stats: Stats;
 }
 
 @Component({
@@ -14,15 +26,43 @@ interface Stats {
 })
 export class InfoComponent implements OnInit {
 
-  stats: Stats = {
-    players: 0,
-    games: 0,
-    version: 'unknown'
+  // stats: Stats = {
+  //   players: 0,
+  //   games: 0,
+  //   version: 'unknown',
+  //   commitDate: 'unknown'
+  // };
+
+  // stack: Stack = {
+  //   angular: 'unknown',
+  //   node: 'unknown',
+  //   postgres: 'unknown'
+  // };
+
+  info: IInfo = {
+    stack: {
+      angular: 'unknown',
+      node: 'unknown',
+      postgres: 'unknown'
+    },
+    stats: {
+      players: 0,
+      games: 0,
+      version: 'unknown',
+      commitDate: 'unknown'
+    }
   };
 
+  // stack: Stack = {
+  //   // @ts-ignore
+  //   angular: getAllAngularRootElements()[0].attributes['ng-version'].value,
+  //   node: 'unknown',
+  //   postgres: 'unknown'
+  // };
+
   constructor(private _socket: Socket) {
-    this._socket.on('info', (stats: Stats) => {
-      this.stats = stats;
+    this._socket.on('info', (info: IInfo) => {
+      this.info = info;
     });
   }
 
