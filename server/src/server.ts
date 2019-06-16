@@ -311,7 +311,6 @@ io.on('connection', socket => {
             stats: getStats(players, games),
             stack: await getStack()
         };
-        log.debug(info);
         socket.emit('info', info);
     });
 
