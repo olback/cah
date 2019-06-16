@@ -10,7 +10,7 @@ export class SocketService {
 
   constructor(private socket: Socket, private _tokenService: TokenService) {
 
-    this.socket.on('err', console.log);
+    this.socket.on('err', (e: any) => console.error(e));
 
   }
 

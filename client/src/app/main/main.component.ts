@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
 
     this.username = this._usernameService.get();
 
-    console.log(this._route.routeConfig);
     if (this._route.routeConfig && this._route.routeConfig.path === 'join/:id') {
       this.pathIsJoin = true;
       this._route.params.forEach(v => {
