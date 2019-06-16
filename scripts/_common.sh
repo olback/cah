@@ -4,8 +4,9 @@ EXIT_WITH_ERROR=0
 
 # Get node version
 NODE_MAJOR_VERSION=$(node -v | cut -b 2,3)
-if [ $NODE_MAJOR_VERSION != 10 ]; then
-  echo -e '\e[33m- Node version 10 is higly recomended!\e[0m'
+if [ $NODE_MAJOR_VERSION -lt 10 ]; then
+  echo -e '\e[31m✘ Node version 10 is required!\e[0m'
+  EXIT_WITH_ERROR=1 # Exit with error
 else
   echo -e '\e[32m✔ Node version OK\e[0m'
 fi
