@@ -162,7 +162,6 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   scrollX(e: WheelEvent, selector: string) {
-    console.log(e.deltaX, e.deltaY, e.deltaMode);
     const scrollFactor = this._settingsService.settings.scrollFactor.get() as number;
     // @ts-ignore
     this[selector].nativeElement.scrollBy(e.deltaY * scrollFactor, 0);

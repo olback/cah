@@ -6,8 +6,8 @@ import { Player, Players } from './player';
 import { Client } from 'pg';
 import { dbConf } from './config';
 import * as path from 'path';
-import * as git from 'git-rev-sync';
 import * as log from 'solid-log';
+import { getStack, getStats, IInfo, Stats, Stack } from './utils';
 
 // Configure logging
 log.add(new log.ConsoleLogger(env.NODE_ENV === 'dev' ? log.LogLevel.debug : log.LogLevel.warn));
@@ -306,32 +306,34 @@ io.on('connection', socket => {
 
     });
 
-    socket.on('info', () => {
-        socket.emit('info', {
-            players: Object.keys(players).length,
-            games: Object.keys(games).length,
-            version: git.short()
-        });
+    socket.on('info', async () => {
+        const info: IInfo = {
+            stats: getStats(players, games),
+            stack: await getStack()
+        };
+        socket.emit('info', info);
     });
 
 
 });
 
 if (env.NODE_ENV === 'dev') {
-    app.get('/i', (_req, res) => {
+    app.get('/i', async (_req, res) => {
 
         interface IDevPath {
             // tslint:disable-next-line:no-any
             players: any[];
             // tslint:disable-next-line:no-any
             games: any[];
-            version: string;
+            stats: Stats;
+            stack: Stack;
         }
 
         const resData: IDevPath = {
             players: [],
             games: [],
-            version: git.long()
+            stats: getStats(players, games),
+            stack: await getStack()
         };
 
         // tslint:disable-next-line:forin
@@ -380,6 +382,8 @@ if (env.NODE_ENV === 'dev') {
         }
 
         res.json(resData);
+
+        log.debug(JSON.stringify(resData, null, 4));
 
     });
 }
