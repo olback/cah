@@ -17,8 +17,8 @@ import { SettingsService } from '@service/settings.service';
 })
 export class GameComponent implements OnInit, OnDestroy {
 
-  @ViewChild('myCardsRef') myCardsRef: ElementRef;
-  @ViewChild('playedCardsRef') playedCardsRef: ElementRef;
+  @ViewChild('myCardsRef', { static: false }) myCardsRef: ElementRef;
+  @ViewChild('playedCardsRef', { static: false }) playedCardsRef: ElementRef;
 
   modals = {
     settings: false,
