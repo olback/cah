@@ -94,10 +94,8 @@ jobs:
       enabled: true
     steps:
       - restore_cache:
+          name: Fetch cah-dist.tar.gz from Cache
           key: cah-dist.tar.gz
-
-      - run:
-          command: ls -lah
 
       - run:
           name: Deliver Build
