@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  server:
+  server_test:
     docker:
       - image: circleci/node:10-stretch
       #- image: circleci/postgres:10-alpine
@@ -32,7 +32,7 @@ jobs:
           name: Unit Tests
           command: cd server && npm test
 
-  client:
+  client_test:
     docker:
       - image: circleci/node:10-stretch-browsers
     steps:
@@ -62,29 +62,68 @@ jobs:
           name: Angular e2e Tests
           command: cd client && npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
 
-      # - run:
-      #     name: Build Angular app
-      #     command: cd client && node_modules/.bin/ng build --prod
+  client_build:
+    docker:
+      - image: circleci/node:10-stretch
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: npm-cache-client-{{ checksum "client/package-lock.json" }}
+
+      - run:
+          name: Build Angular App
+          command: cd client && node_modules/.bin/ng build --prod
+
+      - run:
+          name: Compress Build
+          command: tar -czvf cah-dist.tar.gz client/dist
+
+      - store_artifacts:
+          name: Store Build Artifact
+          path: cah-dist.tar.gz
+
+      - save_cache:
+          name: Save Build Artifact as Cache
+          paths:
+            - cah-dist.tar.gz
+          key: cah-dist.tar.gz
 
   deploy:
     machine:
       enabled: true
     steps:
+      - restore_cache:
+          key: cah-dist.tar.gz
+
       - run:
-          name: Deploy Over SSH
-          command: |
-            ssh $SSH_USER@$SSH_HOST -p$SSH_PORT $SSH_COMMAND
+          command: ls -lah
+
+      - run:
+          name: Deliver Build
+          command: scp -P$SSH_PORT cah-dist.tar.gz $SSH_USER@$SSH_HOST:$BUILD_PATH
+
+      - run:
+          name: Deploy via SSH
+          command: ssh $SSH_USER@$SSH_HOST -p$SSH_PORT $SSH_COMMAND
 
 workflows:
   version: 2
   build:
     jobs:
-      - server
-      - client
+      - server_test
+      - client_test
+      - client_build:
+          requires:
+            - client_test
+          filters:
+            branches:
+              only: master
       - deploy:
           requires:
-            - server
-            - client
+            - server_test
+            - client_test
+            - client_build
           filters:
             branches:
               only: master

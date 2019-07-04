@@ -64,3 +64,5 @@ typings/
 /data/
 /export/
 /server/out/
+*.tar.gz
+*.sum
