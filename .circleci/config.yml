@@ -77,16 +77,16 @@ jobs:
 
       - run:
           name: Compress Build
-          command: tar -czvf cah-dist-$CIRCLE_SHA1.tar.gz client/dist
+          command: tar -czvf cah-dist.tar.gz client/dist
 
       - store_artifacts:
           name: Store Build Artifact
-          path: cah-dist-{{ .Environment.CIRCLE_SHA1 }}.tar.gz
+          path: cah-dist.tar.gz
 
       - save_cache:
           name: Save Build Artifact as Cache
           paths:
-            - cah-dist-{{ .Environment.CIRCLE_SHA1 }}.tar.gz
+            - cah-dist.tar.gz
           key: cah-dist-{{ .Environment.CIRCLE_SHA1 }}
 
   deploy:
@@ -99,7 +99,7 @@ jobs:
 
       - run:
           name: Deliver Build
-          command: scp -P$SSH_PORT cah-dist-*.tar.gz $SSH_USER@$SSH_HOST:$BUILD_PATH
+          command: scp -P$SSH_PORT cah-dist.tar.gz $SSH_USER@$SSH_HOST:$BUILD_PATH
 
       - run:
           name: Deploy via SSH
