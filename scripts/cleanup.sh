@@ -6,6 +6,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo 'About to delete "data" and "export". Waiting for 5 seconds...'
   sleep 5
-  rm -rf 'data' 'export'
+  rm -rf 'data' 'export' 'client/dist'
   echo 'Done'
 fi
