@@ -81,12 +81,12 @@ jobs:
 
       - store_artifacts:
           name: Store Build Artifact
-          path: "*.tar.gz"
+          path: cah-dist-{{ .Environment.CIRCLE_SHA1 }}.tar.gz
 
       - save_cache:
           name: Save Build Artifact as Cache
           paths:
-            - "*.tar.gz"
+            - cah-dist-{{ .Environment.CIRCLE_SHA1 }}.tar.gz
           key: cah-dist-{{ .Environment.CIRCLE_SHA1 }}
 
   deploy:
