@@ -15,6 +15,7 @@ services:
     environment:
       NODE_PORT: ${NODE_PORT}
       NODE_ENV: ${NODE_ENV}
+      NODE_SERVER_ADDR: ${NODE_SERVER_ADDR}
       PG_USER: ${PG_USER}
       PG_HOST: ${PG_HOST}
       PG_PORT: ${PG_PORT}

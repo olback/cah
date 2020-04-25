@@ -24,7 +24,8 @@ docker exec $(docker ps | grep ${NAME}_postgres | rev | cut -d ' ' -f 1 | rev) "
 
 # Restart the containers
 docker-compose down
-docker-compose up -d
+# docker-compose up -d
+# PORT=$(cat .env | grep NODE_PORT | cut -b 11-15)
+# echo "Done. Running on port $PORT"
 
-PORT=$(cat .env | grep NODE_PORT | cut -b 11-15)
-echo "Done. Running on port $PORT"
+echo "Done"

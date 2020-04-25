@@ -4,7 +4,9 @@
 1. Make sure that `docker`, `docker-compose` and `node` is installed.
 2. Clone this repo. `git clone git@github.com:olback/cah cah && cd cah`.
 3. Run `scripts/setup.sh`.
-4. That's it. You can now access the game on [localhost:5000](http://localhost:5000).
+4. Look over and edit `.env` to your liking.
+5. Run `docker-compose up` to start the server. (add `-d` to run in the background)
+6. That's it. You can now access the game on [localhost:5000](http://localhost:5000).
 
 ## Development:
 1. Make sure that `docker`, `docker-compose` and `node` is installed.
