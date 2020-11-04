@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <title>Cards Against Humanity Online! - cah.ninja</title>
   <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="viewport-fit=cover, user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Play Chickens Attack Helicopters. A Cards Against Humanity Clone Online!" />
   <meta property="og:type" content="website" />
@@ -16,6 +15,8 @@
   <meta property="og:image:type" content="image/png" />
   <meta name="msapplication-TileColor" content="#2d89ef">
   <meta name="msapplication-config" content="/browserconfig.xml">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="icon" type="image/svg+xml" href="/assets/cah-icon.svg">
   <link rel="icon" type="image/png" sizes="384x384" href="/assets/favicon-384x384.png">
@@ -27,6 +28,11 @@
   <link rel="shortcut icon" href="/assets/favicon.ico">
 </head>
 <body>
+  <picture>
+	  <source srcset="/assets/bg.avif" type="image/avif">
+	  <source srcset="/assets/bg.webp" type="image/webp">
+		<img src="/assets/bg.png" class="background-picture">
+  </picture>
   <app-root></app-root>
 </body>
 </html>
