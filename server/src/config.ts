@@ -6,7 +6,10 @@ const dbConf: ClientConfig = {
     port: Number(env.PG_PORT),
     user: env.PG_USER,
     password: env.PG_PASSWORD,
-    database: env.PG_USER
+    database: env.PG_USER,
+    ssl: env.PG_SSL_ALWAYS_TRUST ? {
+        rejectUnauthorized: false
+    } : false
 };
 
 export {

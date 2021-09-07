@@ -6,11 +6,11 @@
   "scripts": {
     "prestart": "npm install && npm run ts:compile",
     "start": "node out/server.js",
-    "ts:compile": "tsc -p ./",
-    "ts:watch": "tsc -p ./ --watch",
+    "ts:compile": "node_modules/.bin/tsc -p ./",
+    "ts:watch": "node_modules/.bin/tsc -p ./ --watch",
     "ts:lint": "node_modules/.bin/tslint --project .",
     "dev": "npm rebuild --build-from-source && node devserver",
-    "pretest": "tsc -p tsconfig.test.json",
+    "pretest": "node_modules/.bin/tsc -p tsconfig.test.json",
     "test": "mocha out/test"
   },
   "keywords": [
@@ -35,8 +35,7 @@
     "@types/socket.io": "^2.1.2",
     "express": "^4.16.4",
     "git-rev-sync": "^1.12.0",
-    "pg": "^7.9.0",
-    "pg-native": "^3.0.0",
+    "pg": "^8.7.1",
     "socket.io": "^2.2.0",
     "solid-log": "^1.0.2",
     "typescript": "^3.2.2"

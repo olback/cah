@@ -3,35 +3,51 @@ version: '3.1'
 services:
 
   node:
-    image: node:10-stretch
-    restart: ${DOCKER_RESTART}
-    command: ${NODE_COMMAND}
+    image: olback/cah
+    restart: unless-stopped
     tty: true
     ports:
-      - "${NODE_PORT}:${NODE_PORT}" # host:container
-    links:
-      - postgres
-    working_dir: /cah/server
+      - 3004:3004
     environment:
-      NODE_PORT: ${NODE_PORT}
-      NODE_ENV: ${NODE_ENV}
-      NODE_SERVER_ADDR: ${NODE_SERVER_ADDR}
-      PG_USER: ${PG_USER}
-      PG_HOST: ${PG_HOST}
-      PG_PORT: ${PG_PORT}
-      PG_PASSWORD: ${PG_PASSWORD}
-    volumes:
-      - ${CAH_DIR}:/cah/
+      NODE_PORT: 3004
+      NODE_ENV: prod
+      NODE_SERVER_ADDR: cah.ninja:443
+      PG_USER: cah
+      PG_HOST: PG_HOST
+      PG_PORT: PG_PORT
+      PG_PASSWORD: PG_PASSWORD
+      PG_SSL_ALWAYS_TRUST: 'true'
 
-  postgres:
-      image: postgres:10-alpine
-      restart: ${DOCKER_RESTART}
-      # ports:
-       # - "${PG_PORT}:${PG_PORT}"
-      environment:
-        POSTGRES_USER: ${PG_USER}
-        POSTGRES_PASSWORD: ${PG_PASSWORD}
-      volumes:
-        - ${DATA_STORE}/postgres:/var/lib/postgresql/data
-        - ${CAH_DIR}/scripts/postgres:/scripts/
-        - ${DUMP_DIR}/postgres:/export/
+  # node:
+  #   image: node:10-stretch
+  #   restart: ${DOCKER_RESTART}
+  #   command: ${NODE_COMMAND}
+  #   tty: true
+  #   ports:
+  #     - "${NODE_PORT}:${NODE_PORT}" # host:container
+  #   links:
+  #     - postgres
+  #   working_dir: /cah/server
+  #   environment:
+  #     NODE_PORT: ${NODE_PORT}
+  #     NODE_ENV: ${NODE_ENV}
+  #     NODE_SERVER_ADDR: ${NODE_SERVER_ADDR}
+  #     PG_USER: ${PG_USER}
+  #     PG_HOST: ${PG_HOST}
+  #     PG_PORT: ${PG_PORT}
+  #     PG_PASSWORD: ${PG_PASSWORD}
+  #   volumes:
+  #     - ${CAH_DIR}:/cah/
+
+  # postgres:
+  #     image: postgres:10-alpine
+  #     restart: ${DOCKER_RESTART}
+  #     # ports:
+  #      # - "${PG_PORT}:${PG_PORT}"
+  #     environment:
+  #       POSTGRES_USER: ${PG_USER}
+  #       POSTGRES_PASSWORD: ${PG_PASSWORD}
+  #     volumes:
+  #       - ${DATA_STORE}/postgres:/var/lib/postgresql/data
+  #       - ${CAH_DIR}/scripts/postgres:/scripts/
+  #       - ${DUMP_DIR}/postgres:/export/
